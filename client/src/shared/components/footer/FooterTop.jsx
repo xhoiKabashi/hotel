@@ -8,19 +8,19 @@ import {
 const FooterTop = () => {
   return (
     <div className="flex flex-col items-center gap-2 xl:flex-row justify-around p-5">
-      <div>© 2023 ALL RIGHTS RESERVED</div>
-      <div className="flex gap-2 xl:gap-9">
+      <div className="text-sm">© 2023 ALL RIGHTS RESERVED</div>
+      <div className="flex gap-2  text-xs xl:gap-9 *:text-base">
         <div>OUR ROOMS</div>
-        <div>ABOUT THE HOTEL</div>
         <div>RESTAURANT</div>
+        <div>CONTACT</div>
       </div>
-      <div>CONTACT</div>
-      <div className="flex gap-8 text-xl mb-4">
+      <div className="text-sm  pb-4  xl:text-base xl:pb-0">ABOUT THE HOTEL</div>
+      <div className="flex gap-8 text-2xl mb-3">
         <div>
           <FaFacebook />
         </div>
         <div>
-          <FaInstagramSquare />
+          <FaInstagramSquare /> 
         </div>
         <div>
           <FaYoutube />
