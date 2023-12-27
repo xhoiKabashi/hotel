@@ -28,6 +28,7 @@ const MenuList = ({ setShowMenu }) => {
     // Close the menu when any link is clicked
     setShowMenu(false);
   };
+
   return (
     <div className="text-black gap-10  overflow-auto p-10 flex flex-col  text-3xl font-extralight text-center xl:flex-row justify-around xl:items-center xl:px-32">
       <div className="space-y-4">

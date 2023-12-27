@@ -1,5 +1,7 @@
 import Header from "../shared/Header";
+import NavigateHelper from "../utils/navigateHelper";
 const HomePage = () => {
+  NavigateHelper();
   return (
     <>
       <Header

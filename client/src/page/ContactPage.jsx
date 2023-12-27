@@ -1,5 +1,7 @@
 import ContactForm from "../components/ContactForm";
+import NavigateHelper from "../utils/navigateHelper";
 const ContactPage = () => {
+  NavigateHelper();
   return (
     <div className="grid px-5 md:grid-cols-2 md:grid-rows-1 md:p-20 gap-10">
       <div>
@@ -13,7 +15,7 @@ const ContactPage = () => {
         <ContactForm />
       </div>
       <div className="pt-10">
-        <img src="public/contact.jpg" alt="" />
+        <img src="./public/contact.jpg" alt="" />
         <div className="space-y-3 pt-5">
           <div className="text-xl md:text-2xl">
             <h1>123 Seafront Palase</h1>

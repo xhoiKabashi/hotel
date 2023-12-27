@@ -2,8 +2,10 @@ import Header from "../shared/Header";
 import PageSection from "../components/pageSections/PageSection";
 import { aboutData } from "../utils/data/abouUsData";
 import { v4 as uuidv4 } from "uuid";
+import NavigateHelper from "../utils/navigateHelper";
 
 const AboutUsPage = () => {
+  NavigateHelper();
   return (
     <div>
       <Header

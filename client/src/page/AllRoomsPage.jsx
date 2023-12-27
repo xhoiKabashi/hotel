@@ -1,5 +1,7 @@
 import RoomsCards from "../components/roomCards/roomCards";
+import NavigateHelper from "../utils/navigateHelper";
 const AllRoomsPage = () => {
+  NavigateHelper();
   return (
     <div className="pt-20 px-5 xl:px-48 xl:pt-40">
       <div className=" xl:text-left">
