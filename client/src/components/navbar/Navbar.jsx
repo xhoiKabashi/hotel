@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { HiBars3 } from "react-icons/hi2";
 import { useLocation } from "react-router-dom";
-import handleScroll from "../../../utils/scrollHelper";
+import handleScroll from "../../utils/scrollHelper";
 import MenuShowUp from "./MenuShowUp";
 import { Link } from "react-router-dom";
 
@@ -21,7 +21,11 @@ const Navbar = () => {
     };
   }, []);
 
-  const isHomePage = location.pathname === "/"; // Update this based on your home page path
+  const isHomePage =
+    location.pathname === "/" ||
+    location.pathname === "/restaurant-bar" ||
+    location.pathname === "/about-us";
+  // Update this based on your home page path
 
   return (
     <div
@@ -39,8 +43,12 @@ const Navbar = () => {
           />
           <h1 className="flex text-base xl:text-xl items-center">Menu</h1>
         </div>
-        <div className=" font-thin md:text-2xl mb-1 cursor-pointer">
-          <Link to="/"> Green Coast</Link>
+        <div
+          className={`${
+            isScrolled || !isHomePage ? "text-sky-500" : "text-white"
+          } font-thin md:text-2xl mb-1 cursor-pointer`}
+        >
+          <Link to="/"> Blue Coast</Link>
         </div>
         <div className="cursor-pointer text-base xl:text-xl">Book now</div>
       </div>

@@ -3,7 +3,7 @@ import FooterBottom from "./FooterBottom";
 
 const Footer = () => {
   return (
-    <div>
+    <div className="md:px-44">
       <FooterTop />
 
       <FooterBottom />

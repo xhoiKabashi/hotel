@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 import { HiMiniXMark } from "react-icons/hi2";
 import MenuList from "./MenuList";
-import { logo } from "../../../utils/data/NavBarData";
+import { logo } from "../../utils/data/NavBarData";
 import { Link } from "react-router-dom";
 const MenuShowUp = ({ showMenu, setShowMenu }) => {
   useEffect(() => {
