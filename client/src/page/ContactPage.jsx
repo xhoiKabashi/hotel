@@ -15,7 +15,7 @@ const ContactPage = () => {
         <ContactForm />
       </div>
       <div className="pt-10">
-        <img src="./public/contact.jpg" alt="" />
+        <img src="./contact.jpg" alt="" />
         <div className="space-y-3 pt-5">
           <div className="text-xl md:text-2xl">
             <h1>123 Seafront Palase</h1>

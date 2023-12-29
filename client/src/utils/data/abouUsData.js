@@ -1,11 +1,11 @@
-// position 1 means that the image will be on left side
-// position 3 means that the image will be on right side
+// position 3 means that the image will be on left side
+// position 1 means that the image will be on right side
 
 export const aboutData = [
   {
     title: "Beach",
     imageUrl: "./about-us/beach.jpg",
-    position: 3,
+    position: 1,
     content:
       "Our beach hotel boasts an unrivaled location, directly facing the sun-kissed beach. Wake up to the sight of the sun rising over the horizon, painting the sky with hues of gold and pink. Step outside and sink your toes into the powdery sand, embark on leisurely strolls along the waters edge, or simply bask in the suns warm embrace.",
   },
@@ -19,7 +19,7 @@ export const aboutData = [
   {
     title: "The Island",
     imageUrl: "./about-us/attraction.jpg",
-    position: 3,
+    position: 1,
     content:
       "Recharge your spirit with our range of recreational activities. Dive into the inviting pool, where the waters seem to blend seamlessly with the ocean beyond. For those seeking relaxation, our spa offers a selection of rejuvenating treatments designed to pamper and revitalize.",
   },
