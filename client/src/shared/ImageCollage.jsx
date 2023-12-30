@@ -8,13 +8,13 @@ const ImageCollage = ({ imageUrl }) => {
   }
 
   return (
-    <div className="grid px-5 justify-center xl:grid-cols-3 gap-2 xl:p-40">
+    <div className="grid pt-5  gap-5 justify-center xl:grid-cols-3 xl:p-40">
       {imageUrl.map((url) => (
         <img
           key={uuidv4()}
           src={url}
           alt=""
-          className="max-w-[400px] xl:max-w-[350px]"
+          className=" min-w-full xl:max-w-[300px]"
         />
       ))}
     </div>

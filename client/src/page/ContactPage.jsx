@@ -3,7 +3,7 @@ import NavigateHelper from "../utils/navigateHelper";
 const ContactPage = () => {
   NavigateHelper();
   return (
-    <div className="grid px-5 md:grid-cols-2 md:grid-rows-1 md:p-20 gap-10">
+    <div className="grid px-5 md:grid-cols-2 md:grid-rows-1 md:p-28 gap-10">
       <div>
         <section className="pt-28 md:pt-10 flex flex-col items-center px-5 text-center">
           <h1 className="text-4xl mb-4 italic">Contact Us</h1>

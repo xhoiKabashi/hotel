@@ -3,7 +3,7 @@ import NavigateHelper from "../utils/navigateHelper";
 const AllRoomsPage = () => {
   NavigateHelper();
   return (
-    <div className="pt-20 px-5 xl:px-48 xl:pt-40">
+    <div className="pt-20  -z-10 px-5 xl:px-48 xl:pt-40">
       <div className=" xl:text-left">
         <h1 className=" text-4xl pt-5 pb-10 xl:text-6xl">Our Rooms</h1>
         <p className="text-balance xl:text-2xl">

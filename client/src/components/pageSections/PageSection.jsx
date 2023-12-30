@@ -1,6 +1,16 @@
 /* eslint-disable react/prop-types */
+
+import { Link } from "react-router-dom";
 import WindowWidthHelper from "../../utils/WindowWidthHelper";
-const PageSection = ({ title, content, imageUrl, position }) => {
+
+const PageSection = ({
+  title,
+  content,
+  imageUrl,
+  position,
+  button,
+  linkTo,
+}) => {
   const windowWidth = WindowWidthHelper();
 
   // for movile only we swich all images to second position
@@ -8,19 +18,24 @@ const PageSection = ({ title, content, imageUrl, position }) => {
 
   return (
     <>
-      <div className="grid  mt-5 xl:grid-cols-2 items-center grid-row-1 xl:px-40 xl:gap-5 px-5 py-8 xl:justify-center">
+      <div className="grid mt-5 justify-center md:grid-cols-2 items-center grid-row-1 xl:px-40 xl:gap-16 xl:justify-around">
         <div
-          className="text-center mb-5 md:text-balance leading-8 text-xl xl:text-3xl italic font-extralight"
+          className="flex flex-col text-center mb-5 md:text-balance leading-8 text-xl xl:text-3xl italic font-extralight"
           style={{ order: position }}
         >
           <h1 className=" font-semibold">{title}</h1>
           {content}
+          {button && (
+            <Link to={linkTo} className="pt-4">
+              {button}
+            </Link>
+          )}
         </div>
         <div
-          className="xl:w-[400px] flex flex-col justify-center items-center"
+          className=" flex items-center justify-center"
           style={{ order: 2 || 2 }}
         >
-          <img src={imageUrl} alt="" />
+          <img className="max-h-[520px]" src={imageUrl} alt="" />
         </div>
       </div>
     </>

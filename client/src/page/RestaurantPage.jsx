@@ -17,7 +17,7 @@ const Restaurant = () => {
         secondTextAfterBr="stylish ambiance, attentive service, and signature cocktails create an unforgettable dining experience."
       />
       {restaurantData.map((data) => (
-        <div key={uuidv4()}>
+        <div key={uuidv4()} className="p-5">
           <PageSection
             key={uuidv4()}
             title={data.title}

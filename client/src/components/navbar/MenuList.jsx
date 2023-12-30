@@ -75,13 +75,49 @@ const MenuList = ({ setShowMenu }) => {
       </div>
       <div className="space-y-4">
         <h1 className="text-1xl xl:text-5xl">{ourRooms}</h1>
-        <ul className="space-y-3 text-base xl:text-3xl">
-          <li className=" hover:text-slate-600">{standardRoom}</li>
-          <li className=" hover:text-slate-600">{deluxeRoom}</li>
-          <li className=" hover:text-slate-600">{superiorRoom}</li>
-          <li className=" hover:text-slate-600">{signatureRoom}</li>
-          <li className=" hover:text-slate-600">{executiveSuite}</li>
-          <li className=" hover:text-slate-600">{poolVilla}</li>
+        <ul className="flex flex-col space-y-3 text-base xl:text-3xl">
+          <Link
+            to="./standard-room"
+            className=" hover:text-slate-600"
+            onClick={closeMenu}
+          >
+            {standardRoom}
+          </Link>
+          <Link
+            to="./deluxe-room"
+            className=" hover:text-slate-600"
+            onClick={closeMenu}
+          >
+            {deluxeRoom}
+          </Link>
+          <Link
+            to="./superior-room"
+            className=" hover:text-slate-600"
+            onClick={closeMenu}
+          >
+            {superiorRoom}
+          </Link>
+          <Link
+            to="./signature-room"
+            className=" hover:text-slate-600"
+            onClick={closeMenu}
+          >
+            {signatureRoom}
+          </Link>
+          <Link
+            to="./executive-suite"
+            className=" hover:text-slate-600"
+            onClick={closeMenu}
+          >
+            {executiveSuite}
+          </Link>
+          <Link
+            to="./pool-villa"
+            className=" hover:text-slate-600"
+            onClick={closeMenu}
+          >
+            {poolVilla}
+          </Link>
         </ul>
       </div>
     </div>

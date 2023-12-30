@@ -14,15 +14,19 @@ const AboutUsPage = () => {
         secondTextBeforeBr="When you think of Blue Coast Resort & Residences, think of a small seaside town, "
         secondTextAfterBr="where your well-being is at the center of our services. "
       />
-      {aboutData.map((data) => (
-        <PageSection
-          key={uuidv4()}
-          title={data.title}
-          imageUrl={data.imageUrl}
-          content={data.content}
-          position={data.position}
-        />
-      ))}
+      <div className="p-5">
+        {aboutData.map((data) => (
+          <div key={uuidv4()}>
+            <PageSection
+              key={uuidv4()}
+              title={data.title}
+              imageUrl={data.imageUrl}
+              content={data.content}
+              position={data.position}
+            />
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

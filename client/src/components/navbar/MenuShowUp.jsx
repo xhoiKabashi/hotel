@@ -22,7 +22,7 @@ const MenuShowUp = ({ showMenu, setShowMenu }) => {
   return (
     <>
       {showMenu && (
-        <div className="fixed top-0 left-0 h-screen w-full overflow-auto z-50 bg-white transition-transform duration-500 ease-in-out transform translate-y-0">
+        <div className="fixed top-0 left-0 h-screen w-full overflow-auto z-[100] bg-white transition-transform duration-500 ease-in-out transform translate-y-0">
           <div className="flex h-20 text-xl justify-around items-center text-slate-900">
             <div className="flex items-center space-x-2">
               <HiMiniXMark
@@ -32,7 +32,10 @@ const MenuShowUp = ({ showMenu, setShowMenu }) => {
               <h1 className="flex items-center text-base xl:text-xl">Close</h1>
             </div>
             <Link to="/" onClick={() => setShowMenu(!showMenu)}>
-              <img src={logo} className="cursor-pointer h-10 w-10" />
+              <div className="flex flex-col items-center">
+                <img src={logo} className="cursor-pointer h-10 w-10" />
+                <h1>Home</h1>
+              </div>
             </Link>
             <div className=" cursor-pointer text-base xl:text-xl">Book now</div>
           </div>

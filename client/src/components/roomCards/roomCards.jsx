@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 const RoomsCards = ({ title, description, more, imageUrl }) => {
   return (
-    <div className="group relative cursor-pointer items-center justify-center overflow-hidden">
+    <div className="group relative  cursor-pointer items-center justify-center overflow-hidden">
       <div className="-z-10 relative">
         <img alt="" src={imageUrl} />
       </div>
