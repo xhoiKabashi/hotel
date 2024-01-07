@@ -2,7 +2,6 @@ const Navbar = () => {
   return (
     <div className="bg-slate-200 h-[60px] md:col-start-2 md:col-end-3">
       Navbar
-      <button></button>
     </div>
   );
 };

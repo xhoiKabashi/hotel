@@ -23,8 +23,18 @@ logoUpload.post(
   upload.single("file"),
   async (request, response) => {
     try {
+      // Check if a logo already exists
+      const existingLogo = await LogoSchema.findOne();
+
+      // If a logo exists, replace it
+      if (existingLogo) {
+        await LogoSchema.findOneAndDelete();
+      }
+
+      // Create the new logo
       const result = await LogoSchema.create({
         logoImage: request.file?.filename,
+        logoImageUrl: request.body.logoImageUrl,
       });
       console.log(result);
       response.status(201).json(result);
@@ -35,8 +45,8 @@ logoUpload.post(
   }
 );
 
-// get all
-logoUpload.get("/", (request, response) => {
+// get all (unchanged)
+logoUpload.get("/uploads", (request, response) => {
   LogoSchema.find({}).then((logo) => {
     response.json(logo);
   });

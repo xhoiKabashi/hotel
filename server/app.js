@@ -1,6 +1,7 @@
 const express = require("express");
 const navbar = require("./controllers/navbar");
-const logoUpload = require("./controllers/navbar");
+const logoUpload = require("./controllers/logo");
+const hotelNameUpload = require("./controllers/hotelName");
 
 const config = require("./utils/config");
 const mongoose = require("mongoose");
@@ -15,10 +16,11 @@ mongoose
   .catch((error) => {
     console.error("error connecting to MongoDB:", error.message);
   });
-
+app.use(express.static("public"));
 app.use(cors());
 app.use(express.json());
 app.use("/api", navbar);
 app.use("/", logoUpload);
+app.use("/", hotelNameUpload);
 
 module.exports = app;

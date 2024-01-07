@@ -2,9 +2,26 @@
 import { useEffect } from "react";
 import { HiMiniXMark } from "react-icons/hi2";
 import MenuList from "./MenuList";
-import { logo } from "../../utils/data/NavBarData";
+// import { logo } from "../../utils/data/NavBarData";
 import { Link } from "react-router-dom";
+import axiosClient from "../../utils/axiosClient";
+import { useQuery } from "@tanstack/react-query";
+import getImage from "../../utils/getImage";
+
 const MenuShowUp = ({ showMenu, setShowMenu }) => {
+  const { data } = useQuery({
+    queryKey: ["logoImage"],
+    queryFn: async () => {
+      try {
+        const response = await axiosClient.get("uploads");
+        const { logoImage, logoImageUrl } = response.data[0];
+        return { logoImage, logoImageUrl };
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        return null; // Handle the error and return a suitable value
+      }
+    },
+  });
   useEffect(() => {
     // Update body styles when the component mounts or 'show' changes
     if (showMenu) {
@@ -31,9 +48,14 @@ const MenuShowUp = ({ showMenu, setShowMenu }) => {
               />
               <h1 className="flex items-center text-base xl:text-xl">Close</h1>
             </div>
-            <Link to="/" onClick={() => setShowMenu(!showMenu)}>
+            <Link to={data.logoImageUrl} onClick={() => setShowMenu(!showMenu)}>
               <div className="flex flex-col items-center">
-                <img src={logo} className="cursor-pointer h-10 w-10" />
+                {data.logoImage && (
+                  <img
+                    src={getImage + data.logoImage}
+                    className="cursor-pointer h-10 w-10"
+                  />
+                )}
                 <h1>Home</h1>
               </div>
             </Link>
