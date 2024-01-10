@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 
 import { Link } from "react-router-dom";
-import WindowWidthHelper from "../../utils/WindowWidthHelper";
+import WindowWidthHelper from "../../services/WindowWidthHelper";
 
 const PageSection = ({
   title,

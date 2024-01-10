@@ -10,7 +10,6 @@ const logoSchema = new mongoose.Schema({
   },
 });
 
-
 logoSchema.set("toJSON", {
   transform: (document, returnedObject) => {
     returnedObject.id = returnedObject._id.toString();

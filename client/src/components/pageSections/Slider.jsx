@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { restaurantData } from "../../utils/data/restaurantData";
+import { restaurantData } from "../../services/data/restaurantData";
 
 export default function Slider() {
   let [current, setCurrent] = useState(0);

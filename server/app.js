@@ -2,6 +2,7 @@ const express = require("express");
 const navbar = require("./controllers/navbar");
 const logoUpload = require("./controllers/logo");
 const hotelNameUpload = require("./controllers/hotelName");
+const uploadHomeHeader = require("./controllers/hotelHomeHeader");
 
 const config = require("./utils/config");
 const mongoose = require("mongoose");
@@ -22,5 +23,6 @@ app.use(express.json());
 app.use("/api", navbar);
 app.use("/", logoUpload);
 app.use("/", hotelNameUpload);
+app.use("/", uploadHomeHeader);
 
 module.exports = app;

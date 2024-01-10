@@ -1,8 +1,8 @@
-import Header from "../shared/Header";
+import Header from "../ui/Header";
 import PageSection from "../components/pageSections/PageSection";
-import { aboutData } from "../utils/data/abouUsData";
+import { aboutData } from "../services/data/abouUsData";
 import { v4 as uuidv4 } from "uuid";
-import NavigateHelper from "../utils/navigateHelper";
+import NavigateHelper from "../services/navigateHelper";
 
 const AboutUsPage = () => {
   NavigateHelper();

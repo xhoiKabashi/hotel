@@ -9,7 +9,6 @@ hotelNameUpload.get("/hotelname", (request, response) => {
 });
 
 // post and update
-// post and update
 hotelNameUpload.post("/hotelname", async (request, response) => {
   try {
     const { name } = request.body;

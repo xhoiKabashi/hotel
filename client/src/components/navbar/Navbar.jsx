@@ -1,15 +1,17 @@
 import { useState, useEffect } from "react";
 import { HiBars3 } from "react-icons/hi2";
-import MenuChangeHelper from "../../utils/MenuChangeHelper";
+import MenuChangeHelper from "../../services/MenuChangeHelper";
 
-import handleScroll from "../../utils/scrollHelper";
+import handleScroll from "../../services/scrollHelper";
 import MenuShowUp from "./MenuShowUp";
 import { Link } from "react-router-dom";
+import { useHotelNameQuery } from "../../api/hotelNameQuery";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const MenuChange = MenuChangeHelper();
+  const { data: hotelName } = useHotelNameQuery();
 
   useEffect(() => {
     // Attach the scroll event listener when the component mounts
@@ -20,8 +22,6 @@ const Navbar = () => {
       window.removeEventListener("scroll", () => handleScroll(setIsScrolled));
     };
   }, []);
-
-  // Update this based on your home page path
 
   return (
     <div
@@ -44,7 +44,7 @@ const Navbar = () => {
             isScrolled || !MenuChange ? "text-sky-500" : "text-white"
           } font-thin md:text-2xl mb-1 cursor-pointer`}
         >
-          <Link to="/"> Blue Coast</Link>
+          <Link to="/">{hotelName?.hotelName}</Link>
         </div>
         <div className="cursor-pointer text-base xl:text-xl">Book now</div>
       </div>

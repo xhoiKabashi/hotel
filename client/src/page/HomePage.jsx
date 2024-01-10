@@ -1,18 +1,24 @@
-import Header from "../shared/Header";
-import NavigateHelper from "../utils/navigateHelper";
+import Header from "../ui/Header";
+import NavigateHelper from "../services/navigateHelper";
 import PageSection from "../components/pageSections/PageSection";
 import RoomsCards from "../components/roomCards/roomCards";
-import Line from "../shared/Line";
+import Line from "../ui/Line";
 import Slider from "../components/pageSections/Slider";
+import { useHomeHeader } from "../api/homePageHeader";
+import getImage from "../services/getImage";
+
 const HomePage = () => {
+  const { data } = useHomeHeader();
+  console.log(data);
+  console.log(getImage + data?.headerImage);
   NavigateHelper();
   return (
     <>
       <Header
-        imageUrl="./header/home-header2.jpg"
-        textBeforeBr="Lets Relax &"
-        textAfterBr="Unwind by the Sea"
-        secondTextBeforeBr="Your Serene Escape at the Beach Hotel"
+        imageUrl={getImage + data?.headerImage}
+        textBeforeBr={data?.levelOneTitle}
+        textAfterBr={data?.levelTwoTitle}
+        secondTextBeforeBr={data?.levelThreeTitle}
       />
       <div className="p-5">
         <PageSection

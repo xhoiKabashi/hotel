@@ -3,7 +3,7 @@ const EditFormUI = ({ onSubmit, children }) => {
   return (
     <form
       onSubmit={onSubmit}
-      className="grid gap-2 grid-cols-3 justify-center md:gap-4 md:place-items-center md:mx-auto"
+      className="flex gap-2  justify-between md:gap-4 md:place-items-end md:mx-auto"
     >
       {children}
     </form>

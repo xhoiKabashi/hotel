@@ -8,7 +8,7 @@ import {
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-import Layout from "./shared/Layout";
+import Layout from "./ui/Layout";
 import HomePage from "./page/HomePage";
 import AllRoomsPage from "./page/AllRoomsPage";
 import AboutUsPage from "./page/AboutUs";

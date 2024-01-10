@@ -1,4 +1,4 @@
-import { footerBottomData } from "../../utils/data/footerBottomData.js";
+import { footerBottomData } from "../../services/data/footerBottomData.js";
 import { v4 as uuidv4 } from "uuid";
 
 const FooterBottom = () => {

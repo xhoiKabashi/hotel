@@ -1,22 +1,6 @@
 const logoUpload = require("express").Router();
-const multer = require("multer");
-const path = require("path");
 const LogoSchema = require("../models/logoSchema");
-
-// Multer configuration for image uploads
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "public/images"); // Specify upload directory
-  },
-  filename: (req, file, cb) => {
-    cb(
-      null,
-      file.fieldname + "-" + Date.now() + path.extname(file.originalname)
-    );
-  },
-});
-
-const upload = multer({ storage: storage });
+const upload = require("../utils/multer");
 
 logoUpload.post(
   "/uploads",

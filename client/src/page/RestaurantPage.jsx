@@ -1,9 +1,9 @@
-import Header from "../shared/Header";
-import NavigateHelper from "../utils/navigateHelper";
+import Header from "../ui/Header";
+import NavigateHelper from "../services/navigateHelper";
 import PageSection from "../components/pageSections/PageSection";
-import { restaurantData } from "../utils/data/restaurantData";
+import { restaurantData } from "../services/data/restaurantData";
 import { v4 as uuidv4 } from "uuid";
-import ImageCollage from "../shared/ImageCollage";
+import ImageCollage from "../ui/ImageCollage";
 const Restaurant = () => {
   console.log(restaurantData);
   NavigateHelper();

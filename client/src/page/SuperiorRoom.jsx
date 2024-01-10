@@ -1,5 +1,5 @@
-import Header from "../shared/Header";
-import NavigateHelper from "../utils/navigateHelper";
+import Header from "../ui/Header";
+import NavigateHelper from "../services/navigateHelper";
 
 const SuperiorRoom = () => {
   NavigateHelper();

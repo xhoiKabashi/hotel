@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { aboutHotel, aboutRooms } from "../../utils/data/NavBarData.js";
+import { aboutHotel, aboutRooms } from "../../services/data/NavBarData.js";
 import { Link } from "react-router-dom";
 
 const {

@@ -1,5 +1,5 @@
 import RoomsCards from "../components/roomCards/roomCards";
-import NavigateHelper from "../utils/navigateHelper";
+import NavigateHelper from "../services/navigateHelper";
 const AllRoomsPage = () => {
   NavigateHelper();
   return (

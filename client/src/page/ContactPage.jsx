@@ -1,5 +1,5 @@
 import ContactForm from "../components/ContactForm";
-import NavigateHelper from "../utils/navigateHelper";
+import NavigateHelper from "../services/navigateHelper";
 const ContactPage = () => {
   NavigateHelper();
   return (
