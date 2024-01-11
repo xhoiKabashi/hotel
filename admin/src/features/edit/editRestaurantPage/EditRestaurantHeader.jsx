@@ -1,32 +1,35 @@
-import Button from "../../ui/Button";
-import EditFormUI from "../../ui/EditFormUI";
-import EditListUI from "../../ui/EditListUI";
-import LabelPhoto from "../../ui/LabelPhotoUI";
+import Button from "../../../ui/Button";
+import EditFormUI from "../../../ui/EditFormUI";
+import EditListUI from "../../../ui/EditListUI";
+import LabelPhoto from "../../../ui/LabelPhotoUI";
 import { useState } from "react";
-import { useCreateHomeHeader } from "../../api/useCreateHomeHeader";
-import TextInput from "../../ui/TextInput";
+import { useCreateRestaurant } from "../../../api/useCreateRestaurantPage";
+import TextInput from "../../../ui/TextInput";
 
-const EditHomeHeader = () => {
+console.log(useCreateRestaurant);
+const EditRestaurantHeader = () => {
   const [file, setFile] = useState(null);
   const [levelOneTitle, setLevelOneTitle] = useState("");
   const [levelTwoTitle, setLevelTwoTitle] = useState("");
   const [levelThreeTitle, setLevelThreeTitle] = useState("");
 
   // Create logo mutation using useMutation
-  const { mutate: createHomeHeader } = useCreateHomeHeader();
+  const { mutate: createRestaurantHeader } = useCreateRestaurant();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      const newHomeHeader = {
+      const newRestaurantData = {
         file,
         levelOneTitle,
         levelTwoTitle,
         levelThreeTitle,
       };
-      const createdHomeHeader = await createHomeHeader(newHomeHeader);
-      console.log("Header created", createdHomeHeader);
+      const createdRestaurantHeader = await createRestaurantHeader(
+        newRestaurantData
+      );
+      console.log("Restaurant Header created", createdRestaurantHeader);
     } catch (error) {
       console.error("Header upload failed:", error);
     }
@@ -68,4 +71,4 @@ const EditHomeHeader = () => {
   );
 };
 
-export default EditHomeHeader;
+export default EditRestaurantHeader;

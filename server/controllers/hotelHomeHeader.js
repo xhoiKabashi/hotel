@@ -8,20 +8,36 @@ uploadHomeHeader.post(
   async (request, response) => {
     console.log("Received Form Data:", request.body);
     console.log("Received File:", request.file);
+
     try {
-      const existingHeader = await HotelHomeHeaderSchema.findOne();
-      if (existingHeader) {
-        await HotelHomeHeaderSchema.findOneAndDelete();
+      // If a header exists, update the specific fields
+      const updateFields = {};
+
+      if (request.body.levelOneTitle) {
+        updateFields.levelOneTitle = request.body.levelOneTitle;
       }
 
-      const result = await HotelHomeHeaderSchema.create({
-        levelOneTitle: request.body.levelOneTitle,
-        levelTwoTitle: request.body.levelTwoTitle,
-        levelThreeTitle: request.body.levelThreeTitle,
-        headerImage: request.file?.filename,
-      });
-      response.status(201).json(result);
+      if (request.body.levelTwoTitle) {
+        updateFields.levelTwoTitle = request.body.levelTwoTitle;
+      }
+
+      if (request.body.levelThreeTitle) {
+        updateFields.levelThreeTitle = request.body.levelThreeTitle;
+      }
+
+      if (request.file) {
+        updateFields.headerImage = request.file.filename;
+      }
+
+      const updatedHeader = await HotelHomeHeaderSchema.findOneAndUpdate(
+        {},
+        updateFields,
+        { new: true } // Returns the updated document
+      );
+
+      response.status(200).json(updatedHeader);
     } catch (error) {
+      console.error(error);
       response.status(500).json({ error: "Internal Server Error" });
     }
   }

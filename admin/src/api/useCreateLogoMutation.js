@@ -6,8 +6,10 @@ export const useCreateLogoMutation = () => {
   return useMutation({
     mutationFn: async (newLogoData) => {
       const formData = new FormData();
-      formData.append("file", newLogoData.file);
-      formData.append("logoImageUrl", newLogoData.text);
+
+      Object.entries(newLogoData).forEach(([key, value]) => {
+        formData.append(key, value);
+      });
       const response = await axiosClient.post("/uploads", formData, {
         headers: {
           "Content-Type": "multipart/form-data",

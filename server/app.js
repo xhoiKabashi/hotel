@@ -3,6 +3,7 @@ const navbar = require("./controllers/navbar");
 const logoUpload = require("./controllers/logo");
 const hotelNameUpload = require("./controllers/hotelName");
 const uploadHomeHeader = require("./controllers/hotelHomeHeader");
+const uploadRestaurantPage = require("./controllers/restaurantPage");
 
 const config = require("./utils/config");
 const mongoose = require("mongoose");
@@ -24,5 +25,6 @@ app.use("/api", navbar);
 app.use("/", logoUpload);
 app.use("/", hotelNameUpload);
 app.use("/", uploadHomeHeader);
+app.use("/", uploadRestaurantPage);
 
 module.exports = app;

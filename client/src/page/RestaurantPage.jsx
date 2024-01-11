@@ -4,17 +4,21 @@ import PageSection from "../components/pageSections/PageSection";
 import { restaurantData } from "../services/data/restaurantData";
 import { v4 as uuidv4 } from "uuid";
 import ImageCollage from "../ui/ImageCollage";
+import { useRestaurantPage } from "../api/restaurantPage";
+import getImage from "../services/getImage";
+
 const Restaurant = () => {
-  console.log(restaurantData);
+  const { data } = useRestaurantPage();
+
   NavigateHelper();
   return (
     <>
       <Header
-        imageUrl="./header/restaurant.jpg"
-        textBeforeBr="Restaurant"
-        textAfterBr="& Bar"
-        secondTextBeforeBr="At Blue Coast Restaurant, savor a symphony of flavors expertly crafted with locally-sourced ingredients. Our , "
-        secondTextAfterBr="stylish ambiance, attentive service, and signature cocktails create an unforgettable dining experience."
+        imageUrl={getImage + data?.restaurantPageHeaderImg}
+        textBeforeBr={data?.levelOneTitle}
+        textAfterBr={data?.levelTwoTitle}
+        secondTextBeforeBr={data?.levelThreeTitle}
+        // secondTextAfterBr="stylish ambiance, attentive service, and signature cocktails create an unforgettable dining experience."
       />
       {restaurantData.map((data) => (
         <div key={uuidv4()} className="p-5">

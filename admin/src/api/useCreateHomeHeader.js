@@ -8,10 +8,10 @@ export const useCreateHomeHeader = () => {
     mutationFn: async (newHomeHeader) => {
       try {
         const formData = new FormData();
-        formData.append("file", newHomeHeader.file);
-        formData.append("levelOneTitle", newHomeHeader.levelOneTitle);
-        formData.append("levelTwoTitle", newHomeHeader.levelTwoTitle);
-        formData.append("levelThreeTitle", newHomeHeader.levelThreeTitle);
+
+        Object.entries(newHomeHeader).forEach(([key, value]) => {
+          formData.append(key, value);
+        });
 
         console.log("Form Data:", formData); // Log form data before making the request
 
