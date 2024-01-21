@@ -5,8 +5,9 @@ import LabelPhoto from "../../../ui/LabelPhotoUI";
 import { useState } from "react";
 import { useCreateLogoMutation } from "../../../api/useCreateLogoMutation";
 import TextInput from "../../../ui/TextInput";
+import Info from "../../../ui/info";
 
-const EditNavbar = () => {
+const EditLogo = () => {
   const [file, setFile] = useState(null);
   const [text, setText] = useState("");
 
@@ -27,6 +28,7 @@ const EditNavbar = () => {
   return (
     <EditListIU>
       <EditFormUI onSubmit={handleSubmit}>
+        <Info text="You can edit the Logo, a square-shaped logo MUST be equal width and height, such as 200x200, 500x500 pixels or 1000x1000 pixels, etc. " />
         <LabelPhoto>
           <input
             type="file"
@@ -48,4 +50,4 @@ const EditNavbar = () => {
   );
 };
 
-export default EditNavbar;
+export default EditLogo;

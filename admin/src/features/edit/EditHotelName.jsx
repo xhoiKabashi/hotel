@@ -4,6 +4,7 @@ import EditListIU from "../../ui/EditListUI";
 import useCreateHotelName from "../../api/useCreateHotelName";
 import { useState } from "react";
 import TextInput from "../../ui/TextInput";
+import Info from "../../ui/info";
 
 const EditHotelName = () => {
   const [hotelName, setHotelName] = useState();
@@ -23,6 +24,7 @@ const EditHotelName = () => {
   return (
     <EditListIU>
       <EditFormUI onSubmit={handleSubmit}>
+        <Info text="You can change your hotel name as you please" />
         <TextInput
           value={hotelName}
           onChange={(event) => setHotelName(event.target.value)}

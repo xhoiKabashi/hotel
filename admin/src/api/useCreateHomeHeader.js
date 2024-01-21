@@ -1,9 +1,8 @@
 import axiosClient from "../services/axiosClient";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
+import toast from "react-hot-toast";
 
 export const useCreateHomeHeader = () => {
-  const queryClient = useQueryClient();
-
   return useMutation({
     mutationFn: async (newHomeHeader) => {
       try {
@@ -30,10 +29,11 @@ export const useCreateHomeHeader = () => {
       }
     },
     onSuccess: () => {
-      queryClient.invalidateQueries("HomeHeader");
+      toast.success("Home Header uploaded successfully");
     },
     onError: (error) => {
-      console.error("HomeHeader create/upload failed:", error);
+      toast.error("Home Header uploaded  failed");
+      console.error(error);
     },
   });
 };

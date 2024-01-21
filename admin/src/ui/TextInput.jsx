@@ -8,7 +8,7 @@ const TextInput = ({ value, onChange, type, title, placeholder, big }) => {
         placeholder={placeholder}
         className={`p-1 border ${
           big ? "w-44" : "w-16 focus:w-44"
-        } rounded-md border-gray-300 focus:outline-none focus:border-blue-500 transition-all duration-300`}
+        } rounded-md border-gray-300 focus:outline-none focus:border-cyan-500 transition-all duration-300`}
         value={value}
         onChange={onChange}
       />

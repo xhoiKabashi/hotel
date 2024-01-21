@@ -1,8 +1,8 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import axiosClient from "../services/axiosClient";
+import toast from "react-hot-toast";
 
 export const useCreateLogoMutation = () => {
-  const queryClient = useQueryClient();
   return useMutation({
     mutationFn: async (newLogoData) => {
       const formData = new FormData();
@@ -18,13 +18,10 @@ export const useCreateLogoMutation = () => {
       return response.data;
     },
     onSuccess: () => {
-      // Invalidate dependent queries here
-      queryClient.invalidateQueries("logoData"); // Example
+      toast.success("Logo Added successfully");
     },
-    onError: (error) => {
-      // Handle errors consistently
-      console.error("Logo create/upload failed:", error);
-      // Provide feedback to the user
+    onError: () => {
+      toast.error("Logo create/upload failed");
     },
   });
 };

@@ -5,6 +5,7 @@ import LabelPhoto from "../../../ui/LabelPhotoUI";
 import { useState } from "react";
 import { useCreateRestaurant } from "../../../api/useCreateRestaurantPage";
 import TextInput from "../../../ui/TextInput";
+import Info from "../../../ui/info";
 
 console.log(useCreateRestaurant);
 const EditRestaurantHeader = () => {
@@ -37,6 +38,7 @@ const EditRestaurantHeader = () => {
   return (
     <EditListUI>
       <EditFormUI onSubmit={handleSubmit}>
+        <Info text="You can edit the Restaurant  Page header image, a image ratio 3:2 is MANDATORY, such as 1440 x 960, as well all 3 titles needs to be filled with a Quote " />
         <LabelPhoto>
           <input
             type="file"
