@@ -1,9 +1,8 @@
+import toast from "react-hot-toast";
 import axiosClient from "../services/axiosClient";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 
 export const useCreateRestaurant = () => {
-  const queryClient = useQueryClient();
-
   return useMutation({
     mutationFn: async (newRestaurantData) => {
       try {
@@ -13,15 +12,11 @@ export const useCreateRestaurant = () => {
         });
         console.log("Form data", formData);
 
-        const response = await axiosClient.post(
-          "./editRestaurantPage",
-          formData,
-          {
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-          }
-        );
+        const response = await axiosClient.post("/lunch", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
 
         console.log("Response Data:", response.data); // Log response data
         return response.data;
@@ -31,12 +26,11 @@ export const useCreateRestaurant = () => {
       }
     },
     onSuccess: () => {
-      queryClient.invalidateQueries(
-        "Restaurant page data updated successfully"
-      );
+      toast.success("Restaurant Header updated successfully");
     },
     onError: (error) => {
-      console.error("Restaurant create/upload failed:", error);
+      toast.error("Restaurant create/upload failed");
+      console.error(error);
     },
   });
 };

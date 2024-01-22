@@ -2,34 +2,39 @@ const mongoose = require("mongoose");
 
 mongoose.set("strict", false);
 
-const restaurantPageContentSchema = new mongoose.Schema({
-  breakfast: {
-    title: String,
-    description: String,
-    image: String,
-    collageOne: String,
-    collageTwo: String,
-    collageThree: String,
-  },
-  lunch: {
-    title: String,
-    description: String,
-    image: String,
-    collageOne: String,
-    collageTwo: String,
-    collageThree: String,
-  },
-  dinner: {
-    title: String,
-    description: String,
-    image: String,
-    collageOne: String,
-    collageTwo: String,
-    collageThree: String,
-  },
+const lunchSchema = new mongoose.Schema({
+  title: String,
+  description: String,
+  image: String,
+  collageOne: String,
+  collageTwo: String,
+  collageThree: String,
 });
 
-module.exports = mongoose.model(
-  "RestaurantPageContent",
-  restaurantPageContentSchema
-);
+const breakfastSchema = new mongoose.Schema({
+  title: String,
+  description: String,
+  image: String,
+  collageOne: String,
+  collageTwo: String,
+  collageThree: String,
+});
+
+const dinnerSchema = new mongoose.Schema({
+  title: String,
+  description: String,
+  image: String,
+  collageOne: String,
+  collageTwo: String,
+  collageThree: String,
+});
+
+const Dinner = mongoose.model("Dinner", dinnerSchema);
+const Lunch = mongoose.model("Lunch", lunchSchema);
+const Breakfast = mongoose.model("Breakfast", breakfastSchema);
+
+module.exports = {
+  Dinner,
+  Breakfast,
+  Lunch,
+};

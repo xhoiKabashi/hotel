@@ -13,7 +13,7 @@ const Toast = () => {
           className: "",
           duration: 3000,
           style: {
-            background: "#363636",
+            background: "#06b6d4",
             color: "#fff",
           },
 

@@ -20,7 +20,7 @@ function Sidebar() {
           <HiSquaresPlus className="text-whites size-6  text-slate-600" />
           <Text text="Edit Website" />
         </NavigationList>
-        <NavigationList to="edit-">
+        <NavigationList to="contact">
           <HiSquaresPlus className="text-whites size-6  text-slate-600" />
           <Text text="Edit Website" />
         </NavigationList>

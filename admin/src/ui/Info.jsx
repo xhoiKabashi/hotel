@@ -15,7 +15,7 @@ const Info = ({ text }) => {
         />
       </div>
       <div
-        className={`absolute top-full w-44 left-28 transform -translate-x-1/2 text-xs font-semibold bg-slate-400 p-2 rounded ${
+        className={`absolute top-full w-44 left-28 transform -translate-x-1/2 text-xs font-semibold bg-cyan-500 text-white p-2 rounded ${
           isHovered ? "opacity-100" : "opacity-0 invisible"
         } transition-opacity duration-300`}
       >

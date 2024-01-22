@@ -1,8 +1,8 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import axiosClient from "../services/axiosClient";
+import toast from "react-hot-toast";
 
 const useCreateHotelName = () => {
-  const queryClient = useQueryClient();
   return useMutation({
     mutationFn: async (newHotelName) => {
       const formData = new FormData();
@@ -15,10 +15,11 @@ const useCreateHotelName = () => {
       return response.data;
     },
     onSuccess: () => {
-      queryClient.invalidateQueries("hotelName");
+      toast.success("Hotel Name Added Successfully");
     },
     onError: (error) => {
-      console.error("Hotel name create/upload failed:", error);
+      toast.error("Hotel name create/upload failed");
+      console.error(error);
     },
   });
 };

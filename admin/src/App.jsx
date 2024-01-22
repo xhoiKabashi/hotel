@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import Layout from "./ui/Layout";
-import Contact from "./page/Contact";
+import LunchUploadForm from "./page/Contact";
 import EditWebsite from "./page/EditWebsite";
 const router = createBrowserRouter([
   {
@@ -10,7 +10,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "contact",
-        element: <Contact />,
+        element: <LunchUploadForm />,
       },
       {
         path: "edit-website",
