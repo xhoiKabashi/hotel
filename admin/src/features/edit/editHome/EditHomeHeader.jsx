@@ -3,33 +3,31 @@ import EditFormUI from "../../../ui/EditFormUI";
 import EditListUI from "../../../ui/EditListUI";
 import LabelPhoto from "../../../ui/LabelPhotoUI";
 import { useState } from "react";
-import { useCreateRestaurant } from "../../../api/restaurant/useCreateRestaurantPage";
+import { useCreateHomeHeader } from "../../../api/home/useCreateHomeHeader";
 import TextInput from "../../../ui/TextInput";
 import Info from "../../../ui/info";
 
-const EditRestaurantHeader = () => {
+const EditHomeHeader = () => {
   const [file, setFile] = useState(null);
   const [levelOneTitle, setLevelOneTitle] = useState("");
   const [levelTwoTitle, setLevelTwoTitle] = useState("");
   const [levelThreeTitle, setLevelThreeTitle] = useState("");
 
   // Create logo mutation using useMutation
-  const { mutate: createRestaurantHeader } = useCreateRestaurant();
+  const { mutate: createHomeHeader } = useCreateHomeHeader();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      const newRestaurantData = {
+      const newHomeHeader = {
         file,
         levelOneTitle,
         levelTwoTitle,
         levelThreeTitle,
       };
-      const createdRestaurantHeader = await createRestaurantHeader(
-        newRestaurantData
-      );
-      console.log("Restaurant Header created", createdRestaurantHeader);
+      const createdHomeHeader = await createHomeHeader(newHomeHeader);
+      console.log("Header created", createdHomeHeader);
     } catch (error) {
       console.error("Header upload failed:", error);
     }
@@ -37,7 +35,7 @@ const EditRestaurantHeader = () => {
   return (
     <EditListUI>
       <EditFormUI onSubmit={handleSubmit}>
-        <Info text="You can edit the Restaurant  Page header image, a image ratio 3:2 is MANDATORY, such as 1440 x 960, as well all 3 titles needs to be filled with a Quote " />
+        <Info text="You can edit the Home Page header image, a image ratio 3:2 is MANDATORY, such as 1440 x 960, as well all 3 titles needs to be filled with a Quote " />
         <LabelPhoto>
           <input
             type="file"
@@ -72,4 +70,4 @@ const EditRestaurantHeader = () => {
   );
 };
 
-export default EditRestaurantHeader;
+export default EditHomeHeader;

@@ -4,23 +4,35 @@ import PageSection from "../components/pageSections/PageSection";
 import RoomsCards from "../components/roomCards/roomCards";
 import Line from "../ui/Line";
 import Slider from "../components/pageSections/Slider";
-import { useHomeHeader } from "../api/homePageHeader";
+import { useHomeHeader, useHomeContent } from "../api/home/homePage";
+import { v4 as uuidv4 } from "uuid";
 import getImage from "../services/getImage";
 
 const HomePage = () => {
-  const { data } = useHomeHeader();
-  console.log(data);
-  console.log(getImage + data?.headerImage);
+  const { data: header } = useHomeHeader();
+  const { data: content } = useHomeContent();
+
+  console.log("kuas", content);
+
   NavigateHelper();
   return (
     <>
       <Header
-        imageUrl={getImage + data?.headerImage}
-        textBeforeBr={data?.levelOneTitle}
-        textAfterBr={data?.levelTwoTitle}
-        secondTextBeforeBr={data?.levelThreeTitle}
+        imageUrl={getImage + header?.headerImage}
+        textBeforeBr={header?.levelOneTitle}
+        textAfterBr={header?.levelTwoTitle}
+        secondTextBeforeBr={header?.levelThreeTitle}
       />
       <div className="p-5">
+        {content?.map((data) => (
+          <PageSection
+            key={uuidv4()}
+            title={data?.title}
+            content={data?.description}
+            imageUrl={data?.headerImage}
+            position={data?.position}
+          />
+        ))}
         <PageSection
           title="Discover Your Perfect Beach Hotel Getaway"
           content="Our dedicated staff is committed to ensuring your comfort and satisfaction. From the moment you enter, you’ll be welcomed with genuine warmth and attentiveness that adds an extra layer of delight to your dining experience."

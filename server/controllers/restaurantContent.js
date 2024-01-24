@@ -10,24 +10,32 @@ const upload = require("../utils/multer");
 
 uploadRestaurantContent.post(
   "/dinner",
-  upload.single("file"),
+  upload.array("photos", 4),
   async (request, response) => {
     try {
-      const fieldsToUpdate = ["title", "description"];
+      const fieldsToUpdate = ["title", "description", "position"];
       const updateFields = {};
 
       fieldsToUpdate.forEach((field) => {
         if (request.body[field]) {
           updateFields[field] = request.body[field];
         }
-        if (request.file) {
-          updateFields.image = request.file.filename;
+      });
+
+      if (request.files) {
+        updateFields.photos = request.files.map((file) => file.filename);
+      }
+
+      const updateDinner = await Dinner.findOneAndUpdate(
+        {},
+        { $set: updateFields },
+        {
+          new: true,
+          upsert: true,
+          setDefaultsOnInsert: true,
         }
-      });
-      const updateDinner = await Dinner.findOneAndUpdate({}, updateFields, {
-        new: true,
-        upsert: true,
-      });
+      );
+
       response.status(200).json(updateDinner);
     } catch (error) {
       console.error(error);
@@ -36,21 +44,14 @@ uploadRestaurantContent.post(
   }
 );
 
-//  lunch POST
+// lunch POST
 
 uploadRestaurantContent.post(
   "/lunch",
   upload.array("photos", 4),
   async (request, response) => {
     try {
-      const fieldsToUpdate = [
-        "title",
-        "description",
-        "main",
-        "collageOne",
-        "collageTwo",
-        "collageThree",
-      ];
+      const fieldsToUpdate = ["title", "description", "position"];
       const updateFields = {};
 
       fieldsToUpdate.forEach((field) => {
@@ -59,16 +60,19 @@ uploadRestaurantContent.post(
         }
       });
 
-      // Assuming you want to handle multiple files and update an array of filenames
       if (request.files) {
-        // Assuming you have an array of filenames in request.files
         updateFields.photos = request.files.map((file) => file.filename);
       }
 
-      const updateLunch = await Lunch.findOneAndUpdate({}, updateFields, {
-        new: true,
-        upsert: true,
-      });
+      const updateLunch = await Lunch.findOneAndUpdate(
+        {},
+        { $set: updateFields },
+        {
+          new: true,
+          upsert: true,
+          setDefaultsOnInsert: true,
+        }
+      );
 
       response.status(200).json(updateLunch);
     } catch (error) {
@@ -78,32 +82,36 @@ uploadRestaurantContent.post(
   }
 );
 
-// brekfast POST
+// breakfast POST
 
 uploadRestaurantContent.post(
   "/breakfast",
-  upload.single("file"),
+  upload.array("photos", 4),
   async (request, response) => {
     try {
-      const fieldsToUpdate = ["title", "description"];
+      const fieldsToUpdate = ["title", "description", "position"];
       const updateFields = {};
 
       fieldsToUpdate.forEach((field) => {
         if (request.body[field]) {
           updateFields[field] = request.body[field];
         }
-        if (request.file) {
-          updateFields.image = request.file.filename;
-        }
       });
+
+      if (request.files) {
+        updateFields.photos = request.files.map((file) => file.filename);
+      }
+
       const updateBreakfast = await Breakfast.findOneAndUpdate(
         {},
-        updateFields,
+        { $set: updateFields },
         {
           new: true,
           upsert: true,
+          setDefaultsOnInsert: true,
         }
       );
+
       response.status(200).json(updateBreakfast);
     } catch (error) {
       console.error(error);

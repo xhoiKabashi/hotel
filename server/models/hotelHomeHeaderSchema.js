@@ -17,4 +17,17 @@ const hotelHomeHeaderSchema = new mongoose.Schema(
   }
 );
 
-module.exports = mongoose.model("HotelHomeHeaderSchema", hotelHomeHeaderSchema);
+const hotelHomeContentSchema = new mongoose.Schema({
+  title: String,
+  description: String,
+  position: Number,
+  headerImage: String,
+});
+
+const Header = mongoose.model("HotelHomeHeaderSchema", hotelHomeHeaderSchema);
+const Content = mongoose.model("HotelHomeContent", hotelHomeContentSchema);
+
+module.exports = {
+  Header,
+  Content,
+};

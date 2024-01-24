@@ -1,37 +1,56 @@
 import Header from "../ui/Header";
 import NavigateHelper from "../services/navigateHelper";
 import PageSection from "../components/pageSections/PageSection";
-import { restaurantData } from "../services/data/restaurantData";
 import { v4 as uuidv4 } from "uuid";
 import ImageCollage from "../ui/ImageCollage";
-import { useRestaurantPage } from "../api/restaurantPage";
+import {
+  useRestaurantPage,
+  useLunchDsc,
+  useDinnerDsc,
+  useBreakfastDsc,
+} from "../api/restaurant/restaurantPage";
 import getImage from "../services/getImage";
 
 const Restaurant = () => {
-  const { data } = useRestaurantPage();
+  const { data: header } = useRestaurantPage();
+  const { data: lunch } = useLunchDsc();
+  const { data: dinner } = useDinnerDsc();
+  const { data: breakfast } = useBreakfastDsc();
+
+  const meals = [
+    { mealData: lunch, title: "Lunch" },
+    { mealData: dinner, title: "Dinner" },
+    { mealData: breakfast, title: "Breakfast" },
+    // Add more meals if needed
+  ];
 
   NavigateHelper();
   return (
     <>
       <Header
-        imageUrl={getImage + data?.restaurantPageHeaderImg}
-        textBeforeBr={data?.levelOneTitle}
-        textAfterBr={data?.levelTwoTitle}
-        secondTextBeforeBr={data?.levelThreeTitle}
-        // secondTextAfterBr="stylish ambiance, attentive service, and signature cocktails create an unforgettable dining experience."
+        imageUrl={getImage + header?.restaurantPageHeaderImg}
+        textBeforeBr={header?.levelOneTitle}
+        textAfterBr={header?.levelTwoTitle}
+        secondTextBeforeBr={header?.levelThreeTitle}
       />
-      {restaurantData.map((data) => (
-        <div key={uuidv4()} className="p-5">
-          <PageSection
-            key={uuidv4()}
-            title={data.title}
-            content={data.content}
-            imageUrl={data.imageUrl}
-            position={data.position}
-          />
-          <ImageCollage key={uuidv4()} imageUrl={data.collage} />
-        </div>
-      ))}
+
+      <div key={uuidv4()} className="p-5">
+        {meals.map((meal) => (
+          <div key={uuidv4()}>
+            <PageSection
+              key={uuidv4()}
+              title={meal.mealData?.title}
+              content={meal.mealData?.description}
+              imageUrl={getImage + meal.mealData?.photos[0]}
+              position={meal.mealData?.position}
+            />
+            <ImageCollage
+              key={uuidv4()}
+              imageUrl={meal.mealData?.photos.slice(1)} // Slice to get the remaining photos
+            />
+          </div>
+        ))}
+      </div>
     </>
   );
 };

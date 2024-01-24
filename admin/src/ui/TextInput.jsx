@@ -1,10 +1,19 @@
 /* eslint-disable react/prop-types */
-const TextInput = ({ value, onChange, type, title, placeholder, big }) => {
+const TextInput = ({
+  value,
+  onChange,
+  type,
+  title,
+  placeholder,
+  big,
+  name,
+}) => {
   return (
     <label className=" flex flex-col justify-center items-center">
       <span className="ml-2 py-1 text-[10px] font-semibold">{title}</span>
       <input
         type={type}
+        name={name}
         placeholder={placeholder}
         className={`p-1 border ${
           big ? "w-44" : "w-16 focus:w-44"

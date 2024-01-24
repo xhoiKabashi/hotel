@@ -1,78 +1,43 @@
 import { useState } from "react";
-import axios from "axios";
 
-const LunchUploadForm = () => {
-  const [formData, setFormData] = useState({
-    title: "",
-    description: "",
-    main: "",
-    collageOne: "",
-    collageTwo: "",
-    collageThree: "",
-    photos: [],
-  });
+const HeaderImageSwitch = () => {
+  const [alignment, setAlignment] = useState("left"); // 'left' or 'right'
 
-  // const handleInputChange = (e) => {
-  //   setFormData({
-  //     ...formData,
-  //     [e.target.name]: e.target.value,
-  //   });
-  // };
-
-  const handleFileChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.files,
-    });
-  };
-
-  const handleFormSubmit = async (e) => {
-    e.preventDefault();
-
-    const formDataToSend = new FormData();
-
-    Object.entries(formData).forEach(([key, value]) => {
-      if (key === "photos") {
-        for (let i = 0; i < value.length; i++) {
-          formDataToSend.append("photos", value[i]);
-        }
-      } else {
-        formDataToSend.append(key, value);
-      }
-    });
-
-    try {
-      const response = await axios.post(
-        "http://localhost:3001/lunch",
-        formDataToSend,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
-
-      console.log(response.data);
-    } catch (error) {
-      console.error("Error uploading lunch data:", error);
-    }
+  const handleSwitchChange = () => {
+    setAlignment((prevAlignment) =>
+      prevAlignment === "left" ? "right" : "left"
+    );
   };
 
   return (
-    <form onSubmit={handleFormSubmit}>
-      {/* Your other input fields */}
-      <label htmlFor="photos">Photos:</label>
-      <input
-        type="file"
-        id="photos"
-        name="photos"
-        multiple
-        onChange={handleFileChange}
-      />
+    <div>
+      <label>
+        Align Header:
+        <input
+          type="checkbox"
+          checked={alignment === "right"}
+          onChange={handleSwitchChange}
+        />
+      </label>
 
-      <button type="submit">Submit</button>
-    </form>
+      {/* Example usage of the selected alignment */}
+      <div
+        style={{
+          display: "flex",
+          flexDirection: alignment === "left" ? "row" : "row-reverse",
+        }}
+      >
+        <div style={{ flex: 1 }}>
+          {/* Your header component here */}
+          <h1>Your Header</h1>
+        </div>
+        <div style={{ flex: 1 }}>
+          {/* Your image component here */}
+          <img src="your-image-url" alt="Your Image" />
+        </div>
+      </div>
+    </div>
   );
 };
 
-export default LunchUploadForm;
+export default HeaderImageSwitch;
