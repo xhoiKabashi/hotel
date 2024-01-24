@@ -1,36 +1,38 @@
-const uploadHomeHeader = require("express").Router();
-const { Header, Content } = require("../models/hotelHomeHeaderSchema");
+const updateAboutUs = require("express").Router();
+const { Header, Content } = require("../models/hotelAboutUsSchema");
 const upload = require("../utils/multer");
 
-uploadHomeHeader.post(
-  "/editHomeHeader",
+// post Header
+
+updateAboutUs.post(
+  "/about-us-header",
   upload.single("file"),
   async (request, response) => {
     try {
-      // If a header exists, update the specific fields
+      const fieldsToUpdate = [
+        "levelOneTitle",
+        "levelTwoTitle",
+        "levelThreeTitle",
+      ];
       const updateFields = {};
 
-      if (request.body.levelOneTitle) {
-        updateFields.levelOneTitle = request.body.levelOneTitle;
-      }
-
-      if (request.body.levelTwoTitle) {
-        updateFields.levelTwoTitle = request.body.levelTwoTitle;
-      }
-
-      if (request.body.levelThreeTitle) {
-        updateFields.levelThreeTitle = request.body.levelThreeTitle;
-      }
+      fieldsToUpdate.forEach((field) => {
+        if (request.body[field]) {
+          updateFields[field] = request.body[field];
+        }
+      });
 
       if (request.file) {
         updateFields.headerImage = request.file.filename;
       }
 
-      const updatedHeader = await Header.findOneAndUpdate(
-        {},
-        updateFields,
-        { new: true } // Returns the updated document
-      );
+      const updatedHeader = await Header.findOneAndUpdate({}, updateFields, {
+        new: true,
+        upsert: true,
+      }).catch((error) => {
+        console.error("Update Error:", error);
+        response.status(500).json({ error: "Internal Server Error" });
+      });
 
       response.status(200).json(updatedHeader);
     } catch (error) {
@@ -39,18 +41,20 @@ uploadHomeHeader.post(
     }
   }
 );
-// Post Content
+
+// post Content
+
 let lastUpdatedContentId = null;
-uploadHomeHeader.post(
-  "/homeContent",
+updateAboutUs.post(
+  "/about-us-content",
   upload.single("file"),
   async (request, response) => {
     try {
       // Find all existing content
       const existingContent = await Content.find({});
 
-      if (existingContent.length >= 3) {
-        // If there are already 3 documents, find the next one to update
+      if (existingContent.length >= 4) {
+        // If there are already 4 documents, find the next one to update
         const nextUpdateIndex =
           lastUpdatedContentId !== null
             ? existingContent.findIndex(
@@ -63,20 +67,14 @@ uploadHomeHeader.post(
           nextUpdateIndex >= existingContent.length ? 0 : nextUpdateIndex;
 
         // Update the chosen document
+        const fieldsToUpdate = ["title", "description", "position"];
         const updateFields = {};
 
-        if (request.body.title) {
-          updateFields.title = request.body.title;
-        }
-
-        if (request.body.description) {
-          updateFields.description = request.body.description;
-        }
-
-        if (request.body.position) {
-          updateFields.position = request.body.position;
-        }
-
+        fieldsToUpdate.forEach((field) => {
+          if (request.body[field]) {
+            updateFields[field] = request.body[field];
+          }
+        });
         if (request.file) {
           updateFields.headerImage = request.file.filename;
         }
@@ -92,7 +90,7 @@ uploadHomeHeader.post(
 
         response.status(200).json(updatedContent);
       } else {
-        // If fewer than 3 documents exist, create a new one
+        // If fewer than 4 documents exist, create a new one
         const newContent = new Content({
           title: request.body.title,
           description: request.body.description,
@@ -114,22 +112,28 @@ uploadHomeHeader.post(
   }
 );
 
-//  Get Header
-uploadHomeHeader.get("/editHomeHeader", (request, response) => {
-  Header.find({}).then((header) => {
-    response.json(header);
-  });
-});
+// get Header
 
-// Get Content
-uploadHomeHeader.get("/homeContent", (request, response) => {
+updateAboutUs.get("/about-us-header", (request, response) => {
   try {
-    Content.find({}).then((content) => {
-      response.json(content);
+    Header.find({}).then((data) => {
+      response.status(200).json(data);
     });
   } catch (error) {
+    console.error(error);
     response.status(500).json({ error: "Internal Server Error" });
   }
 });
 
-module.exports = uploadHomeHeader;
+updateAboutUs.get("/about-us-content", (request, response) => {
+  try {
+    Content.find({}).then((data) => {
+      response.status(200).json(data);
+    });
+  } catch (error) {
+    console.error(error);
+    response.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+module.exports = updateAboutUs;

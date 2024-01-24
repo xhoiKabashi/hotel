@@ -32,7 +32,6 @@ const EditDinner = () => {
     });
   };
 
-  // Create logo mutation using useMutation
   const { mutate: createDinner } = useCreateDinner();
 
   const handleSubmit = async (event) => {
@@ -50,8 +49,8 @@ const EditDinner = () => {
   return (
     <EditListUI>
       <EditFormUI onSubmit={handleSubmit}>
-        <Info text="You can edit the Restaurant  Page header image, a image ratio 3:2 is MANDATORY, such as 1440 x 960, as well all 3 titles needs to be filled with a Quote " />
-        <LabelPhoto>
+        <Info text="You can edit the Restorant Menu Description, a collage of 4 images ratio 2:3 are MANDATORY, image could be 500px x 750px, 1500px x 2250px, etc. When uploading Image Press Shift to upload 4 images in the same time" />
+        <LabelPhoto text="4 images, ratio 2:3">
           <input
             type="file"
             className="sr-only"
@@ -67,14 +66,7 @@ const EditDinner = () => {
           onChange={handleInputChange}
           value={formData.position}
         />
-        <TextInput
-          placeholder="..."
-          title="Dinner Description"
-          type="text"
-          name="description"
-          value={formData.description}
-          onChange={handleInputChange}
-        />
+
         <TextInput
           placeholder="..."
           title="Title or a short Qoute"
@@ -82,7 +74,15 @@ const EditDinner = () => {
           name="title"
           value={formData.title}
           onChange={handleInputChange}
-        />{" "}
+        />
+        <TextInput
+          placeholder="..."
+          title="Dinner Description (Paste it here)"
+          type="text"
+          name="description"
+          value={formData.description}
+          onChange={handleInputChange}
+        />
         <Button text="Submit" submit="submit" />
       </EditFormUI>
     </EditListUI>

@@ -21,22 +21,31 @@ const EditHomeHeader = () => {
 
     try {
       const newHomeHeader = {
-        file,
-        levelOneTitle,
-        levelTwoTitle,
-        levelThreeTitle,
+        uploadedData: {
+          file,
+          levelOneTitle,
+          levelTwoTitle,
+          levelThreeTitle,
+        },
+        endPoint: "editHomeHeader",
       };
+
       const createdHomeHeader = await createHomeHeader(newHomeHeader);
       console.log("Header created", createdHomeHeader);
     } catch (error) {
       console.error("Header upload failed:", error);
+    } finally {
+      setFile(null);
+      setLevelOneTitle("");
+      setLevelTwoTitle("");
+      setLevelThreeTitle("");
     }
   };
   return (
     <EditListUI>
       <EditFormUI onSubmit={handleSubmit}>
         <Info text="You can edit the Home Page header image, a image ratio 3:2 is MANDATORY, such as 1440 x 960, as well all 3 titles needs to be filled with a Quote " />
-        <LabelPhoto>
+        <LabelPhoto text="1 File, a image ratio 3:2">
           <input
             type="file"
             className="sr-only"
@@ -44,22 +53,22 @@ const EditHomeHeader = () => {
           />
         </LabelPhoto>
         <TextInput
-          placeholder="Write here..."
-          title="Level One  Title"
+          placeholder="..."
+          title="First part of the title"
           type="text"
           value={levelOneTitle}
           onChange={(event) => setLevelOneTitle(event.target.value)}
         />
         <TextInput
-          placeholder="Write here..."
-          title="Level Two  Title"
+          placeholder="..."
+          title="First part of the title"
           type="text"
           value={levelTwoTitle}
           onChange={(event) => setLevelTwoTitle(event.target.value)}
         />{" "}
         <TextInput
-          placeholder="Write here..."
-          title="Level Three  Title"
+          placeholder="..."
+          title="A small qoute"
           type="text"
           value={levelThreeTitle}
           onChange={(event) => setLevelThreeTitle(event.target.value)}

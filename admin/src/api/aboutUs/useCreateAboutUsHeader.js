@@ -2,20 +2,19 @@ import axiosClient from "../../services/axiosClient";
 import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 
-export const useCreateHomeHeader = () => {
+export const useCreateHeader = () => {
   return useMutation({
-    mutationFn: async ({ uploadedData, endPoint }) => {
-      // Accept an object parameter
+    mutationFn: async (newHomeHeader) => {
       try {
         const formData = new FormData();
-        Object.entries(uploadedData).forEach(([key, value]) => {
+
+        Object.entries(newHomeHeader).forEach(([key, value]) => {
           formData.append(key, value);
         });
 
         console.log("Form Data:", formData); // Log form data before making the request
-        console.log("ca ka", endPoint);
 
-        const response = await axiosClient.post(`/${endPoint}`, formData, {
+        const response = await axiosClient.post("/about-us-header", formData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
@@ -30,10 +29,10 @@ export const useCreateHomeHeader = () => {
       }
     },
     onSuccess: () => {
-      toast.success("Create / upload process was successfully");
+      toast.success("Home Header uploaded successfully");
     },
     onError: (error) => {
-      toast.error("Create / upload process has failed");
+      toast.error("Home Header uploaded  failed");
       console.error(error);
     },
   });

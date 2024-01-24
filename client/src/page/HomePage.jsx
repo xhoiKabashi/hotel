@@ -33,19 +33,6 @@ const HomePage = () => {
             position={data?.position}
           />
         ))}
-        <PageSection
-          title="Discover Your Perfect Beach Hotel Getaway"
-          content="Our dedicated staff is committed to ensuring your comfort and satisfaction. From the moment you enter, you’ll be welcomed with genuine warmth and attentiveness that adds an extra layer of delight to your dining experience."
-          imageUrl="./about-us/umbrella-and-deck-chair-around-outdoor-swimming-po-2022-12-16-03-52-01-utc.jpg"
-          position={3}
-        />
-        <PageSection
-          title="Our Suites"
-          content="Wake up to the gentle sound of waves crashing on the shore and step onto your private balcony to witness breathtaking sunrises and sunsets."
-          imageUrl="./rooms/edvin-johansson-rlwE8f8anOc-unsplash.jpg"
-          button="- Discover"
-          linkTo="/our-rooms"
-        />
         <Line />
         <div className="xl:px-40 grid  justify-center xl:grid-cols-3 grid-rows-1 gap-14">
           <RoomsCards

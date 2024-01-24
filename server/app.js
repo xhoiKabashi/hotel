@@ -5,6 +5,7 @@ const hotelNameUpload = require("./controllers/hotelName");
 const uploadHomeHeader = require("./controllers/hotelHomeHeader");
 const uploadRestaurantPage = require("./controllers/restaurantPage");
 const uploadRestaurantContent = require("./controllers/restaurantContent");
+const updateAboutUs = require("./controllers/hotelAboutUs");
 
 const config = require("./utils/config");
 const mongoose = require("mongoose");
@@ -28,5 +29,6 @@ app.use("/", hotelNameUpload);
 app.use("/", uploadHomeHeader);
 app.use("/", uploadRestaurantPage);
 app.use("/", uploadRestaurantContent);
+app.use("/", updateAboutUs);
 
 module.exports = app;

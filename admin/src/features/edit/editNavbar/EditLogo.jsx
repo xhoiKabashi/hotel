@@ -4,12 +4,10 @@ import EditListIU from "../../../ui/EditListUI";
 import LabelPhoto from "../../../ui/LabelPhotoUI";
 import { useState } from "react";
 import { useCreateLogoMutation } from "../../../api/useCreateLogoMutation";
-import TextInput from "../../../ui/TextInput";
 import Info from "../../../ui/info";
 
 const EditLogo = () => {
   const [file, setFile] = useState(null);
-  const [text, setText] = useState("");
 
   // Create logo mutation using useMutation
   const { mutate: createLogo } = useCreateLogoMutation();
@@ -18,7 +16,7 @@ const EditLogo = () => {
     event.preventDefault();
 
     try {
-      const newLogoData = { file, text };
+      const newLogoData = { file };
       const createdLogo = await createLogo(newLogoData);
       console.log("Logo created", createdLogo);
     } catch (error) {
@@ -29,21 +27,13 @@ const EditLogo = () => {
     <EditListIU>
       <EditFormUI onSubmit={handleSubmit}>
         <Info text="You can edit the Logo, a square-shaped logo MUST be equal width and height, such as 200x200, 500x500 pixels or 1000x1000 pixels, etc. " />
-        <LabelPhoto>
+        <LabelPhoto text="1 File 200x200px, etc..">
           <input
             type="file"
             className="sr-only"
             onChange={(event) => setFile(event.target.files[0])}
           />
         </LabelPhoto>
-        <TextInput
-          type="text"
-          title="Logo Url"
-          placeholder="/home"
-          value={text}
-          onChange={(event) => setText(event.target.value)}
-          big={true}
-        />
         <Button text="Submit" submit="submit" />
       </EditFormUI>
     </EditListIU>

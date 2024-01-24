@@ -32,13 +32,18 @@ const EditHomeContent = () => {
       console.log("Content created", createdHomeHeader);
     } catch (error) {
       console.error("Content upload failed:", error);
+    } finally {
+      setTitle("");
+      setDescription("");
+      setFile(null);
+      setPosition(3);
     }
   };
   return (
     <EditListUI>
       <EditFormUI onSubmit={handleSubmit}>
-        <Info text="You can edit the Home Page header image, a image ratio 3:2 is MANDATORY, such as 1440 x 960, as well all 3 titles needs to be filled with a Quote " />
-        <LabelPhoto>
+        <Info text="You can edit the Home Page Content, a image ratio 3:2 is MANDATORY, such as 1440 x 960, a title and a description, NOTE that the you can update in form of a cicle, to update all the 3 section one by one" />
+        <LabelPhoto text="1 File, image ratio 3:2 ">
           <input
             type="file"
             className="sr-only"
@@ -52,15 +57,15 @@ const EditHomeContent = () => {
           onChange={(event) => setPosition(event.target.value)}
         />
         <TextInput
-          placeholder="Write here..."
-          title="Level One  Title"
+          placeholder="..."
+          title="Title"
           type="text"
           value={title}
           onChange={(event) => setTitle(event.target.value)}
         />
         <TextInput
           placeholder="Write here..."
-          title="Level Two  Title"
+          title="Description (Paste it here)"
           type="text"
           value={description}
           onChange={(event) => setDescription(event.target.value)}

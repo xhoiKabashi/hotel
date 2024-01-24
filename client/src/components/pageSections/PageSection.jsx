@@ -2,6 +2,7 @@
 
 import { Link } from "react-router-dom";
 import WindowWidthHelper from "../../services/WindowWidthHelper";
+import getImage from "../../services/getImage";
 
 const PageSection = ({
   title,
@@ -35,7 +36,7 @@ const PageSection = ({
           className=" flex items-center justify-center"
           style={{ order: 2 || 2 }}
         >
-          <img className="max-h-[520px]" src={imageUrl} alt="" />
+          <img className="max-h-[520px]" src={getImage + imageUrl} alt="" />
         </div>
       </div>
     </>
