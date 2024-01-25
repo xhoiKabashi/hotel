@@ -5,17 +5,10 @@ const logoSchema = new mongoose.Schema({
   logoImage: {
     type: String,
   },
-  logoImageUrl: {
+  hotelName: {
     type: String,
   },
-});
-
-logoSchema.set("toJSON", {
-  transform: (document, returnedObject) => {
-    returnedObject.id = returnedObject._id.toString();
-    delete returnedObject._id;
-    delete returnedObject.__v;
-  },
+  googleMapLink: String,
 });
 
 module.exports = mongoose.model("LogoSchema", logoSchema);

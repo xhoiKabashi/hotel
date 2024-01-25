@@ -3,7 +3,7 @@ import EditFormUI from "../../../ui/EditFormUI";
 import EditListUI from "../../../ui/EditListUI";
 import LabelPhoto from "../../../ui/LabelPhotoUI";
 import { useState } from "react";
-import { useCreateHeader } from "../../../api/edit/useCreateHeader";
+import { useCreate } from "../../../api/edit/useCreate";
 import TextInput from "../../../ui/TextInput";
 import Info from "../../../ui/info";
 
@@ -13,7 +13,7 @@ const EditAboutUsHeader = () => {
   const [levelTwoTitle, setLevelTwoTitle] = useState("");
   const [levelThreeTitle, setLevelThreeTitle] = useState("");
 
-  const { mutate: createContent } = useCreateHeader();
+  const { mutate: createContent } = useCreate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();

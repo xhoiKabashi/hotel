@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { HiMiniXMark } from "react-icons/hi2";
 import MenuList from "./MenuList";
 import { Link } from "react-router-dom";
-import { useLogoQuery } from "../../api/hotelLogoQuery";
+import { useLogoQuery } from "../../api/hotelLogo-Name-Map";
 import getImage from "../../services/getImage";
 
 const MenuShowUp = ({ showMenu, setShowMenu }) => {

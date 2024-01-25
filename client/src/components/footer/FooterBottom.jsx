@@ -2,6 +2,7 @@ import { footerBottomData } from "../../services/data/footerBottomData.js";
 import { v4 as uuidv4 } from "uuid";
 
 const FooterBottom = () => {
+  footerBottomData.map((data) => console.log(data.logo));
   return (
     <div className="flex items-center pb-4 justify-center">
       <hr className="my-4 border-t border-gray-800" />

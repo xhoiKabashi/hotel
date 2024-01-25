@@ -7,7 +7,7 @@ uploloadContactUs.post(
   upload.single("file"),
   async (request, response) => {
     try {
-      const fieldsToUpdate = ["address", "phoneNumber", "headerImage", "quote"];
+      const fieldsToUpdate = ["address", "phoneNumber", "quote"];
       const updateFields = {};
 
       fieldsToUpdate.forEach((field) => {

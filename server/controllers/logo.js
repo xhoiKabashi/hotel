@@ -2,35 +2,35 @@ const logoUpload = require("express").Router();
 const LogoSchema = require("../models/logoSchema");
 const upload = require("../utils/multer");
 
-logoUpload.post(
-  "/uploads",
-  upload.single("file"),
-  async (request, response) => {
-    try {
-      // Check if a logo already exists
-      const existingLogo = await LogoSchema.findOne();
+logoUpload.post("/logo", upload.single("file"), async (request, response) => {
+  try {
+    const updateFields = {};
 
-      // If a logo exists, replace it
-      if (existingLogo) {
-        await LogoSchema.findOneAndDelete();
-      }
-
-      // Create the new logo
-      const result = await LogoSchema.create({
-        logoImage: request.file?.filename,
-        logoImageUrl: request.body.logoImageUrl,
-      });
-      console.log(result);
-      response.status(201).json(result);
-    } catch (error) {
-      console.error(error);
-      response.status(500).json({ error: "Internal Server Error" });
+    if (request.body.hotelName) {
+      updateFields.hotelName = request.body.hotelName;
     }
-  }
-);
+    if (request.body.googleMapLink) {
+      updateFields.googleMapLink = request.body.googleMapLink;
+    }
+    if (request.file) {
+      updateFields.logoImage = request.file.filename;
+    }
+    const updateContent = await LogoSchema.findOneAndUpdate({}, updateFields, {
+      new: true,
+      upsert: true,
+    }).catch((error) => {
+      console.error("Update Error:", error);
+      response.status(500).json({ error: "Internal Server Error" });
+    });
 
-// get all (unchanged)
-logoUpload.get("/uploads", (request, response) => {
+    response.status(200).json(updateContent);
+  } catch (error) {
+    console.error(error);
+    response.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+logoUpload.get("/logo", (request, response) => {
   LogoSchema.find({}).then((logo) => {
     response.json(logo);
   });

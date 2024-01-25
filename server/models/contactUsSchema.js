@@ -1,21 +1,14 @@
 // Inside hotelAboutUsSchema.js or a similar file
 const mongoose = require("mongoose");
 
-const SocialMedia = new mongoose.Schema({
-  instaUrl: String,
-  instaImage: String,
-
-  fbUrl: String,
-  fbImage: String,
-
-  YouTubeImage: String,
-  YouTubeUrl: String,
-
-  TikTokImage: String,
-  TikTokUrl: String,
+const ContactUsSchema = new mongoose.Schema({
+  address: String,
+  phoneNumber: String,
+  quote: String,
+  headerImage: String,
 });
 
-const Social = mongoose.model("SocialMedia", SocialMedia);
+const ContactUs = mongoose.model("ContactUsSchema", ContactUsSchema);
 module.exports = {
-  Social,
+  ContactUs,
 };

@@ -3,7 +3,7 @@ import EditFormUI from "../../../ui/EditFormUI";
 import EditListUI from "../../../ui/EditListUI";
 import LabelPhoto from "../../../ui/LabelPhotoUI";
 import { useState } from "react";
-import { useCreateHeader } from "../../../api/edit/useCreateHeader";
+import { useCreate } from "../../../api/edit/useCreate";
 import TextInput from "../../../ui/TextInput";
 import Info from "../../../ui/info";
 
@@ -14,7 +14,7 @@ const EditContactPage = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [quote, setQuote] = useState("");
 
-  const { mutate: createContent } = useCreateHeader();
+  const { mutate: createContent } = useCreate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -45,7 +45,7 @@ const EditContactPage = () => {
   return (
     <EditListUI>
       <EditFormUI onSubmit={handleSubmit}>
-        <Info text="You can edit the About Page Content, a image ratio 3:2 is MANDATORY, such as 1440 x 960, a title and a description, NOTE that the you can update in form of a cicle, to update all the 4 section one by one in this same section" />
+        <Info text="You can edit the Contact Page Content, a image ratio 2:2 or 2:3 is MANDATORY, such as 1000 x 1000 or 500px x 750px, a title" />
         <LabelPhoto text="1 File, image ratio 3:2 ">
           <input
             type="file"
@@ -55,28 +55,28 @@ const EditContactPage = () => {
         </LabelPhoto>
         <TextInput
           placeholder="..."
-          title="Title"
+          title="A short Qoute"
           type="text"
           value={quote}
           onChange={(event) => setQuote(event.target.value)}
         />
         <TextInput
           placeholder="..."
-          title="Title"
+          title="Phone Number"
           type="text"
           value={phoneNumber}
           onChange={(event) => setPhoneNumber(event.target.value)}
         />
         <TextInput
           placeholder="..."
-          title="Title"
+          title="Address"
           type="text"
           value={address}
           onChange={(event) => setAddress(event.target.value)}
         />
         <TextInput
           placeholder="Write here..."
-          title="Description (Paste it here)"
+          title="Email address"
           type="text"
           value={email}
           onChange={(event) => setEmail(event.target.value)}

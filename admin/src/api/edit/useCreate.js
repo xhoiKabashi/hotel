@@ -2,7 +2,7 @@ import axiosClient from "../../services/axiosClient";
 import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 
-export const useCreateHeader = () => {
+export const useCreate = () => {
   return useMutation({
     mutationFn: async ({ uploadedData, endPoint }) => {
       // Accept an object parameter

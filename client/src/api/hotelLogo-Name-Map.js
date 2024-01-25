@@ -6,9 +6,8 @@ export const useLogoQuery = () => {
     queryKey: ["logoImage"],
     queryFn: async () => {
       try {
-        const response = await axiosClient.get("/uploads/");
-        const { logoImage, logoImageUrl } = response.data[0];
-        return { logoImage, logoImageUrl };
+        const response = await axiosClient.get("/logo/");
+        return response.data[0];
       } catch (error) {
         console.error("Error fetching Logo", error);
       }

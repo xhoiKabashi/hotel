@@ -1,13 +1,13 @@
 const express = require("express");
 const navbar = require("./controllers/navbar");
 const logoUpload = require("./controllers/logo");
-const hotelNameUpload = require("./controllers/hotelName");
 const uploadHomeHeader = require("./controllers/hotelHomeHeader");
 const uploadRestaurantPage = require("./controllers/restaurantPage");
 const uploadRestaurantContent = require("./controllers/restaurantContent");
 const updateAboutUs = require("./controllers/hotelAboutUs");
 const uploloadContactUs = require("./controllers/contactUs");
 const updateSocial = require("./controllers/socials");
+const updateRoom = require("./controllers/rooms");
 
 const config = require("./utils/config");
 const mongoose = require("mongoose");
@@ -27,12 +27,12 @@ app.use(cors());
 app.use(express.json());
 app.use("/api", navbar);
 app.use("/", logoUpload);
-app.use("/", hotelNameUpload);
 app.use("/", uploadHomeHeader);
 app.use("/", uploadRestaurantPage);
 app.use("/", uploadRestaurantContent);
 app.use("/", updateAboutUs);
 app.use("/", uploloadContactUs);
 app.use("/", updateSocial);
+app.use("/", updateRoom);
 
 module.exports = app;

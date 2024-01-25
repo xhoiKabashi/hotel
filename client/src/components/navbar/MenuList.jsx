@@ -1,6 +1,10 @@
 /* eslint-disable react/prop-types */
+import { useLogoQuery } from "../../api/hotelLogo-Name-Map.js";
+import { useGetRoomsNames } from "../../api/rooms/rooms.js";
 import { aboutHotel, aboutRooms } from "../../services/data/NavBarData.js";
 import { Link } from "react-router-dom";
+
+import { v4 as uuidv4 } from "uuid";
 
 const {
   menuTitle,
@@ -10,20 +14,14 @@ const {
   contactUs,
   makeReservation,
   getDiraction,
-  direction,
 } = aboutHotel;
 
-const {
-  ourRooms,
-  standardRoom,
-  deluxeRoom,
-  superiorRoom,
-  signatureRoom,
-  executiveSuite,
-  poolVilla,
-} = aboutRooms;
+const { ourRooms } = aboutRooms;
 
 const MenuList = ({ setShowMenu }) => {
+  const { data } = useLogoQuery();
+  const { data: name } = useGetRoomsNames();
+
   const closeMenu = () => {
     // Close the menu when any link is clicked
     setShowMenu(false);
@@ -64,7 +62,7 @@ const MenuList = ({ setShowMenu }) => {
           </Link>
           <li className=" hover:text-slate-600">{makeReservation}</li>
           <a
-            href={direction}
+            href={data?.googleMapLink}
             target="_blank"
             rel="noopener noreferrer"
             className=" hover:text-slate-600"
@@ -76,48 +74,17 @@ const MenuList = ({ setShowMenu }) => {
       <div className="space-y-4">
         <h1 className="text-1xl xl:text-5xl">{ourRooms}</h1>
         <ul className="flex flex-col space-y-3 text-base xl:text-3xl">
-          <Link
-            to="./standard-room"
-            className=" hover:text-slate-600"
-            onClick={closeMenu}
-          >
-            {standardRoom}
-          </Link>
-          <Link
-            to="./deluxe-room"
-            className=" hover:text-slate-600"
-            onClick={closeMenu}
-          >
-            {deluxeRoom}
-          </Link>
-          <Link
-            to="./superior-room"
-            className=" hover:text-slate-600"
-            onClick={closeMenu}
-          >
-            {superiorRoom}
-          </Link>
-          <Link
-            to="./signature-room"
-            className=" hover:text-slate-600"
-            onClick={closeMenu}
-          >
-            {signatureRoom}
-          </Link>
-          <Link
-            to="./executive-suite"
-            className=" hover:text-slate-600"
-            onClick={closeMenu}
-          >
-            {executiveSuite}
-          </Link>
-          <Link
-            to="./pool-villa"
-            className=" hover:text-slate-600"
-            onClick={closeMenu}
-          >
-            {poolVilla}
-          </Link>
+          {name &&
+            name.map((data) => (
+              <Link
+                key={uuidv4()}
+                to={`./rooms/${data?.roomType}`}
+                className=" hover:text-slate-600"
+                onClick={closeMenu}
+              >
+                {data?.roomType}
+              </Link>
+            ))}
         </ul>
       </div>
     </div>

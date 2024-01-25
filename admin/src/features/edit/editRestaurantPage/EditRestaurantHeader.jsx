@@ -3,7 +3,7 @@ import EditFormUI from "../../../ui/EditFormUI";
 import EditListUI from "../../../ui/EditListUI";
 import LabelPhoto from "../../../ui/LabelPhotoUI";
 import { useState } from "react";
-import { useCreateHeader } from "../../../api/edit/useCreateHeader";
+import { useCreate } from "../../../api/edit/useCreate";
 import TextInput from "../../../ui/TextInput";
 import Info from "../../../ui/info";
 
@@ -14,7 +14,7 @@ const EditRestaurantHeader = () => {
   const [levelThreeTitle, setLevelThreeTitle] = useState("");
 
   // Create logo mutation using useMutation
-  const { mutate: createHeader } = useCreateHeader();
+  const { mutate: createHeader } = useCreate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();

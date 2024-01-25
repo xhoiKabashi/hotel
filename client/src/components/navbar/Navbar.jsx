@@ -5,13 +5,13 @@ import MenuChangeHelper from "../../services/MenuChangeHelper";
 import handleScroll from "../../services/scrollHelper";
 import MenuShowUp from "./MenuShowUp";
 import { Link } from "react-router-dom";
-import { useHotelNameQuery } from "../../api/hotelNameQuery";
+import { useLogoQuery } from "../../api/hotelLogo-Name-Map";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const MenuChange = MenuChangeHelper();
-  const { data: hotelName } = useHotelNameQuery();
+  const { data } = useLogoQuery();
 
   useEffect(() => {
     // Attach the scroll event listener when the component mounts
@@ -44,7 +44,7 @@ const Navbar = () => {
             isScrolled || !MenuChange ? "text-sky-500" : "text-white"
           } font-thin md:text-2xl mb-1 cursor-pointer`}
         >
-          <Link to="/">{hotelName?.hotelName}</Link>
+          <Link to="/">{data?.hotelName}</Link>
         </div>
         <div className="cursor-pointer text-base xl:text-xl">Book now</div>
       </div>

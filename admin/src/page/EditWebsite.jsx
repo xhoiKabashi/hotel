@@ -1,7 +1,6 @@
 import { useState } from "react";
-import EditLogo from "../features/edit/editNavbar/EditLogo";
+import EditLogo from "../features/edit/editNavbar/EditLogo-Name-Map";
 import Collapse from "../ui/Collapse";
-import EditHotelName from "../features/edit/EditHotelName";
 import EditHomeHeader from "../features/edit/editHome/EditHomeHeader";
 import EditRestaurantHeader from "../features/edit/editRestaurantPage/EditRestaurantHeader";
 import EditLunch from "../features/edit/editRestaurantPage/editLunch";
@@ -12,22 +11,20 @@ import EditAboutUsHeader from "../features/edit/editAboutUs/EditAboutUsHeader";
 import EditAboutUsContent from "../features/edit/editAboutUs/EditAboutUsContent";
 import EditContactPage from "../features/edit/contact/EditContact";
 import EditSocials from "../features/edit/editSocials";
+import CreateRooms from "../features/rooms/createRooms";
 
 function EditWebsite() {
   const [filterText, setFilterText] = useState("");
 
   // Define the components and their titles
   const components = [
-    { title: "Edit Hotel Name", component: <EditHotelName /> },
     {
-      title: "Edit Logo",
-      component: (
-        <>
-          <EditLogo />
-          <hr />
-          <EditSocials />
-        </>
-      ),
+      title: "Edit Logo / Hotel Name",
+      component: <EditLogo />,
+    },
+    {
+      title: "Create Room",
+      component: <CreateRooms />,
     },
     { title: "Edit Home Header", component: <EditHomeHeader /> },
     { title: "Edit Home Content", component: <EditHomeContent /> },
@@ -47,7 +44,16 @@ function EditWebsite() {
     },
     { title: "Edit About Us Header", component: <EditAboutUsHeader /> },
     { title: "Edit About Us Content", component: <EditAboutUsContent /> },
-    { title: "Edit Contact Us Page", component: <EditContactPage /> },
+    {
+      title: "Edit Contact Us Page / Social Media",
+      component: (
+        <>
+          <EditContactPage />
+          <hr />
+          <EditSocials />
+        </>
+      ),
+    },
   ];
   const filteredComponents = components.filter((item) =>
     item.title.toLowerCase().includes(filterText.toLowerCase())

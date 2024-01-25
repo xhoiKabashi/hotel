@@ -1,5 +1,5 @@
 const updateSocial = require("express").Router();
-const { Social } = require("../models/contactUsSchema");
+const { Social } = require("../models/hotelSocialSchema");
 const upload = require("../utils/multer");
 
 updateSocial.post(

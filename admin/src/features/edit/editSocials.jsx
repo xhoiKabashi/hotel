@@ -3,7 +3,7 @@ import EditFormUI from "../../ui/EditFormUI";
 import EditListUI from "../../ui/EditListUI";
 import LabelPhoto from "../../ui/LabelPhotoUI";
 import { useState } from "react";
-import { useCreateHeader } from "../../api/edit/useCreateHeader";
+import { useCreate } from "../../api/edit/useCreate";
 import TextInput from "../../ui/TextInput";
 import Info from "../../ui/info";
 
@@ -17,7 +17,7 @@ const EditSocials = () => {
   const [youTubeImage, setYouTubeImage] = useState(null);
   const [tikTokImage, setTikTokImage] = useState(null);
 
-  const { mutate: createContent } = useCreateHeader();
+  const { mutate: createContent } = useCreate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -55,8 +55,8 @@ const EditSocials = () => {
   return (
     <EditListUI>
       <EditFormUI onSubmit={handleSubmit}>
-        <Info text="You can edit the About Us  Page header image, a image ratio 3:2 is MANDATORY, such as 1440 x 960, as well all 3 titles needs to be filled with a Quote " />
-        <LabelPhoto text="1 image, a image ratio 3:2">
+        <Info text="You can edit / add social platforms account, a logo ratio 2:2 is MANDATORY, such as 200 x 200, as well the URL of  the account" />
+        <LabelPhoto text="1 Insta logo ratio 2:2">
           <input
             type="file"
             className="sr-only"
@@ -65,12 +65,12 @@ const EditSocials = () => {
         </LabelPhoto>
         <TextInput
           placeholder="..."
-          title="First part of the title"
+          title="Insta account URL"
           type="text"
           value={instaUrl}
           onChange={(event) => setInstaUrl(event.target.value)}
         />
-        <LabelPhoto text="1 image, a image ratio 3:2">
+        <LabelPhoto text="1 FB logo ratio 2:2">
           <input
             type="file"
             className="sr-only"
@@ -79,12 +79,12 @@ const EditSocials = () => {
         </LabelPhoto>
         <TextInput
           placeholder="..."
-          title="First part of the title"
+          title="FB account URL"
           type="text"
           value={fbUrl}
           onChange={(event) => setFbUrl(event.target.value)}
         />
-        <LabelPhoto text="1 image, a image ratio 3:2">
+        <LabelPhoto text="1 TikTok logo ratio 2:2">
           <input
             type="file"
             className="sr-only"
@@ -93,12 +93,12 @@ const EditSocials = () => {
         </LabelPhoto>
         <TextInput
           placeholder="..."
-          title="First part of the title"
+          title="TikTok account URL"
           type="text"
           value={tikTokUrl}
           onChange={(event) => setTikTokUrl(event.target.value)}
         />
-        <LabelPhoto text="1 image, a image ratio 3:2">
+        <LabelPhoto text="1 Youtube logo ratio 2:2">
           <input
             type="file"
             className="sr-only"
@@ -107,9 +107,9 @@ const EditSocials = () => {
         </LabelPhoto>
         <TextInput
           placeholder="..."
-          title="First part of the title"
+          title="Youtube account URL"
           type="text"
-          value={tikTokUrl}
+          value={youTubeUrl}
           onChange={(event) => setYouTubeUrl(event.target.value)}
         />
         <Button text="Submit" submit="submit" />
