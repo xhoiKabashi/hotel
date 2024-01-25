@@ -8,6 +8,10 @@ import EditLunch from "../features/edit/editRestaurantPage/editLunch";
 import EditBreakfast from "../features/edit/editRestaurantPage/editBreakfast";
 import EditDinner from "../features/edit/editRestaurantPage/editDinner";
 import EditHomeContent from "../features/edit/editHome/EditHomeContent";
+import EditAboutUsHeader from "../features/edit/editAboutUs/EditAboutUsHeader";
+import EditAboutUsContent from "../features/edit/editAboutUs/EditAboutUsContent";
+import EditContactPage from "../features/edit/contact/EditContact";
+import EditSocials from "../features/edit/editSocials";
 
 function EditWebsite() {
   const [filterText, setFilterText] = useState("");
@@ -15,7 +19,16 @@ function EditWebsite() {
   // Define the components and their titles
   const components = [
     { title: "Edit Hotel Name", component: <EditHotelName /> },
-    { title: "Edit Logo", component: <EditLogo /> },
+    {
+      title: "Edit Logo",
+      component: (
+        <>
+          <EditLogo />
+          <hr />
+          <EditSocials />
+        </>
+      ),
+    },
     { title: "Edit Home Header", component: <EditHomeHeader /> },
     { title: "Edit Home Content", component: <EditHomeContent /> },
 
@@ -32,6 +45,9 @@ function EditWebsite() {
         </>
       ),
     },
+    { title: "Edit About Us Header", component: <EditAboutUsHeader /> },
+    { title: "Edit About Us Content", component: <EditAboutUsContent /> },
+    { title: "Edit Contact Us Page", component: <EditContactPage /> },
   ];
   const filteredComponents = components.filter((item) =>
     item.title.toLowerCase().includes(filterText.toLowerCase())

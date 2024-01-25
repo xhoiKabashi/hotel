@@ -100,7 +100,7 @@ updateAboutUs.post(
 
         const savedContent = await newContent.save();
 
-        // Update the last updated content ID
+       
         lastUpdatedContentId = savedContent._id.toString();
 
         response.status(200).json(savedContent);

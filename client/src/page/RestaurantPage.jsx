@@ -9,7 +9,6 @@ import {
   useDinnerDsc,
   useBreakfastDsc,
 } from "../api/restaurant/restaurantPage";
-import getImage from "../services/getImage";
 
 const Restaurant = () => {
   const { data: header } = useRestaurantPage();
@@ -28,7 +27,7 @@ const Restaurant = () => {
   return (
     <>
       <Header
-        imageUrl={getImage + header?.restaurantPageHeaderImg}
+        imageUrl={header?.restaurantPageHeaderImg}
         textBeforeBr={header?.levelOneTitle}
         textAfterBr={header?.levelTwoTitle}
         secondTextBeforeBr={header?.levelThreeTitle}
@@ -41,7 +40,7 @@ const Restaurant = () => {
               key={uuidv4()}
               title={meal.mealData?.title}
               content={meal.mealData?.description}
-              imageUrl={getImage + meal.mealData?.photos[0]}
+              imageUrl={meal.mealData?.photos[0]}
               position={meal.mealData?.position}
             />
             <ImageCollage

@@ -3,7 +3,7 @@ import EditFormUI from "../../../ui/EditFormUI";
 import EditListIU from "../../../ui/EditListUI";
 import LabelPhoto from "../../../ui/LabelPhotoUI";
 import { useState } from "react";
-import { useCreateLogoMutation } from "../../../api/useCreateLogoMutation";
+import { useCreateLogoMutation } from "../../../api/edit/useCreateLogo";
 import Info from "../../../ui/info";
 
 const EditLogo = () => {

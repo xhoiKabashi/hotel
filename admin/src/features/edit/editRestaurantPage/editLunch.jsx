@@ -3,7 +3,7 @@ import EditFormUI from "../../../ui/EditFormUI";
 import EditListUI from "../../../ui/EditListUI";
 import LabelPhoto from "../../../ui/LabelPhotoUI";
 import { useState } from "react";
-import { useCreateLunch } from "../../../api/restaurant/useCreateLunch";
+import { useCreateLunch } from "../../../api/edit/restaurant/useCreateLunch";
 import TextInput from "../../../ui/TextInput";
 import Info from "../../../ui/info";
 import MenuImageSwitch from "../../../ui/SwitchInput/";

@@ -6,19 +6,18 @@ import Line from "../ui/Line";
 import Slider from "../components/pageSections/Slider";
 import { useHomeHeader, useHomeContent } from "../api/home/homePage";
 import { v4 as uuidv4 } from "uuid";
-import getImage from "../services/getImage";
 
 const HomePage = () => {
   const { data: header } = useHomeHeader();
   const { data: content } = useHomeContent();
 
-  console.log("kuas", content);
+
 
   NavigateHelper();
   return (
     <>
       <Header
-        imageUrl={getImage + header?.headerImage}
+        imageUrl={header?.headerImage}
         textBeforeBr={header?.levelOneTitle}
         textAfterBr={header?.levelTwoTitle}
         secondTextBeforeBr={header?.levelThreeTitle}

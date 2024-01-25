@@ -13,8 +13,7 @@ const PageSection = ({
   linkTo,
 }) => {
   const windowWidth = WindowWidthHelper();
-  console.log(position);
-  // for movile only we swich all images to second position
+
   if (windowWidth < 768) position = 1;
 
   return (

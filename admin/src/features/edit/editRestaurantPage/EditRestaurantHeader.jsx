@@ -3,7 +3,7 @@ import EditFormUI from "../../../ui/EditFormUI";
 import EditListUI from "../../../ui/EditListUI";
 import LabelPhoto from "../../../ui/LabelPhotoUI";
 import { useState } from "react";
-import { useCreateRestaurant } from "../../../api/restaurant/useCreateRestaurantPage";
+import { useCreateHeader } from "../../../api/edit/useCreateHeader";
 import TextInput from "../../../ui/TextInput";
 import Info from "../../../ui/info";
 
@@ -14,22 +14,24 @@ const EditRestaurantHeader = () => {
   const [levelThreeTitle, setLevelThreeTitle] = useState("");
 
   // Create logo mutation using useMutation
-  const { mutate: createRestaurantHeader } = useCreateRestaurant();
+  const { mutate: createHeader } = useCreateHeader();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      const newRestaurantData = {
-        file,
-        levelOneTitle,
-        levelTwoTitle,
-        levelThreeTitle,
+      const newHeaderData = {
+        uploadedData: {
+          file,
+          levelOneTitle,
+          levelTwoTitle,
+          levelThreeTitle,
+        },
+        endPoint: "editRestaurantPage",
       };
-      const createdRestaurantHeader = await createRestaurantHeader(
-        newRestaurantData
-      );
-      console.log("Restaurant Header created", createdRestaurantHeader);
+
+      const createdHeader = await createHeader(newHeaderData);
+      console.info("Restaurant Header created", createdHeader);
     } catch (error) {
       console.error("Header upload failed:", error);
     } finally {

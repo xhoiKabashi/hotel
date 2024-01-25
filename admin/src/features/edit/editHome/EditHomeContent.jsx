@@ -3,7 +3,7 @@ import EditFormUI from "../../../ui/EditFormUI";
 import EditListUI from "../../../ui/EditListUI";
 import LabelPhoto from "../../../ui/LabelPhotoUI";
 import { useState } from "react";
-import { useCreateHomeContent } from "../../../api/home/useCreateHomeContent";
+import { useCreateHomeContent } from "../../../api/edit/home/useCreateHomeContent";
 import TextInput from "../../../ui/TextInput";
 import Info from "../../../ui/info";
 import MenuImageSwitch from "../../../ui/SwitchInput";

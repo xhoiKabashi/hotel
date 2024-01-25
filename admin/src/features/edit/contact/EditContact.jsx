@@ -6,13 +6,13 @@ import { useState } from "react";
 import { useCreateHeader } from "../../../api/edit/useCreateHeader";
 import TextInput from "../../../ui/TextInput";
 import Info from "../../../ui/info";
-import MenuImageSwitch from "../../../ui/SwitchInput";
 
-const EditAboutUsContent = () => {
+const EditContactPage = () => {
   const [file, setFile] = useState(null);
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [position, setPosition] = useState(3);
+  const [address, setAddress] = useState("");
+  const [email, setEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [quote, setQuote] = useState("");
 
   const { mutate: createContent } = useCreateHeader();
 
@@ -23,21 +23,23 @@ const EditAboutUsContent = () => {
       const newHomeContent = {
         uploadedData: {
           file,
-          title,
-          description,
-          position,
+          address,
+          email,
+          phoneNumber,
+          quote,
         },
-        endPoint: "about-us-content",
+        endPoint: "contact-data",
       };
       const createdHomeHeader = await createContent(newHomeContent);
       console.log(createdHomeHeader);
     } catch (error) {
       console.error("Content upload failed:", error);
     } finally {
-      setTitle("");
-      setDescription("");
+      setAddress("");
+      setEmail("");
       setFile(null);
-      setPosition(3);
+      setPhoneNumber("");
+      setQuote("");
     }
   };
   return (
@@ -51,25 +53,33 @@ const EditAboutUsContent = () => {
             onChange={(event) => setFile(event.target.files[0])}
           />
         </LabelPhoto>
-        <MenuImageSwitch
-          title="Display Image left or right"
-          name="position"
-          value={position}
-          onChange={(event) => setPosition(event.target.value)}
+        <TextInput
+          placeholder="..."
+          title="Title"
+          type="text"
+          value={quote}
+          onChange={(event) => setQuote(event.target.value)}
         />
         <TextInput
           placeholder="..."
           title="Title"
           type="text"
-          value={title}
-          onChange={(event) => setTitle(event.target.value)}
+          value={phoneNumber}
+          onChange={(event) => setPhoneNumber(event.target.value)}
+        />
+        <TextInput
+          placeholder="..."
+          title="Title"
+          type="text"
+          value={address}
+          onChange={(event) => setAddress(event.target.value)}
         />
         <TextInput
           placeholder="Write here..."
           title="Description (Paste it here)"
           type="text"
-          value={description}
-          onChange={(event) => setDescription(event.target.value)}
+          value={email}
+          onChange={(event) => setEmail(event.target.value)}
         />
         <Button text="Submit" submit="submit" />
       </EditFormUI>
@@ -77,4 +87,4 @@ const EditAboutUsContent = () => {
   );
 };
 
-export default EditAboutUsContent;
+export default EditContactPage;

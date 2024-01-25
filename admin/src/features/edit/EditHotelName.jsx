@@ -1,7 +1,7 @@
 import Button from "../../ui/Button";
 import EditFormUI from "../../ui/EditFormUI";
 import EditListIU from "../../ui/EditListUI";
-import useCreateHotelName from "../../api/useCreateHotelName";
+import useCreateHotelName from "../../api/edit/useCreateHotelName";
 import { useState } from "react";
 import TextInput from "../../ui/TextInput";
 import Info from "../../ui/info";

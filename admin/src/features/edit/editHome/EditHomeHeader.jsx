@@ -3,7 +3,7 @@ import EditFormUI from "../../../ui/EditFormUI";
 import EditListUI from "../../../ui/EditListUI";
 import LabelPhoto from "../../../ui/LabelPhotoUI";
 import { useState } from "react";
-import { useCreateHomeHeader } from "../../../api/home/useCreateHomeHeader";
+import { useCreateHeader } from "../../../api/edit/useCreateHeader";
 import TextInput from "../../../ui/TextInput";
 import Info from "../../../ui/info";
 
@@ -14,13 +14,13 @@ const EditHomeHeader = () => {
   const [levelThreeTitle, setLevelThreeTitle] = useState("");
 
   // Create logo mutation using useMutation
-  const { mutate: createHomeHeader } = useCreateHomeHeader();
+  const { mutate: createHeader } = useCreateHeader();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      const newHomeHeader = {
+      const newHeaderData = {
         uploadedData: {
           file,
           levelOneTitle,
@@ -30,8 +30,8 @@ const EditHomeHeader = () => {
         endPoint: "editHomeHeader",
       };
 
-      const createdHomeHeader = await createHomeHeader(newHomeHeader);
-      console.log("Header created", createdHomeHeader);
+      const createdHeader = await createHeader(newHeaderData);
+      console.info("Header created", createdHeader);
     } catch (error) {
       console.error("Header upload failed:", error);
     } finally {
