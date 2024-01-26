@@ -1,15 +1,15 @@
 import Header from "../ui/Header";
 import NavigateHelper from "../services/navigateHelper";
 import { useParams } from "react-router-dom";
-import getImage from "../services/getImage";
-import { useGetRooms } from "../api/rooms/rooms";
+import { useGetRooms } from "../hooks/useGetDataQuery";
+import RoomsDetails from "../components/rooms/RoomsDetails";
+import Slider from "../components/pageSections/Slider";
 
-const SignatureRoom = () => {
+const Rooms = () => {
   NavigateHelper();
   const { id, isLoading } = useParams();
 
   const { data: room } = useGetRooms(id);
-  console.log(getImage + room?.imageHeader);
 
   if (isLoading) {
     return <p>Loading...</p>;
@@ -18,8 +18,10 @@ const SignatureRoom = () => {
   return (
     <div>
       <Header imageUrl={room?.imageHeader} textBeforeBr={room?.roomType} />
+      <RoomsDetails />
+      <Slider />
     </div>
   );
 };
 
-export default SignatureRoom;
+export default Rooms;

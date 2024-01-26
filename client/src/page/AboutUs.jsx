@@ -2,11 +2,24 @@ import Header from "../ui/Header";
 import PageSection from "../components/pageSections/PageSection";
 import { v4 as uuidv4 } from "uuid";
 import NavigateHelper from "../services/navigateHelper";
-import { useAboutUsHeader, useAboutUsContent } from "./../api/about/aboutUs";
+import { useGetHeader, useGetContent } from "../hooks/useGetDataQuery";
 
 const AboutUsPage = () => {
-  const { data: header } = useAboutUsHeader();
-  const { data: content } = useAboutUsContent();
+  // get header
+  const queryHeader = {
+    key: "aboutUsPageHeader",
+    endPoint: "about-us-header",
+  };
+  const { data: header } = useGetHeader(queryHeader);
+
+  // get content
+
+  const queryContent = {
+    key: "aboutUsPageContent",
+    endPoint: "about-us-content",
+  };
+
+  const { data: content } = useGetContent(queryContent);
 
   NavigateHelper();
   return (

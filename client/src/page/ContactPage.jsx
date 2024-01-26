@@ -1,12 +1,16 @@
 import ContactForm from "../components/ContactForm";
 import NavigateHelper from "../services/navigateHelper";
-import { useContactData } from "../api/contact/contactUs";
 import getImage from "../services/getImage";
-getImage;
+import { useGetHeader } from "../hooks/useGetDataQuery";
+
 const ContactPage = () => {
-  const { data: contactData } = useContactData();
-  console.log(contactData);
   NavigateHelper();
+  const queryHeader = {
+    key: "contactData",
+    endPoint: "contact-data",
+  };
+  const { data: contactData } = useGetHeader(queryHeader);
+
   return (
     <div className="grid px-5 md:grid-cols-2 md:grid-rows-1 md:p-28 gap-10">
       <div>

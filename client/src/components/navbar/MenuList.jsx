@@ -1,9 +1,7 @@
 /* eslint-disable react/prop-types */
-import { useLogoQuery } from "../../api/hotelLogo-Name-Map.js";
-import { useGetRoomsNames } from "../../api/rooms/rooms.js";
 import { aboutHotel, aboutRooms } from "../../services/data/NavBarData.js";
 import { Link } from "react-router-dom";
-
+import { useGetHeader, useGetContent } from "../../hooks/useGetDataQuery.js";
 import { v4 as uuidv4 } from "uuid";
 
 const {
@@ -19,8 +17,17 @@ const {
 const { ourRooms } = aboutRooms;
 
 const MenuList = ({ setShowMenu }) => {
-  const { data } = useLogoQuery();
-  const { data: name } = useGetRoomsNames();
+  const queryHeader = {
+    key: "googleMapLink",
+    endPoint: "logo",
+  };
+  const { data: map } = useGetHeader(queryHeader);
+
+  const queryRoomsName = {
+    key: "roomsName",
+    endPoint: "rooms",
+  };
+  const { data: name } = useGetContent(queryRoomsName);
 
   const closeMenu = () => {
     // Close the menu when any link is clicked
@@ -62,7 +69,7 @@ const MenuList = ({ setShowMenu }) => {
           </Link>
           <li className=" hover:text-slate-600">{makeReservation}</li>
           <a
-            href={data?.googleMapLink}
+            href={map?.googleMapLink}
             target="_blank"
             rel="noopener noreferrer"
             className=" hover:text-slate-600"

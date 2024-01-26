@@ -4,14 +4,25 @@ import PageSection from "../components/pageSections/PageSection";
 import RoomsCards from "../components/roomCards/roomCards";
 import Line from "../ui/Line";
 import Slider from "../components/pageSections/Slider";
-import { useHomeHeader, useHomeContent } from "../api/home/homePage";
 import { v4 as uuidv4 } from "uuid";
+import { useGetHeader, useGetContent } from "../hooks/useGetDataQuery";
 
 const HomePage = () => {
-  const { data: header } = useHomeHeader();
-  const { data: content } = useHomeContent();
+  // get header
+  const queryHeader = {
+    key: "homeHeader",
+    endPoint: "editHomeHeader",
+  };
+  const { data: header } = useGetHeader(queryHeader);
 
+  // get content
 
+  const queryContent = {
+    key: "homeContent",
+    endPoint: "homeContent",
+  };
+
+  const { data: content } = useGetContent(queryContent);
 
   NavigateHelper();
   return (

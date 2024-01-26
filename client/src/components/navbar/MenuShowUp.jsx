@@ -3,11 +3,15 @@ import { useEffect } from "react";
 import { HiMiniXMark } from "react-icons/hi2";
 import MenuList from "./MenuList";
 import { Link } from "react-router-dom";
-import { useLogoQuery } from "../../api/hotelLogo-Name-Map";
+import { useGetHeader } from "../../hooks/useGetDataQuery";
 import getImage from "../../services/getImage";
 
 const MenuShowUp = ({ showMenu, setShowMenu }) => {
-  const { data: logoData } = useLogoQuery();
+  const queryHeader = {
+    key: "logo",
+    endPoint: "logo",
+  };
+  const { data: logoData } = useGetHeader(queryHeader);
 
   useEffect(() => {
     // Update body styles when the component mounts or 'show' changes

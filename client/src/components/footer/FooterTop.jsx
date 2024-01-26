@@ -5,11 +5,15 @@ import {
   FaInstagramSquare,
   FaTiktok,
 } from "react-icons/fa";
-import { SocialMedia } from "../../api/contact/contactUs";
+import { useGetHeader } from "../../hooks/useGetDataQuery";
 
 const FooterTop = () => {
-  const { data } = SocialMedia();
-  console.log(data?.fbUrl);
+  const queryHeader = {
+    key: "socialMedia",
+    endPoint: "social-data",
+  };
+  const { data } = useGetHeader(queryHeader);
+
   return (
     <div className="p-5">
       <div className="flex flex-col items-center gap-2 xl:flex-row justify-around border-t-2 border-b-2 p-5">
