@@ -3,7 +3,9 @@ import NavigateHelper from "../services/navigateHelper";
 import { useParams } from "react-router-dom";
 import { useGetRooms } from "../hooks/useGetDataQuery";
 import RoomsDetails from "../components/rooms/RoomsDetails";
-import Slider from "../components/pageSections/Slider";
+import { restaurantData } from "@/services/data/restaurantData";
+import CarouselComponent from "@/components/rooms/Carousel";
+import RoomAmenities from "@/components/rooms/RoomAmenities";
 
 const Rooms = () => {
   NavigateHelper();
@@ -19,7 +21,8 @@ const Rooms = () => {
     <div>
       <Header imageUrl={room?.imageHeader} textBeforeBr={room?.roomType} />
       <RoomsDetails />
-      <Slider />
+      <CarouselComponent imageUrl={restaurantData} />
+      <RoomAmenities />
     </div>
   );
 };
