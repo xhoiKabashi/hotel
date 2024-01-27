@@ -11,8 +11,6 @@ import EditAboutUsHeader from "../features/edit/editAboutUs/EditAboutUsHeader";
 import EditAboutUsContent from "../features/edit/editAboutUs/EditAboutUsContent";
 import EditContactPage from "../features/edit/contact/EditContact";
 import EditSocials from "../features/edit/editSocials";
-import CreateRooms from "../features/rooms/createRooms";
-
 function EditWebsite() {
   const [filterText, setFilterText] = useState("");
 
@@ -22,10 +20,7 @@ function EditWebsite() {
       title: "Edit Logo / Hotel Name",
       component: <EditLogo />,
     },
-    {
-      title: "Create Room",
-      component: <CreateRooms />,
-    },
+
     { title: "Edit Home Header", component: <EditHomeHeader /> },
     { title: "Edit Home Content", component: <EditHomeContent /> },
 

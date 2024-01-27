@@ -3,48 +3,42 @@ import EditFormUI from "../../../ui/EditFormUI";
 import EditListUI from "../../../ui/EditListUI";
 import LabelPhoto from "../../../ui/LabelPhotoUI";
 import { useState } from "react";
-import { useCreateBreakfast } from "../../../api/edit/restaurant/useCreateBreakfast";
 import TextInput from "../../../ui/TextInput";
 import Info from "../../../ui/info";
 import MenuImageSwitch from "../../../ui/SwitchInput/";
+import { useCreateWithCollage } from "../../../api/edit/useCreateWithCollage";
 
 const EditBreakfast = () => {
-  const initialFormData = {
-    title: "",
-    description: "",
-    position: 3,
-    photos: [],
-  };
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [position, setPosition] = useState(3);
+  const [photos, setPhotos] = useState([]);
 
-  const [formData, setFormData] = useState(initialFormData);
-
-  const handleFileChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.files,
-    });
-  };
-
-  const handleInputChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  // Create logo mutation using useMutation
-  const { mutate: createBreakfast } = useCreateBreakfast();
+  const { mutate: createBreakfast } = useCreateWithCollage();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
+      const formData = {
+        uploadedData: {
+          description,
+          position,
+          title,
+          photos,
+        },
+        endPoint: "breakfast",
+      };
+
       const createdBreakfast = await createBreakfast(formData);
-      console.log("Breakfast  created", createdBreakfast);
+      console.info("Breakfast content created", createdBreakfast);
     } catch (error) {
-      console.error("Breakfast upload failed:", error);
+      console.error("Breakfast content upload failed:", error);
     } finally {
-      setFormData(initialFormData);
+      setTitle("");
+      setDescription("");
+      setPosition(3);
+      setPhotos([]);
     }
   };
   return (
@@ -58,32 +52,31 @@ const EditBreakfast = () => {
             id="photos"
             name="photos"
             multiple
-            onChange={handleFileChange}
+            onChange={(event) => setPhotos(event.target.files)}
           />
         </LabelPhoto>
         <MenuImageSwitch
           title="Display Image left or right"
           name="position"
-          onChange={handleInputChange}
-          value={formData.position}
+          onChange={(event) => setPosition(event.target.value)}
         />
+
         <TextInput
           placeholder="..."
           title="Title or a short Qoute"
           type="text"
           name="title"
-          value={formData.title}
-          onChange={handleInputChange}
+          value={title}
+          onChange={(event) => setTitle(event.target.value)}
         />
         <TextInput
           placeholder="..."
           title="Breakfast Description (Paste it here)"
           type="text"
           name="description"
-          value={formData.description}
-          onChange={handleInputChange}
+          value={description}
+          onChange={(event) => setDescription(event.target.value)}
         />
-
         <Button text="Submit" submit="submit" />
       </EditFormUI>
     </EditListUI>

@@ -3,30 +3,32 @@ import EditFormUI from "../../ui/EditFormUI";
 import EditListUI from "../../ui/EditListUI";
 import LabelPhoto from "../../ui/LabelPhotoUI";
 import { useState } from "react";
-import { useCreate } from "../../api/edit/useCreate";
 import TextInput from "../../ui/TextInput";
 import Info from "../../ui/info";
+import { useCreateWithCollage } from "../../api/edit/useCreateWithCollage";
 
 const CreateRooms = () => {
   const [file, setFile] = useState(null);
   const [roomType, setRoomType] = useState("");
+  const [photos, setPhotos] = useState([]);
 
   // Create logo mutation using useMutation
-  const { mutate: createHeader } = useCreate();
+  const { mutate: createHeader } = useCreateWithCollage();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      const newHeaderData = {
+      const formData = {
         uploadedData: {
           file,
           roomType,
+          photos,
         },
         endPoint: "rooms",
       };
 
-      const createdHeader = await createHeader(newHeaderData);
+      const createdHeader = await createHeader(formData);
       console.info("Header created", createdHeader);
     } catch (error) {
       console.error("Header upload failed:", error);
@@ -52,6 +54,14 @@ const CreateRooms = () => {
           type="text"
           value={roomType}
           onChange={(event) => setRoomType(event.target.value)}
+        />
+        <input
+          type="file"
+          className="sr-only"
+          id="photos"
+          name="photos"
+          multiple
+          onChange={(event) => setPhotos(event.target.files)}
         />
 
         <Button text="Submit" submit="submit" />

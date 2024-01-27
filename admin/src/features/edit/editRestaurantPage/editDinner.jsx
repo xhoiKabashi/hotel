@@ -3,47 +3,42 @@ import EditFormUI from "../../../ui/EditFormUI";
 import EditListUI from "../../../ui/EditListUI";
 import LabelPhoto from "../../../ui/LabelPhotoUI";
 import { useState } from "react";
-import { useCreateDinner } from "../../../api/edit/restaurant/useCreateDinner";
 import TextInput from "../../../ui/TextInput";
 import Info from "../../../ui/info";
 import MenuImageSwitch from "../../../ui/SwitchInput/";
+import { useCreateWithCollage } from "../../../api/edit/useCreateWithCollage";
 
 const EditDinner = () => {
-  const initialFormData = {
-    title: "",
-    description: "",
-    position: 3,
-    photos: [],
-  };
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [position, setPosition] = useState(3);
+  const [photos, setPhotos] = useState([]);
 
-  const [formData, setFormData] = useState(initialFormData);
-
-  const handleFileChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.files,
-    });
-  };
-
-  const handleInputChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const { mutate: createDinner } = useCreateDinner();
+  const { mutate: createDinner } = useCreateWithCollage();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
+      const formData = {
+        uploadedData: {
+          description,
+          position,
+          title,
+          photos,
+        },
+        endPoint: "dinner",
+      };
+
       const createdDinner = await createDinner(formData);
-      console.log("Dinner created", createdDinner);
+      console.info("Dinner content created", createdDinner);
     } catch (error) {
-      console.error("Dinner upload failed:", error);
+      console.error("Dinner content created faild:", error);
     } finally {
-      setFormData(initialFormData);
+      setTitle("");
+      setDescription("");
+      setPosition(3);
+      setPhotos([]);
     }
   };
   return (
@@ -57,14 +52,13 @@ const EditDinner = () => {
             id="photos"
             name="photos"
             multiple
-            onChange={handleFileChange}
+            onChange={(event) => setPhotos(event.target.files)}
           />
         </LabelPhoto>
         <MenuImageSwitch
           title="Display Image left or right"
           name="position"
-          onChange={handleInputChange}
-          value={formData.position}
+          onChange={(event) => setPosition(event.target.value)}
         />
 
         <TextInput
@@ -72,16 +66,16 @@ const EditDinner = () => {
           title="Title or a short Qoute"
           type="text"
           name="title"
-          value={formData.title}
-          onChange={handleInputChange}
+          value={title}
+          onChange={(event) => setTitle(event.target.value)}
         />
         <TextInput
           placeholder="..."
           title="Dinner Description (Paste it here)"
           type="text"
           name="description"
-          value={formData.description}
-          onChange={handleInputChange}
+          value={description}
+          onChange={(event) => setDescription(event.target.value)}
         />
         <Button text="Submit" submit="submit" />
       </EditFormUI>

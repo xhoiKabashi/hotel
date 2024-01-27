@@ -20,7 +20,7 @@ const EditHomeHeader = () => {
     event.preventDefault();
 
     try {
-      const newHeaderData = {
+      const formData = {
         uploadedData: {
           file,
           levelOneTitle,
@@ -30,7 +30,7 @@ const EditHomeHeader = () => {
         endPoint: "editHomeHeader",
       };
 
-      const createdHeader = await createHeader(newHeaderData);
+      const createdHeader = await createHeader(formData);
       console.info("Header created", createdHeader);
     } catch (error) {
       console.error("Header upload failed:", error);

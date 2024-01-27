@@ -22,7 +22,7 @@ uploadRestaurantContent.post(
         }
       });
 
-      if (request.files) {
+      if (request.files && request.files.length > 0) {
         updateFields.photos = request.files.map((file) => file.filename);
       }
 
@@ -60,7 +60,7 @@ uploadRestaurantContent.post(
         }
       });
 
-      if (request.files) {
+      if (request.files && request.files.length > 0) {
         updateFields.photos = request.files.map((file) => file.filename);
       }
 
@@ -98,7 +98,7 @@ uploadRestaurantContent.post(
         }
       });
 
-      if (request.files) {
+      if (request.files && request.files.length > 0) {
         updateFields.photos = request.files.map((file) => file.filename);
       }
 

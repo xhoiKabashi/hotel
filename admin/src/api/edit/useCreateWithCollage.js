@@ -1,14 +1,14 @@
 import { useMutation } from "@tanstack/react-query";
-import axiosClient from "../../../services/axiosClient";
+import axiosClient from "../../services/axiosClient";
 import toast from "react-hot-toast";
 
-export const useCreateLunch = () => {
+export const useCreateWithCollage = () => {
   return useMutation({
-    mutationFn: async (formData) => {
+    mutationFn: async ({ uploadedData, endPoint }) => {
       try {
         const formDataToSend = new FormData();
 
-        for (const [key, value] of Object.entries(formData)) {
+        for (const [key, value] of Object.entries(uploadedData)) {
           if (key === "photos") {
             for (let i = 0; i < value.length; i++) {
               formDataToSend.append("photos", value[i]);
@@ -18,11 +18,15 @@ export const useCreateLunch = () => {
           }
         }
 
-        const response = await axiosClient.post("/lunch", formDataToSend, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        });
+        const response = await axiosClient.post(
+          `/${endPoint}`,
+          formDataToSend,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
 
         console.log(response.data);
         return response.data; // Make sure to return the data for onSuccess
@@ -33,10 +37,10 @@ export const useCreateLunch = () => {
     },
 
     onSuccess: () => {
-      toast.success("Lunch details updated/created");
+      toast.success("Data updated/created");
     },
     onError: (error) => {
-      toast.error("Lunch details create/upload failed");
+      toast.error("Data create/upload failed");
       console.error(error);
     },
   });

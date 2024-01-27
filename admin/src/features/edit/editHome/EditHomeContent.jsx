@@ -3,10 +3,10 @@ import EditFormUI from "../../../ui/EditFormUI";
 import EditListUI from "../../../ui/EditListUI";
 import LabelPhoto from "../../../ui/LabelPhotoUI";
 import { useState } from "react";
-import { useCreateHomeContent } from "../../../api/edit/home/useCreateHomeContent";
 import TextInput from "../../../ui/TextInput";
 import Info from "../../../ui/info";
 import MenuImageSwitch from "../../../ui/SwitchInput";
+import { useCreate } from "../../../api/edit/useCreate";
 
 const EditHomeContent = () => {
   const [file, setFile] = useState();
@@ -16,19 +16,23 @@ const EditHomeContent = () => {
 
   console.log(title, description, position);
 
-  const { mutate: createHomeContent } = useCreateHomeContent();
+  const { mutate: createHomeContent } = useCreate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      const newHomeContent = {
-        file,
-        title,
-        description,
-        position,
+      const formData = {
+        uploadedData: {
+          file,
+          title,
+          description,
+          position,
+        },
+        endPoint: "homeContent",
       };
-      const createdHomeHeader = await createHomeContent(newHomeContent);
+
+      const createdHomeHeader = await createHomeContent(formData);
       console.log("Content created", createdHomeHeader);
     } catch (error) {
       console.error("Content upload failed:", error);

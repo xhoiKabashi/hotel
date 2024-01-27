@@ -1,41 +1,36 @@
 import { useState } from "react";
+import CreateRooms from "../features/rooms/createRooms";
+import Collapse from "../ui/Collapse";
 
 const HeaderImageSwitch = () => {
-  const [alignment, setAlignment] = useState("left"); // 'left' or 'right'
+  const [filterText, setFilterText] = useState("");
+  const components = [
+    {
+      title: "Create Room",
+      component: <CreateRooms />,
+    },
+  ];
 
-  const handleSwitchChange = () => {
-    setAlignment((prevAlignment) =>
-      prevAlignment === "left" ? "right" : "left"
-    );
-  };
+  const filteredComponents = components.filter((item) =>
+    item.title.toLowerCase().includes(filterText.toLowerCase())
+  );
 
   return (
-    <div>
-      <label>
-        Align Header:
-        <input
-          type="checkbox"
-          checked={alignment === "right"}
-          onChange={handleSwitchChange}
-        />
-      </label>
+    <div className="flex flex-col  justify-end gap-6 px-2 py-10 md:px-10 md:py-5">
+      <input
+        type="text"
+        placeholder="Search..."
+        value={filterText}
+        onChange={(e) => setFilterText(e.target.value)}
+        className="w-20 h-7 sticky top-2 bg-cyan-500 text-white border-2 border-cyan-500 placeholder-white outline-none focus:border-white ring-transparent rounded-full self-end px-2 py-1"
+      />
 
-      {/* Example usage of the selected alignment */}
-      <div
-        style={{
-          display: "flex",
-          flexDirection: alignment === "left" ? "row" : "row-reverse",
-        }}
-      >
-        <div style={{ flex: 1 }}>
-          {/* Your header component here */}
-          <h1>Your Header</h1>
-        </div>
-        <div style={{ flex: 1 }}>
-          {/* Your image component here */}
-          <img src="your-image-url" alt="Your Image" />
-        </div>
-      </div>
+      {/* Render filtered components */}
+      {filteredComponents.map((item, index) => (
+        <Collapse key={index} title={item.title}>
+          {item.component}
+        </Collapse>
+      ))}
     </div>
   );
 };
