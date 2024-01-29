@@ -61,7 +61,7 @@ function EditWebsite() {
           ))}
         </ul>
       </div>
-      <div className=" basis-[85%] ">{<Outlet />}</div>
+      <div className=" basis-[80%] ">{<Outlet />}</div>
     </div>
 
     // <div className="flex -z-10 flex-col justify-end gap-6 px-2 py-10 md:px-10 md:py-5">

@@ -4,7 +4,7 @@ import EditListUI from "../../../ui/EditListUI";
 import LabelPhoto from "../../../ui/LabelPhotoUI";
 import { useState } from "react";
 import { useCreate } from "../../../api/edit/useCreate";
-import TextInput from "../../../ui/TextInput";
+import TextInput from "../../form/TextInput";
 import Info from "../../../ui/info";
 import MenuImageSwitch from "../../../ui/SwitchInput";
 

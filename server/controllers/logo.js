@@ -4,6 +4,8 @@ const upload = require("../utils/multer");
 
 logoUpload.post("/logo", upload.single("file"), async (request, response) => {
   try {
+    console.log("Request Body:", request.body);
+    console.log("Request File:", request.file);
     const updateFields = {};
 
     if (request.body.hotelName) {

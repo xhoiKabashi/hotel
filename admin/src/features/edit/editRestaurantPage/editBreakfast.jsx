@@ -3,10 +3,10 @@ import EditFormUI from "../../../ui/EditFormUI";
 import EditListUI from "../../../ui/EditListUI";
 import LabelPhoto from "../../../ui/LabelPhotoUI";
 import { useState } from "react";
-import TextInput from "../../../ui/TextInput";
 import Info from "../../../ui/info";
 import MenuImageSwitch from "../../../ui/SwitchInput/";
 import { useCreateWithCollage } from "../../../api/edit/useCreateWithCollage";
+import TextInput from "../../form/TextInput";
 
 const EditBreakfast = () => {
   const [title, setTitle] = useState("");

@@ -3,7 +3,7 @@ import EditFormUI from "../../ui/EditFormUI";
 import EditListUI from "../../ui/EditListUI";
 import LabelPhoto from "../../ui/LabelPhotoUI";
 import { useState } from "react";
-import TextInput from "../../ui/TextInput";
+import TextInput from "../form/TextInput";
 import Info from "../../ui/info";
 import { useCreateWithCollage } from "../../api/edit/useCreateWithCollage";
 

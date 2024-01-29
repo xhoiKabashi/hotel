@@ -4,8 +4,8 @@ import EditListUI from "../../ui/EditListUI";
 import LabelPhoto from "../../ui/LabelPhotoUI";
 import { useState } from "react";
 import { useCreate } from "../../api/edit/useCreate";
-import TextInput from "../../ui/TextInput";
 import Info from "../../ui/info";
+import TextInput from "../form/TextInput";
 
 const EditSocials = () => {
   const [instaUrl, setInstaUrl] = useState("");
