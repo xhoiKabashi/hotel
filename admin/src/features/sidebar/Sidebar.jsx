@@ -1,19 +1,11 @@
-import { useState } from "react";
 import { HiSquaresPlus } from "react-icons/hi2";
 import LogoPanel from "../../ui/LogoPanel";
-import NavigationList from "./NavigationList";
+import NavigationList from "../navigation/NavigationList";
 import Text from "../../ui/Text";
 
 function Sidebar() {
-  const [up, setUp] = useState(false);
-
   return (
-    <aside
-      className={`bg-slate-50 row-start-3 md:h-screen md:row-span-full transition-all duration-300 ${
-        up ? "h-40" : "h-16"
-      }`}
-      onClick={() => setUp(!up)}
-    >
+    <aside className=" left-0 top-0 z-50 flex h-screen w-[220px] flex-col overflow-y-hidden bg-slate-900 duration-300 ease-linear dark:bg-boxdark lg:static lg:translate-x-0 -translate-x-full">
       <div className="flex flex-col justify-between items-center gap-5">
         <LogoPanel />
         <NavigationList to="edit-website">

@@ -1,25 +1,49 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
-import { HiOutlineInformationCircle } from "react-icons/hi2";
+import Box from "@mui/joy/Box";
+import Tooltip from "@mui/joy/Tooltip";
+import Typography from "@mui/joy/Typography";
+
+import { CiCircleInfo } from "react-icons/ci";
+import { BsLightbulb } from "react-icons/bs";
 
 const Info = ({ text }) => {
-  const [isHovered, setIsHovered] = useState(false);
-
   return (
-    <div className="relative inline-block">
-      <div className="flex justify-center items-end h-full">
-        <HiOutlineInformationCircle
-          className="h-8 w-8 text-cyan-500"
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-        />
-      </div>
-      <div
-        className={`absolute top-full w-44 left-28 transform -translate-x-1/2 text-xs font-semibold bg-cyan-500 text-white p-2 rounded ${
-          isHovered ? "opacity-100" : "opacity-0 invisible"
-        } transition-opacity duration-300`}
-      >
-        {text}
+    <div className="z-0">
+      <div>
+        <div>
+          <Tooltip
+            color="primary"
+            title={
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  maxWidth: 320,
+                  justifyContent: "center",
+                  p: 1,
+                }}
+              >
+                <Box sx={{ display: "flex", gap: 1, width: "100%", mt: 1 }}>
+                  <div>
+                    <BsLightbulb className="h-5 w-5" />
+                  </div>
+
+                  <div>
+                    <Typography textColor="white" fontSize="sm" sx={{ mb: 1 }}>
+                      {text}
+                    </Typography>
+                  </div>
+                </Box>
+              </Box>
+            }
+            arrow
+            size="sm"
+          >
+            <Typography className="  cursor-pointer">
+              <CiCircleInfo className=" h-6 w-6" />
+            </Typography>
+          </Tooltip>
+        </div>
       </div>
     </div>
   );

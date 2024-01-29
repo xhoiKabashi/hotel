@@ -9,19 +9,14 @@ const TextInput = ({
   name,
 }) => {
   return (
-    <label className=" flex flex-col justify-center items-center">
-      <span className="ml-2 py-1 text-[10px] font-semibold">{title}</span>
-      <input
-        type={type}
-        name={name}
-        placeholder={placeholder}
-        className={`p-1 border ${
-          big ? "w-44" : "w-16 focus:w-44"
-        } rounded-md border-gray-300 focus:outline-none focus:border-cyan-500 transition-all duration-300`}
-        value={value}
-        onChange={onChange}
-      />
-    </label>
+    <input
+      type={type}
+      name={name}
+      placeholder="Enter text"
+      className="p-2 border rounded-md border-gray-300 bg-gray-200 focus:outline-none focus:border-cyan-500 placeholder-gray-400::placeholder"
+      value={value}
+      onChange={onChange}
+    />
   );
 };
 

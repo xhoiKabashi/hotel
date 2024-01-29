@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+
 const LabelPhoto = ({ children, text }) => {
   return (
     <div className=" flex flex-col items-center  justify-center">
