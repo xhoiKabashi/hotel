@@ -1,7 +1,7 @@
 import Layout from "../ui/Layout";
 import LunchUploadForm from "../page/Contact";
 import EditWebsite from "../page/EditWebsite";
-import EditLogo from "../features/edit/editNavbar/EditLogoNameMap";
+import GenInfo from "../features/edit/GenInfo";
 import EditHomeHeader from "../features/edit/editHome/EditHomeHeader";
 import EditHomeContent from "../features/edit/editHome/EditHomeContent";
 import EditRestaurantHeader from "../features/edit/editRestaurantPage/EditRestaurantHeader";
@@ -26,7 +26,7 @@ const Routes = () => {
           children: [
             {
               path: "logo-name",
-              element: <EditLogo />,
+              element: <GenInfo />,
             },
             {
               path: "home-header",

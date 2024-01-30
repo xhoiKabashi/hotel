@@ -16,9 +16,9 @@ export const ButtonV2 = ({ onClick, text, color }) => {
     color === "green" ? "text-sky-600 bg-sky-200" : "text-red-600 bg-red-200";
 
   return (
-    <div className="flex justify-center items-center gap-2 pt-4 w-fit active:active:scale-[0.97]">
+    <div>
       <button
-        className={`font-medium text-xs px-3 py-1 rounded-md cursor-pointer ${buttonColor}`}
+        className={`font-medium text-xs px-3 py-1 flex items-center justify-center gap-2 m-2 w-fit rounded-md cursor-pointer active:active:scale-[0.97] ${buttonColor}`}
         onClick={onClick}
       >
         {text}

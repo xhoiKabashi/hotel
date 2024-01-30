@@ -7,7 +7,7 @@ export const useCreate = () => {
     mutationFn: async ({ uploadedData, endPoint }) => {
       // Accept an object parameter
       try {
-        console.log("createeee", uploadedData);
+        console.log("Xhoi", uploadedData);
         const formData = new FormData();
         Object.entries(uploadedData).forEach(([key, value]) => {
           formData.append(key, value);
