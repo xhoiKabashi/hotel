@@ -1,27 +1,24 @@
-const uploadHomeHeader = require("express").Router();
-const { Header, Content } = require("../models/hotelHomeHeaderSchema");
+const homePage = require("express").Router();
+const { Content } = require("../models/contentSchema");
 const upload = require("../utils/multer");
+const { Header } = require("../models/headerSchema");
 
-uploadHomeHeader.post(
-  "/editHomeHeader",
+homePage.post(
+  "/home-header",
   upload.single("file"),
   async (request, response) => {
     try {
+      console.log("Request Body:", request.body);
+      console.log("Request File:", request.file);
       // If a header exists, update the specific fields
+      const fieldsToUpdate = ["h1Text", "h2Text", "h3Text"];
       const updateFields = {};
 
-      if (request.body.levelOneTitle) {
-        updateFields.levelOneTitle = request.body.levelOneTitle;
-      }
-
-      if (request.body.levelTwoTitle) {
-        updateFields.levelTwoTitle = request.body.levelTwoTitle;
-      }
-
-      if (request.body.levelThreeTitle) {
-        updateFields.levelThreeTitle = request.body.levelThreeTitle;
-      }
-
+      fieldsToUpdate.forEach((field) => {
+        if (request.body[field]) {
+          updateFields[field] = request.body[field];
+        }
+      });
       if (request.file) {
         updateFields.headerImage = request.file.filename;
       }
@@ -29,9 +26,8 @@ uploadHomeHeader.post(
       const updatedHeader = await Header.findOneAndUpdate(
         {},
         updateFields,
-        { new: true } // Returns the updated document
+        { new: true, upsert: true } // Returns the updated document
       );
-
       response.status(200).json(updatedHeader);
     } catch (error) {
       console.error(error);
@@ -41,11 +37,12 @@ uploadHomeHeader.post(
 );
 // Post Content
 let lastUpdatedContentId = null;
-uploadHomeHeader.post(
-  "/homeContent",
+homePage.post(
+  "/home-content",
   upload.single("file"),
   async (request, response) => {
     try {
+      const fieldsToUpdate = ["title", "description", "position"];
       // Find all existing content
       const existingContent = await Content.find({});
 
@@ -65,18 +62,11 @@ uploadHomeHeader.post(
         // Update the chosen document
         const updateFields = {};
 
-        if (request.body.title) {
-          updateFields.title = request.body.title;
-        }
-
-        if (request.body.description) {
-          updateFields.description = request.body.description;
-        }
-
-        if (request.body.position) {
-          updateFields.position = request.body.position;
-        }
-
+        fieldsToUpdate.forEach((field) => {
+          if (request.body[field]) {
+            updateFields[field] = request.body[field];
+          }
+        });
         if (request.file) {
           updateFields.headerImage = request.file.filename;
         }
@@ -84,7 +74,7 @@ uploadHomeHeader.post(
         const updatedContent = await Content.findByIdAndUpdate(
           existingContent[indexToUpdate]._id,
           updateFields,
-          { new: true } // Returns the updated document
+          { new: true, upsert: true } // Returns the updated document
         );
 
         // Update the last updated content ID
@@ -115,14 +105,14 @@ uploadHomeHeader.post(
 );
 
 //  Get Header
-uploadHomeHeader.get("/editHomeHeader", (request, response) => {
+homePage.get("/editHomeHeader", (request, response) => {
   Header.find({}).then((header) => {
     response.json(header);
   });
 });
 
 // Get Content
-uploadHomeHeader.get("/homeContent", (request, response) => {
+homePage.get("/homeContent", (request, response) => {
   try {
     Content.find({}).then((content) => {
       response.json(content);
@@ -132,4 +122,4 @@ uploadHomeHeader.get("/homeContent", (request, response) => {
   }
 });
 
-module.exports = uploadHomeHeader;
+module.exports = homePage;

@@ -8,11 +8,9 @@ import { Form, FormContainer } from "../form/FormContainer";
 import DisplayImage from "../form/DisplayImage";
 import { useCreate } from "../../api/edit/useCreate";
 
-const GenInfo = () => {
+const HomePage = () => {
   const [header, setHeader] = useState(null);
   const [logo, setLogo] = useState(null);
-
-  console.log("Logo header", header, logo);
 
   const { register, handleSubmit, reset } = useForm();
   const { mutate: update } = useCreate();
@@ -39,38 +37,55 @@ const GenInfo = () => {
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       <FormContainer>
-        <Text text="Personal Information" />
+        <Text text="Home Page Header" />
         <hr />
 
         <div className=" flex flex-col gap-3 w-full">
-          <TextInput type="text" text="Hotel Name" {...register("hotelName")} />
-
           <TextInput
             type="text"
-            id="googleMapLink"
-            text="Hotel Google Map Link"
-            {...register("googleMapLink")}
+            text=" Header Title"
+            id="h1Text"
+            {...register("h1Text")}
           />
 
           <TextInput
             type="text"
-            text="Address"
-            id="address"
-            {...register("address")}
+            text="Header level 2 Title"
+            id="h2Text"
+            {...register("h2Text")}
+          />
+          <TextInput
+            type="text"
+            text="Short Paragraph/Qoute"
+            id="h3Text"
+            {...register("h3Text")}
+          />
+        </div>
+        <Button text="Submit" type="submit" />
+      </FormContainer>
+      <FormContainer>
+        <Text text="Home Page Header" />
+        <hr />
+
+        <div className=" flex flex-col gap-3 w-full">
+          <TextInput
+            type="text"
+            text=" Header Title"
+            id="h1Text"
+            {...register("h1Text")}
           />
 
           <TextInput
             type="text"
-            id="phoneNumber"
-            text="Phone Number"
-            {...register("phoneNumber")}
+            text="Header level 2 Title"
+            id="h2Text"
+            {...register("h2Text")}
           />
-
           <TextInput
             type="text"
-            text="A qoute for the Contact Page"
-            id="quote"
-            {...register("quote")}
+            text="Short Paragraph/Qoute"
+            id="h3Text"
+            {...register("h3Text")}
           />
         </div>
         <Button text="Submit" type="submit" />
@@ -96,9 +111,9 @@ const GenInfo = () => {
         />
       </div>
 
-      <DisplayImage logo={logo} header={header} />
+      {/* <DisplayImage logo={logo} header={header} /> */}
     </Form>
   );
 };
 
-export default GenInfo;
+export default HomePage;

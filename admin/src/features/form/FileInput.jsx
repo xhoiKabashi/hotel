@@ -5,7 +5,7 @@ import React from "react";
 import { ButtonV2 } from "../../ui/Button";
 
 const FileInput = React.forwardRef(
-  ({ onUpload, onRemove, text, id, ...props }, ref) => {
+  ({ onUpload, onRemove, text, id, disabled, ...props }, ref) => {
     console.log("dfsf", props);
     return (
       <div>
@@ -39,7 +39,12 @@ const FileInput = React.forwardRef(
               </div>
             </label>
             <div className="flex justify-around">
-              <ButtonV2 text="Upload" onClick={onUpload} color="green" />
+              <ButtonV2
+                text="Upload"
+                onClick={onUpload}
+                color="green"
+                disabled={disabled}
+              />
               <ButtonV2 text="Delete" onClick={onRemove} color="red" />
             </div>
           </div>

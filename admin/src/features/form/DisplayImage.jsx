@@ -2,13 +2,13 @@
 import { IoImageOutline } from "react-icons/io5";
 import ImagePreview from "../../ui/ImagePreview";
 
-const DisplayImage = ({ image }) => {
+const DisplayImage = ({ logo, header }) => {
   return (
     <div className="flex flex-col items-center justify-around rounded-lg  bg-white  w-40">
-      <ImagePreview src={image?.logoImage}>
+      <ImagePreview src={logo}>
         <IoImageOutline className="h-20 w-20  text-slate-400" />
       </ImagePreview>
-      <ImagePreview src={image?.headerImage}>
+      <ImagePreview src={header}>
         <IoImageOutline className="h-16 w-16  text-slate-400" />
       </ImagePreview>
       <ImagePreview>

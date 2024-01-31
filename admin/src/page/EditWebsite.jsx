@@ -1,21 +1,21 @@
-import { useState } from "react";
+// import { useState } from "react";
 import EditHomeContent from "../features/edit/editHome/EditHomeContent";
 import NavigationList from "../features/navigation/NavigationList";
 import { v4 as uuidv4 } from "uuid";
 import { Outlet } from "react-router-dom";
 
 function EditWebsite() {
-  const [filterText, setFilterText] = useState("");
+  // const [filterText, setFilterText] = useState("");
 
   // Define the components and their titles
   const components = [
     {
-      title: "Logo & Name",
+      title: "General Info",
 
       to: "logo-name",
     },
 
-    { title: "Home Header", to: "home-header" },
+    { title: "Home Page", to: "home-page" },
     {
       title: "Home Content",
       component: <EditHomeContent />,
@@ -42,18 +42,18 @@ function EditWebsite() {
       to: "about-content",
     },
     {
-      title: "Contact/Social Media",
+      title: "Social Media",
       to: "contact-social",
     },
   ];
-  const filteredComponents = components.filter((item) =>
-    item.title.toLowerCase().includes(filterText.toLowerCase())
-  );
+  // const filteredComponents = components.filter((item) =>
+  //   item.title.toLowerCase().includes(filterText.toLowerCase())
+  // );
 
   return (
     <div className=" flex  gap-2">
-      <div className=" basis-[20%] bg-white">
-        <ul className=" flex flex-col justify-start items-center py-10 gap-4">
+      <div className=" basis-[15%] bg-white">
+        <ul className=" flex flex-col justify-start items-center py-5 gap-4 text-sm  font-semibold">
           {components.map((data) => (
             <NavigationList to={data.to} key={uuidv4()}>
               {data.title}

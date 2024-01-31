@@ -1,11 +1,10 @@
 const express = require("express");
-const navbar = require("./controllers/navbar");
-const logoUpload = require("./controllers/logo");
-const uploadHomeHeader = require("./controllers/hotelHomeHeader");
+const generalInfoUpload = require("./controllers/genInfo");
+const homePage = require("./controllers/homePage");
 const uploadRestaurantPage = require("./controllers/restaurantPage");
 const uploadRestaurantContent = require("./controllers/restaurantContent");
 const updateAboutUs = require("./controllers/hotelAboutUs");
-const uploloadContactUs = require("./controllers/contactUs");
+// const uploloadContactUs = require("./controllers/contactUs");
 const updateSocial = require("./controllers/socials");
 const updateRoom = require("./controllers/rooms");
 
@@ -25,13 +24,12 @@ mongoose
 app.use(express.static("public"));
 app.use(cors());
 app.use(express.json());
-app.use("/api", navbar);
-app.use("/", logoUpload);
-app.use("/", uploadHomeHeader);
+app.use("/", generalInfoUpload);
+app.use("/", homePage);
 app.use("/", uploadRestaurantPage);
 app.use("/", uploadRestaurantContent);
 app.use("/", updateAboutUs);
-app.use("/", uploloadContactUs);
+// app.use("/", uploloadContactUs);
 app.use("/", updateSocial);
 app.use("/", updateRoom);
 
