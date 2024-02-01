@@ -1,19 +1,15 @@
-const updateAboutUs = require("express").Router();
-const { Header, Content } = require("../models/hotelAboutUsSchema");
+const aboutPage = require("express").Router();
+const { Content } = require("../models/contentSchema");
 const upload = require("../utils/multer");
+const { Header } = require("../models/headerSchema");
 
-// post Header
-
-updateAboutUs.post(
+aboutPage.post(
   "/about-us-header",
   upload.single("file"),
   async (request, response) => {
     try {
-      const fieldsToUpdate = [
-        "levelOneTitle",
-        "levelTwoTitle",
-        "levelThreeTitle",
-      ];
+      const fieldsToUpdate = ["h1Text", "h2Text", "h3Text"];
+
       const updateFields = {};
 
       fieldsToUpdate.forEach((field) => {
@@ -45,7 +41,7 @@ updateAboutUs.post(
 // post Content
 
 let lastUpdatedContentId = null;
-updateAboutUs.post(
+aboutPage.post(
   "/about-us-content",
   upload.single("file"),
   async (request, response) => {
@@ -100,7 +96,6 @@ updateAboutUs.post(
 
         const savedContent = await newContent.save();
 
-       
         lastUpdatedContentId = savedContent._id.toString();
 
         response.status(200).json(savedContent);
@@ -114,7 +109,7 @@ updateAboutUs.post(
 
 // get Header
 
-updateAboutUs.get("/about-us-header", (request, response) => {
+aboutPage.get("/about-us-header", (request, response) => {
   try {
     Header.find({}).then((data) => {
       response.status(200).json(data);
@@ -125,7 +120,7 @@ updateAboutUs.get("/about-us-header", (request, response) => {
   }
 });
 
-updateAboutUs.get("/about-us-content", (request, response) => {
+aboutPage.get("/about-us-content", (request, response) => {
   try {
     Content.find({}).then((data) => {
       response.status(200).json(data);
@@ -136,4 +131,4 @@ updateAboutUs.get("/about-us-content", (request, response) => {
   }
 });
 
-module.exports = updateAboutUs;
+module.exports = aboutPage;

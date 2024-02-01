@@ -1,15 +1,15 @@
 import Layout from "../ui/Layout";
 import LunchUploadForm from "../page/Contact";
 import EditWebsite from "../page/EditWebsite";
-import EditHomeContent from "../features/edit/editHome/EditHomeContent";
-import EditRestaurantHeader from "../features/edit/editRestaurantPage/EditRestaurantHeader";
 import EditBreakfast from "../features/edit/editRestaurantPage/editBreakfast";
 import EditAboutUsHeader from "../features/edit/editAboutUs/EditAboutUsHeader";
 import EditAboutUsContent from "../features/edit/editAboutUs/EditAboutUsContent";
 import EditContactPage from "../features/edit/contact/EditContact";
 //
 import GenInfo from "../features/edit/GenInfo";
-import HomePage from "../features/edit/HomePage";
+import HomeHeader from "../features/edit/HomeHeader";
+import HomeContent from "../features/edit/HomeContent";
+import RestaurantHeader from "../features/edit/RestaurantHeader";
 
 const Routes = () => {
   return [
@@ -31,15 +31,15 @@ const Routes = () => {
             },
             {
               path: "home-page",
-              element: <HomePage />,
+              element: <HomeHeader />,
             },
             {
               path: "home-content",
-              element: <EditHomeContent />,
+              element: <HomeContent />,
             },
             {
               path: "restaurant-header",
-              element: <EditRestaurantHeader />,
+              element: <RestaurantHeader />,
             },
             {
               path: "restaurant-menu",

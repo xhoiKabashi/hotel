@@ -1,17 +1,16 @@
-const uploadRestaurantPage = require("express").Router();
-const RestaurantPageSchema = require("../models/restaurantPageSchema");
+const restaurantHeader = require("express").Router();
 const upload = require("../utils/multer");
+const { Header } = require("../models/headerSchema");
 
-uploadRestaurantPage.post(
-  "/editRestaurantPage",
+restaurantHeader.post(
+  "/restaurant-header",
   upload.single("file"),
   async (request, response) => {
     try {
-      const fieldsToUpdate = [
-        "levelOneTitle",
-        "levelTwoTitle",
-        "levelThreeTitle",
-      ];
+      console.log("Request Body:", request.body);
+      console.log("Request File:", request.file);
+      // If a header exists, update the specific fields
+      const fieldsToUpdate = ["h1Text", "h2Text", "h3Text"];
       const updateFields = {};
 
       fieldsToUpdate.forEach((field) => {
@@ -19,21 +18,16 @@ uploadRestaurantPage.post(
           updateFields[field] = request.body[field];
         }
       });
-
       if (request.file) {
-        updateFields.restaurantPageHeaderImg = request.file.filename;
+        updateFields.headerImage = request.file.filename;
       }
 
-      const updateRestaurantPage = await RestaurantPageSchema.findOneAndUpdate(
+      const updatedHeader = await Header.findOneAndUpdate(
         {},
         updateFields,
-        { new: true, upsert: true }
-      ).catch((error) => {
-        console.error("MongoDB Update Error:", error);
-        response.status(500).json({ error: "Internal Server Error" });
-      });
-
-      response.status(200).json(updateRestaurantPage);
+        { new: true, upsert: true } // Returns the updated document
+      );
+      response.status(200).json(updatedHeader);
     } catch (error) {
       console.error(error);
       response.status(500).json({ error: "Internal Server Error" });
@@ -41,9 +35,9 @@ uploadRestaurantPage.post(
   }
 );
 
-uploadRestaurantPage.get("/editRestaurantPage", (request, response) => {
+restaurantHeader.get("/restaurant-header", (request, response) => {
   try {
-    RestaurantPageSchema.find({}).then((data) => {
+    Header.find({}).then((data) => {
       response.json(data);
     });
   } catch (error) {
@@ -51,4 +45,4 @@ uploadRestaurantPage.get("/editRestaurantPage", (request, response) => {
   }
 });
 
-module.exports = uploadRestaurantPage;
+module.exports = restaurantHeader;

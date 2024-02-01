@@ -15,7 +15,7 @@ function EditWebsite() {
       to: "logo-name",
     },
 
-    { title: "Home Page", to: "home-page" },
+    { title: "Home Header", to: "home-page" },
     {
       title: "Home Content",
       component: <EditHomeContent />,
@@ -53,7 +53,7 @@ function EditWebsite() {
   return (
     <div className=" flex  gap-2">
       <div className=" basis-[15%] bg-white">
-        <ul className=" flex flex-col justify-start items-center py-5 gap-4 text-sm  font-semibold">
+        <ul className=" flex flex-col justify-center items-center py-5 gap-4 text-sm  font-semibold">
           {components.map((data) => (
             <NavigationList to={data.to} key={uuidv4()}>
               {data.title}
