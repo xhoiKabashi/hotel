@@ -2,14 +2,16 @@ import Layout from "../ui/Layout";
 import LunchUploadForm from "../page/Contact";
 import EditWebsite from "../page/EditWebsite";
 import EditBreakfast from "../features/edit/editRestaurantPage/editBreakfast";
-import EditAboutUsHeader from "../features/edit/editAboutUs/EditAboutUsHeader";
-import EditAboutUsContent from "../features/edit/editAboutUs/EditAboutUsContent";
-import EditContactPage from "../features/edit/contact/EditContact";
+
 //
 import GenInfo from "../features/edit/GenInfo";
 import HomeHeader from "../features/edit/HomeHeader";
 import HomeContent from "../features/edit/HomeContent";
 import RestaurantHeader from "../features/edit/RestaurantHeader";
+import AboutHeader from "../features/edit/AboutHeader";
+import AboutContent from "../features/edit/AboutContent";
+import Socials from "../features/edit/Socials";
+import { Navigate } from "react-router-dom";
 
 const Routes = () => {
   return [
@@ -41,25 +43,18 @@ const Routes = () => {
               path: "restaurant-header",
               element: <RestaurantHeader />,
             },
-            {
-              path: "restaurant-menu",
-              element: <EditBreakfast />,
-            },
-            {
-              path: "about",
-              elements: <EditAboutUsHeader />,
-            },
+
             {
               path: "about-us-header",
-              element: <EditAboutUsHeader />,
+              element: <AboutHeader />,
             },
             {
               path: "about-content",
-              element: <EditAboutUsContent />,
+              element: <AboutContent />,
             },
             {
               path: "contact-social",
-              element: <EditContactPage />,
+              element: <Socials />,
             },
           ],
         },

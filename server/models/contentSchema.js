@@ -9,8 +9,10 @@ const contentSchema = new mongoose.Schema({
   headerImage: String,
 });
 
-const Content = mongoose.model("ContentSchema", contentSchema);
+const homeContent = mongoose.model("homeContent", contentSchema);
+const aboutContent = mongoose.model("aboutContent", contentSchema);
 
 module.exports = {
-  Content,
+  homeContent,
+  aboutContent,
 };

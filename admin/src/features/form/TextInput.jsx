@@ -8,7 +8,7 @@ export const Label = ({ text }) => {
 export const MenuImageSwitch = React.forwardRef(
   ({ type, name, text, ...rest }, ref) => {
     return (
-      <div className="flex flex-col justify-center items-center">
+      <div className="flex flex-col ">
         <Label text={text} />
         <select
           type={type}
@@ -17,7 +17,7 @@ export const MenuImageSwitch = React.forwardRef(
           {...rest}
           className="p-1 border rounded-md  w-full  border-gray-300 bg-gray-200 focus:outline-none focus:border-cyan-500 placeholder-gray-400::placeholder"
         >
-          <option className=" gray-500" value={3}>
+          <option className=" gray-500 " value={3}>
             Left
           </option>
           <option className=" text-gray-500" value={1}>

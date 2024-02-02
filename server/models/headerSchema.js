@@ -9,8 +9,15 @@ const hotelSchema = new mongoose.Schema({
   headerImage: String,
 });
 
-const Header = mongoose.model("HeaderSchema", hotelSchema);
+const homeHeader = mongoose.model("HomeHeaderSchema", hotelSchema);
+const aboutHeader = mongoose.model("AboutHeaderSchema", hotelSchema);
+const restaurantHeaderSc = mongoose.model(
+  "RestaurantHeaderSchema",
+  hotelSchema
+);
 
 module.exports = {
-  Header,
+  homeHeader,
+  aboutHeader,
+  restaurantHeaderSc,
 };

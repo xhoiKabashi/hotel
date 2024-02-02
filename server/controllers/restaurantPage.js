@@ -1,6 +1,6 @@
 const restaurantHeader = require("express").Router();
 const upload = require("../utils/multer");
-const { Header } = require("../models/headerSchema");
+const { restaurantHeaderSc } = require("../models/headerSchema");
 
 restaurantHeader.post(
   "/restaurant-header",
@@ -22,7 +22,7 @@ restaurantHeader.post(
         updateFields.headerImage = request.file.filename;
       }
 
-      const updatedHeader = await Header.findOneAndUpdate(
+      const updatedHeader = await restaurantHeaderSc.findOneAndUpdate(
         {},
         updateFields,
         { new: true, upsert: true } // Returns the updated document
@@ -37,7 +37,7 @@ restaurantHeader.post(
 
 restaurantHeader.get("/restaurant-header", (request, response) => {
   try {
-    Header.find({}).then((data) => {
+    restaurantHeaderSc.find({}).then((data) => {
       response.json(data);
     });
   } catch (error) {

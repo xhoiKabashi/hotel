@@ -1,5 +1,5 @@
 import { useState } from "react";
-import TextInput, { TextArea } from "../form/TextInput";
+import TextInput, { MenuImageSwitch, TextArea } from "../form/TextInput";
 import Button from "../../ui/Button";
 import Text from "../../ui/Text";
 import FileInput from "../form/FileInput";
@@ -8,7 +8,7 @@ import { Form, FormContainer } from "../form/FormContainer";
 import DisplayImage from "../form/DisplayImage";
 import { useCreate } from "../../api/edit/useCreate";
 
-const HomeHeader = () => {
+const AboutContent = () => {
   // const [header, setHeader] = useState(null);
   const [logo, setLogo] = useState(null);
 
@@ -21,7 +21,7 @@ const HomeHeader = () => {
         ...data,
         file: data.file[0],
       },
-      endPoint: "home-header",
+      endPoint: "about-us-content",
     };
     await update(uploadedFields);
     reset();
@@ -36,28 +36,27 @@ const HomeHeader = () => {
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       <FormContainer>
-        <Text text="Home Page Header" />
+        <Text text="Home Page Content" />
         <hr />
 
         <div className=" grid  grid-cols-2 gap-2  justify-between">
           <TextInput
             type="text"
-            text=" Header Title"
+            text="Content Title"
             id="h1Text"
-            {...register("h1Text")}
+            {...register("title")}
           />
 
-          <TextInput
-            type="text"
-            text="Header level 2 Title"
-            id="h2Text"
-            {...register("h2Text")}
+          <MenuImageSwitch
+            text="Display Image left or right"
+            id="position"
+            {...register("position")}
           />
 
           <div className=" col-start-1 col-end-5">
             <TextArea
               type="text"
-              text="Short Paragraph/Qoute"
+              text=" Content Description"
               id="h3Text"
               {...register("h3Text")}
             />
@@ -80,4 +79,4 @@ const HomeHeader = () => {
   );
 };
 
-export default HomeHeader;
+export default AboutContent;

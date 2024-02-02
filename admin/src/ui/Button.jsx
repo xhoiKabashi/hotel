@@ -12,7 +12,6 @@ const Button = ({ text, submit }) => {
   );
 };
 export const ButtonV2 = ({ onClick, text, color, disabled }) => {
-  console.log(" disabled", disabled);
   const buttonColor =
     color === "green" ? "text-sky-600 bg-sky-200" : "text-red-600 bg-red-200";
 

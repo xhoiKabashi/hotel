@@ -39,7 +39,7 @@ const RestaurantHeader = () => {
         <Text text="Restaurant Header" />
         <hr />
 
-        <div className=" grid  grid-cols-4 gap-2  justify-between">
+        <div className=" grid  grid-cols-2 gap-2  justify-between">
           <TextInput
             type="text"
             text=" Header Title"
@@ -47,14 +47,12 @@ const RestaurantHeader = () => {
             {...register("h1Text")}
           />
 
-          <div className=" col-start-3">
-            <TextInput
-              type="text"
-              text="Header level 2 Title"
-              id="h2Text"
-              {...register("h2Text")}
-            />
-          </div>
+          <TextInput
+            type="text"
+            text="Header level 2 Title"
+            id="h2Text"
+            {...register("h2Text")}
+          />
 
           <div className=" col-start-1 col-end-5">
             <TextArea

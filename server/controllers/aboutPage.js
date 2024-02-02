@@ -1,7 +1,7 @@
 const aboutPage = require("express").Router();
-const { Content } = require("../models/contentSchema");
+const { aboutContent } = require("../models/contentSchema");
 const upload = require("../utils/multer");
-const { Header } = require("../models/headerSchema");
+const { aboutHeader } = require("../models/headerSchema");
 
 aboutPage.post(
   "/about-us-header",
@@ -22,13 +22,15 @@ aboutPage.post(
         updateFields.headerImage = request.file.filename;
       }
 
-      const updatedHeader = await Header.findOneAndUpdate({}, updateFields, {
-        new: true,
-        upsert: true,
-      }).catch((error) => {
-        console.error("Update Error:", error);
-        response.status(500).json({ error: "Internal Server Error" });
-      });
+      const updatedHeader = await aboutHeader
+        .findOneAndUpdate({}, updateFields, {
+          new: true,
+          upsert: true,
+        })
+        .catch((error) => {
+          console.error("Update Error:", error);
+          response.status(500).json({ error: "Internal Server Error" });
+        });
 
       response.status(200).json(updatedHeader);
     } catch (error) {
@@ -47,7 +49,7 @@ aboutPage.post(
   async (request, response) => {
     try {
       // Find all existing content
-      const existingContent = await Content.find({});
+      const existingContent = await aboutContent.find({});
 
       if (existingContent.length >= 4) {
         // If there are already 4 documents, find the next one to update
@@ -75,7 +77,7 @@ aboutPage.post(
           updateFields.headerImage = request.file.filename;
         }
 
-        const updatedContent = await Content.findByIdAndUpdate(
+        const updatedContent = await aboutContent.findByIdAndUpdate(
           existingContent[indexToUpdate]._id,
           updateFields,
           { new: true } // Returns the updated document
@@ -87,7 +89,7 @@ aboutPage.post(
         response.status(200).json(updatedContent);
       } else {
         // If fewer than 4 documents exist, create a new one
-        const newContent = new Content({
+        const newContent = new aboutContent({
           title: request.body.title,
           description: request.body.description,
           position: request.body.position,
@@ -111,7 +113,7 @@ aboutPage.post(
 
 aboutPage.get("/about-us-header", (request, response) => {
   try {
-    Header.find({}).then((data) => {
+    aboutHeader.find({}).then((data) => {
       response.status(200).json(data);
     });
   } catch (error) {
@@ -122,7 +124,7 @@ aboutPage.get("/about-us-header", (request, response) => {
 
 aboutPage.get("/about-us-content", (request, response) => {
   try {
-    Content.find({}).then((data) => {
+    aboutContent.find({}).then((data) => {
       response.status(200).json(data);
     });
   } catch (error) {

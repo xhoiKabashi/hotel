@@ -1,7 +1,7 @@
 const homePage = require("express").Router();
-const { Content } = require("../models/contentSchema");
+const { homeContent } = require("../models/contentSchema");
 const upload = require("../utils/multer");
-const { Header } = require("../models/headerSchema");
+const { homeHeader } = require("../models/headerSchema");
 
 homePage.post(
   "/home-header",
@@ -23,7 +23,7 @@ homePage.post(
         updateFields.headerImage = request.file.filename;
       }
 
-      const updatedHeader = await Header.findOneAndUpdate(
+      const updatedHeader = await homeHeader.findOneAndUpdate(
         {},
         updateFields,
         { new: true, upsert: true } // Returns the updated document
@@ -44,7 +44,7 @@ homePage.post(
     try {
       const fieldsToUpdate = ["title", "description", "position"];
       // Find all existing content
-      const existingContent = await Content.find({});
+      const existingContent = await homeContent.find({});
 
       if (existingContent.length >= 3) {
         // If there are already 3 documents, find the next one to update
@@ -71,7 +71,7 @@ homePage.post(
           updateFields.headerImage = request.file.filename;
         }
 
-        const updatedContent = await Content.findByIdAndUpdate(
+        const updatedContent = await homeContent.findByIdAndUpdate(
           existingContent[indexToUpdate]._id,
           updateFields,
           { new: true, upsert: true } // Returns the updated document
@@ -83,7 +83,7 @@ homePage.post(
         response.status(200).json(updatedContent);
       } else {
         // If fewer than 3 documents exist, create a new one
-        const newContent = new Content({
+        const newContent = new homeContent({
           title: request.body.title,
           description: request.body.description,
           position: request.body.position,
@@ -106,7 +106,7 @@ homePage.post(
 
 //  Get Header
 homePage.get("/editHomeHeader", (request, response) => {
-  Header.find({}).then((header) => {
+  homeHeader.find({}).then((header) => {
     response.json(header);
   });
 });
@@ -114,7 +114,7 @@ homePage.get("/editHomeHeader", (request, response) => {
 // Get Content
 homePage.get("/homeContent", (request, response) => {
   try {
-    Content.find({}).then((content) => {
+    homeContent.find({}).then((content) => {
       response.json(content);
     });
   } catch (error) {

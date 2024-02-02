@@ -1,5 +1,5 @@
 // import { useState } from "react";
-import EditHomeContent from "../features/edit/editHome/EditHomeContent";
+
 import NavigationList from "../features/navigation/NavigationList";
 import { v4 as uuidv4 } from "uuid";
 import { Outlet } from "react-router-dom";
@@ -18,7 +18,7 @@ function EditWebsite() {
     { title: "Home Header", to: "home-page" },
     {
       title: "Home Content",
-      component: <EditHomeContent />,
+
       to: "home-content",
     },
 

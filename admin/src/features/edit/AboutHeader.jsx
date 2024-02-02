@@ -8,7 +8,7 @@ import { Form, FormContainer } from "../form/FormContainer";
 import DisplayImage from "../form/DisplayImage";
 import { useCreate } from "../../api/edit/useCreate";
 
-const HomeHeader = () => {
+const AboutHeader = () => {
   // const [header, setHeader] = useState(null);
   const [logo, setLogo] = useState(null);
 
@@ -21,7 +21,7 @@ const HomeHeader = () => {
         ...data,
         file: data.file[0],
       },
-      endPoint: "home-header",
+      endPoint: "about-us-header",
     };
     await update(uploadedFields);
     reset();
@@ -36,7 +36,7 @@ const HomeHeader = () => {
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       <FormContainer>
-        <Text text="Home Page Header" />
+        <Text text="Personal Information" />
         <hr />
 
         <div className=" grid  grid-cols-2 gap-2  justify-between">
@@ -80,4 +80,4 @@ const HomeHeader = () => {
   );
 };
 
-export default HomeHeader;
+export default AboutHeader;

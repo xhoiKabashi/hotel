@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 const ImagePreview = ({ src, children }) => {
-  console.log("url", src);
   return (
     <div>
       {src != null || src != undefined ? (

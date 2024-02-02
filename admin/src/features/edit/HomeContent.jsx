@@ -39,7 +39,7 @@ const HomeContent = () => {
         <Text text="Home Page Content" />
         <hr />
 
-        <div className=" grid  grid-cols-4 gap-2  justify-between">
+        <div className=" grid  grid-cols-2 gap-2  justify-between">
           <TextInput
             type="text"
             text="Content Title"
@@ -47,13 +47,11 @@ const HomeContent = () => {
             {...register("title")}
           />
 
-          <div className=" col-start-3">
-            <MenuImageSwitch
-              text="Display Image left or right"
-              id="position"
-              {...register("position")}
-            />
-          </div>
+          <MenuImageSwitch
+            text="Display Image left or right"
+            id="position"
+            {...register("position")}
+          />
 
           <div className=" col-start-1 col-end-5">
             <TextArea
