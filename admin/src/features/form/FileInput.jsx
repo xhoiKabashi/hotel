@@ -5,7 +5,10 @@ import { ButtonV2 } from "../../ui/Button";
 import { Label } from "./TextInput";
 
 const FileInput = React.forwardRef(
-  ({ onUpload, onRemove, text, id, disabled, ...props }, ref) => {
+  (
+    { onUpload, onRemove, text, id, disabled, multiple, src, ...props },
+    ref
+  ) => {
     const handleDragOver = (e) => {
       e.preventDefault();
     };
@@ -17,7 +20,7 @@ const FileInput = React.forwardRef(
         ref={ref}
         {...props}
       >
-        <Label text={text} />
+        <Label text={text} src={src} />
 
         <label
           htmlFor={id}
@@ -27,6 +30,7 @@ const FileInput = React.forwardRef(
             type="file"
             accept="image/*"
             id={id}
+            multiple={multiple}
             ref={ref}
             {...props}
             className="hidden"

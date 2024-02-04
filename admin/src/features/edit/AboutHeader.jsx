@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { Form, FormContainer } from "../form/FormContainer";
 import DisplayImage from "../form/DisplayImage";
 import { useCreate } from "../../api/edit/useCreate";
+import { homeHeader } from "../../data/edit/infoImg";
 
 const AboutHeader = () => {
   // const [header, setHeader] = useState(null);
@@ -45,6 +46,7 @@ const AboutHeader = () => {
             text=" Header Title"
             id="h1Text"
             {...register("h1Text")}
+            src={homeHeader?.h1Title}
           />
 
           <TextInput
@@ -52,6 +54,7 @@ const AboutHeader = () => {
             text="Header level 2 Title"
             id="h2Text"
             {...register("h2Text")}
+            src={homeHeader?.h2Title}
           />
 
           <div className=" col-start-1 col-end-5">
@@ -60,6 +63,7 @@ const AboutHeader = () => {
               text="Short Paragraph/Qoute"
               id="h3Text"
               {...register("h3Text")}
+              src={homeHeader?.pTitle}
             />
           </div>
 
@@ -70,6 +74,7 @@ const AboutHeader = () => {
             text="Upload Logo"
             id="logo"
             disabled={logo}
+            src={homeHeader?.homeHeader}
           />
 
           <DisplayImage src={logo} />

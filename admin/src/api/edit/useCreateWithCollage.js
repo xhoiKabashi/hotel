@@ -6,6 +6,7 @@ export const useCreateWithCollage = () => {
   return useMutation({
     mutationFn: async ({ uploadedData, endPoint }) => {
       try {
+        console.log("Photoooooo", uploadedData);
         const formDataToSend = new FormData();
 
         for (const [key, value] of Object.entries(uploadedData)) {

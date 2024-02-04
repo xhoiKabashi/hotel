@@ -28,8 +28,8 @@ function EditWebsite() {
       to: "restaurant-header",
     },
     {
-      title: "Restaurant Menu",
-      to: "restaurant-menu",
+      title: "Restaurant Content",
+      to: "restaurant-content",
     },
     {
       title: "About Us Header",

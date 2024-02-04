@@ -1,12 +1,13 @@
 import { useState } from "react";
-import TextInput, { TextArea } from "../form/TextInput";
-import Button from "../../ui/Button";
-import Text from "../../ui/Text";
-import FileInput from "../form/FileInput";
+import TextInput, { TextArea } from "../../form/TextInput";
+import Button from "../../../ui/Button";
+import Text from "../../../ui/Text";
+import FileInput from "../../form/FileInput";
 import { useForm } from "react-hook-form";
-import { Form, FormContainer } from "../form/FormContainer";
-import DisplayImage from "../form/DisplayImage";
-import { useCreate } from "../../api/edit/useCreate";
+import { Form, FormContainer } from "../../form/FormContainer";
+import DisplayImage from "../../form/DisplayImage";
+import { useCreate } from "../../../api/edit/useCreate";
+import { homeHeader } from "../../../data/edit/infoImg";
 
 const RestaurantHeader = () => {
   // const [header, setHeader] = useState(null);
@@ -45,6 +46,7 @@ const RestaurantHeader = () => {
             text=" Header Title"
             id="h1Text"
             {...register("h1Text")}
+            src={homeHeader?.h1Title}
           />
 
           <TextInput
@@ -52,6 +54,7 @@ const RestaurantHeader = () => {
             text="Header level 2 Title"
             id="h2Text"
             {...register("h2Text")}
+            src={homeHeader?.h2Title}
           />
 
           <div className=" col-start-1 col-end-5">
@@ -60,6 +63,7 @@ const RestaurantHeader = () => {
               text="Short Paragraph/Qoute"
               id="h3Text"
               {...register("h3Text")}
+              src={homeHeader?.pTitle}
             />
           </div>
 
@@ -70,6 +74,7 @@ const RestaurantHeader = () => {
             text="Upload Logo"
             id="logo"
             disabled={logo}
+            src={homeHeader?.homeHeader}
           />
 
           <DisplayImage src={logo} />

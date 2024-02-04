@@ -1,6 +1,6 @@
 const express = require("express");
 const generalInfoUpload = require("./controllers/genInfo");
-const restaurantHeader = require("./controllers/restaurantPage");
+const restaurantHeader = require("./controllers/restaurantHeader");
 const uploadRestaurantContent = require("./controllers/restaurantContent");
 const aboutPage = require("./controllers/aboutPage");
 const homePage = require("./controllers/homePage");
@@ -29,7 +29,6 @@ app.use("/", homePage);
 app.use("/", restaurantHeader);
 app.use("/", uploadRestaurantContent);
 app.use("/", aboutPage);
-// app.use("/", uploloadContactUs);
 app.use("/", updateSocial);
 app.use("/", updateRoom);
 

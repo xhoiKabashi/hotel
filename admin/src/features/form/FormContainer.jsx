@@ -12,7 +12,7 @@ export const Form = ({ children, onSubmit }) => {
 export const FormContainer = React.forwardRef(({ children }, ref) => {
   return (
     <div
-      className="flex flex-col basis-[100%] bg-white h-full py-6 px-6 gap-3 rounded-md shadow-sm"
+      className="flex flex-col basis-[100%] bg-white h-full py-2 px-4 gap-3 rounded-md shadow-sm"
       ref={ref}
     >
       {children}

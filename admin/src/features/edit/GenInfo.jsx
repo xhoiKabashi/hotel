@@ -7,12 +7,13 @@ import { useForm } from "react-hook-form";
 import { Form, FormContainer } from "../form/FormContainer";
 import DisplayImage from "../form/DisplayImage";
 import { useCreate } from "../../api/edit/useCreate";
+import { image } from "../../data/edit/infoImg";
 
 const GenInfo = () => {
   const [header, setHeader] = useState(null);
   const [logo, setLogo] = useState(null);
 
-  console.log("Logo header", header, logo);
+  console.log("Logo header", image.logo);
 
   const { register, handleSubmit, reset } = useForm();
   const { mutate: update } = useCreate();
@@ -28,7 +29,6 @@ const GenInfo = () => {
     };
     await update(uploadedFields);
     reset();
-    console.log(data);
   };
 
   const getImage = (data) => {
@@ -43,13 +43,19 @@ const GenInfo = () => {
         <hr />
 
         <div className=" grid  grid-cols-4 gap-2  justify-between">
-          <TextInput type="text" text="Hotel Name" {...register("hotelName")} />
+          <TextInput
+            type="text"
+            text="Hotel Name"
+            {...register("hotelName")}
+            src={image?.name}
+          />
 
           <TextInput
             type="text"
             id="googleMapLink"
             text="Hotel Map Link"
             {...register("googleMapLink")}
+            src={image?.map}
           />
 
           <TextInput
@@ -57,6 +63,7 @@ const GenInfo = () => {
             text="Address"
             id="address"
             {...register("address")}
+            src={image?.address}
           />
 
           <TextInput
@@ -64,6 +71,7 @@ const GenInfo = () => {
             id="phoneNumber"
             text="Phone Number"
             {...register("phoneNumber")}
+            src={image?.address}
           />
 
           <div className=" col-start-1 col-end-5">
@@ -72,6 +80,7 @@ const GenInfo = () => {
               text="A qoute for the Contact Page"
               id="quote"
               {...register("quote")}
+              src={image?.contact}
             />
           </div>
 
@@ -82,6 +91,7 @@ const GenInfo = () => {
             text="Upload Logo"
             id="logo"
             disabled={logo}
+            src={image?.logo}
           />
 
           <DisplayImage src={logo} />
@@ -93,6 +103,7 @@ const GenInfo = () => {
             text="Contact Page Image"
             id="header"
             disabled={header}
+            src={image?.contectImg}
           />
 
           <DisplayImage src={header} />

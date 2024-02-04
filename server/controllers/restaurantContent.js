@@ -51,6 +51,7 @@ uploadRestaurantContent.post(
   upload.array("photos", 4),
   async (request, response) => {
     try {
+      console.log(response.photos);
       const fieldsToUpdate = ["title", "description", "position"];
       const updateFields = {};
 

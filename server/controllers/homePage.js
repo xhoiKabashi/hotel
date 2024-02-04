@@ -8,9 +8,7 @@ homePage.post(
   upload.single("file"),
   async (request, response) => {
     try {
-      console.log("Request Body:", request.body);
-      console.log("Request File:", request.file);
-      // If a header exists, update the specific fields
+
       const fieldsToUpdate = ["h1Text", "h2Text", "h3Text"];
       const updateFields = {};
 

@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { Form, FormContainer } from "../form/FormContainer";
 import DisplayImage from "../form/DisplayImage";
 import { useCreate } from "../../api/edit/useCreate";
+import { homeContent } from "../../data/edit/infoImg";
 
 const HomeContent = () => {
   // const [header, setHeader] = useState(null);
@@ -45,12 +46,14 @@ const HomeContent = () => {
             text="Content Title"
             id="h1Text"
             {...register("title")}
+            src={homeContent?.title}
           />
 
           <MenuImageSwitch
             text="Display Image left or right"
             id="position"
             {...register("position")}
+            src={homeContent?.position}
           />
 
           <div className=" col-start-1 col-end-5">
@@ -59,6 +62,7 @@ const HomeContent = () => {
               text=" Content Description"
               id="h3Text"
               {...register("h3Text")}
+              src={homeContent?.content}
             />
           </div>
 
@@ -66,9 +70,10 @@ const HomeContent = () => {
             {...register("file")}
             onUpload={handleSubmit(getImage)}
             onRemove={() => setLogo(null)}
-            text="Upload Logo"
+            text="Upload Image of the Content"
             id="logo"
             disabled={logo}
+            src={homeContent?.contentImg}
           />
 
           <DisplayImage src={logo} />

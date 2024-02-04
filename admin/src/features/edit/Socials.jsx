@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { Form, FormContainer } from "../form/FormContainer";
 import DisplayImage from "../form/DisplayImage";
 import { useCreate } from "../../api/edit/useCreate";
+import { image } from "../../data/edit/infoImg";
 
 const GenInfo = () => {
   const [facebook, setFacebook] = useState(null);
@@ -53,24 +54,28 @@ const GenInfo = () => {
             text="Youtube Url"
             id="youTubeUrl"
             {...register("youTubeUrl")}
+            src={image?.socials}
           />
           <TextInput
             type="text"
             text="Instagram Url"
             id="instaUrl"
             {...register("instaUrl")}
+            src={image?.socials}
           />
           <TextInput
             type="text"
             id="fbUrl"
             text="Facebook Url"
             {...register("fbUrl")}
+            src={image?.socials}
           />
           <TextInput
             type="text"
             id="tikTokUrl"
             text="TikTok Url"
             {...register("tikTokUrl")}
+            src={image?.socials}
           />
           <FileInput
             onUpload={handleSubmit(getImage)}
@@ -79,6 +84,7 @@ const GenInfo = () => {
             id="youTubeImage"
             disabled={yt}
             {...register("youTubeImage")}
+            src={image?.socials}
           />
           <FileInput
             onUpload={handleSubmit(getImage)}
@@ -87,6 +93,7 @@ const GenInfo = () => {
             id="instaImage"
             disabled={ig}
             {...register("instaImage")}
+            src={image?.socials}
           />
           <FileInput
             onUpload={handleSubmit(getImage)}
@@ -95,6 +102,7 @@ const GenInfo = () => {
             id="fbImage"
             disabled={facebook}
             {...register("fbImage")}
+            src={image?.socials}
           />
           <FileInput
             onUpload={handleSubmit(getImage)}
@@ -103,6 +111,7 @@ const GenInfo = () => {
             id="tikTokImage"
             disabled={tk}
             {...register("tikTokImage")}
+            src={image?.socials}
           />
           <DisplayImage src={yt} />
           <DisplayImage src={ig} />

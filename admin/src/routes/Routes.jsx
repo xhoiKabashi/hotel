@@ -1,17 +1,20 @@
 import Layout from "../ui/Layout";
 import LunchUploadForm from "../page/Contact";
 import EditWebsite from "../page/EditWebsite";
-import EditBreakfast from "../features/edit/editRestaurantPage/editBreakfast";
+// import EditBreakfast from "../features/edit/editRestaurantPage/editBreakfast";
 
 //
 import GenInfo from "../features/edit/GenInfo";
 import HomeHeader from "../features/edit/HomeHeader";
 import HomeContent from "../features/edit/HomeContent";
-import RestaurantHeader from "../features/edit/RestaurantHeader";
+import RestaurantHeader from "../features/edit/restaurant/RestaurantHeader";
 import AboutHeader from "../features/edit/AboutHeader";
 import AboutContent from "../features/edit/AboutContent";
 import Socials from "../features/edit/Socials";
-import { Navigate } from "react-router-dom";
+import RestaurantContent from "../features/edit/restaurant/RestaurantContent";
+import Dinner from "../features/edit/restaurant/Dinner";
+import Lunch from "../features/edit/restaurant/Lunch";
+import Breakfast from "../features/edit/restaurant/Breakfast";
 
 const Routes = () => {
   return [
@@ -28,6 +31,10 @@ const Routes = () => {
           element: <EditWebsite />,
           children: [
             {
+              path: "",
+              element: <GenInfo />,
+            },
+            {
               path: "logo-name",
               element: <GenInfo />,
             },
@@ -42,6 +49,28 @@ const Routes = () => {
             {
               path: "restaurant-header",
               element: <RestaurantHeader />,
+            },
+            {
+              path: "restaurant-content",
+              element: <RestaurantContent />,
+              children: [
+                {
+                  path: "",
+                  element: <Breakfast />,
+                },
+                {
+                  path: "breakfast",
+                  element: <Breakfast />,
+                },
+                {
+                  path: "lunch",
+                  element: <Lunch />,
+                },
+                {
+                  path: "dinner",
+                  element: <Dinner />,
+                },
+              ],
             },
 
             {

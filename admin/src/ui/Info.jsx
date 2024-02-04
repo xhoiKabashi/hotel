@@ -4,36 +4,20 @@ import Tooltip from "@mui/joy/Tooltip";
 import Typography from "@mui/joy/Typography";
 
 import { CiCircleInfo } from "react-icons/ci";
-import { BsLightbulb } from "react-icons/bs";
+// import { image } from "../data/edit/genInfo";
 
-const Info = ({ text }) => {
+const Info = ({ src }) => {
   return (
     <div className="z-0">
       <div>
         <div>
           <Tooltip
-            color="primary"
+            placement="left-end"
             title={
-              <Box
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  maxWidth: 320,
-                  justifyContent: "center",
-                  p: 1,
-                }}
-              >
-                <Box sx={{ display: "flex", gap: 1, width: "100%", mt: 1 }}>
-                  <div>
-                    <BsLightbulb className="h-5 w-5" />
-                  </div>
-
-                  <div>
-                    <Typography textColor="white" fontSize="sm" sx={{ mb: 1 }}>
-                      {text}
-                    </Typography>
-                  </div>
-                </Box>
+              <Box sx={{ display: "flex", gap: 1, width: "100%", mt: 1 }}>
+                <Typography textColor="white" fontSize="sm" sx={{ mb: 1 }}>
+                  <img src={src} className=" h-52" />
+                </Typography>
               </Box>
             }
             arrow
