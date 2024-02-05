@@ -87,7 +87,7 @@ const GenInfo = () => {
             onUpload={handleSubmit(getImage)}
             onRemove={() => setLogo(null)}
             text="Upload Logo"
-            id="logo"
+            id="logoImage"
             disabled={logo}
             src={image?.logo}
           />

@@ -24,7 +24,8 @@ const FileInput = React.forwardRef(
 
         <label
           htmlFor={id}
-          className="text-center rounded-xl  bg-white space-y-2 cursor-pointer"
+          className="text-center rounded-xl  bg-white 
+           cursor-pointer"
         >
           <input
             type="file"
@@ -36,8 +37,8 @@ const FileInput = React.forwardRef(
             className="hidden"
           />
           <div className="flex flex-col items-center rounded-lg border-3 border-dashed bg-slate-100 p-1">
-            <BsFillCloudUploadFill className="h-10 w-10 text-sky-500 mb-2" />
-            <p>Click to upload</p>
+            <BsFillCloudUploadFill className="h-5 w-5 text-sky-500 mb-2" />
+            <p className=" text-sm text-slate-600">Click to upload</p>
           </div>
         </label>
         <div className="flex justify-around">

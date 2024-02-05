@@ -37,23 +37,27 @@ const HomeContent = () => {
         <Text text="Home Page Content" />
         <hr />
 
-        <div className=" grid  grid-cols-2 gap-2  justify-between">
-          <TextInput
-            type="text"
-            text="Content Title"
-            id="h1Text"
-            {...register("title")}
-            src={homeContent?.title}
-          />
+        <div className=" grid  grid-cols-4 gap-2  justify-between">
+          <div className=" col-span-2">
+            <TextInput
+              type="text"
+              text="Content Title"
+              id="h1Text"
+              {...register("title")}
+              src={homeContent?.title}
+            />
+          </div>
 
-          <MenuImageSwitch
-            text="Display Image left or right"
-            id="position"
-            {...register("position")}
-            src={homeContent?.position}
-          />
+          <div className=" col-span-2">
+            <MenuImageSwitch
+              text="Display Image left or right"
+              id="position"
+              {...register("position")}
+              src={homeContent?.position}
+            />
+          </div>
 
-          <div className=" col-start-1 col-end-3">
+          <div className="  col-span-4">
             <TextArea
               type="text"
               text=" Content Description"
@@ -62,16 +66,17 @@ const HomeContent = () => {
               src={homeContent?.content}
             />
           </div>
-
-          <FileInput
-            {...register("file")}
-            onUpload={handleSubmit(getImage)}
-            onRemove={() => setLogo(null)}
-            text="Upload Image of the Content"
-            id="logo"
-            disabled={logo}
-            src={homeContent?.contentImg}
-          />
+          <div className=" col-start-2">
+            <FileInput
+              {...register("file")}
+              onUpload={handleSubmit(getImage)}
+              onRemove={() => setLogo(null)}
+              text="Upload Image of the Content"
+              id="logo"
+              disabled={logo}
+              src={homeContent?.contentImg}
+            />
+          </div>
 
           <DisplayImage src={logo} />
         </div>

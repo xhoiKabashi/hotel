@@ -37,24 +37,28 @@ const RestaurantHeader = () => {
         <Text text="Restaurant Header" />
         <hr />
 
-        <div className=" grid  grid-cols-2 gap-2  justify-between">
-          <TextInput
-            type="text"
-            text=" Header Title"
-            id="h1Text"
-            {...register("h1Text")}
-            src={homeHeader?.h1Title}
-          />
+        <div className=" grid  grid-cols-4 gap-2  justify-between">
+          <div className=" col-span-2">
+            <TextInput
+              type="text"
+              text=" Header Title"
+              id="h1Text"
+              {...register("h1Text")}
+              src={homeHeader?.h1Title}
+            />
+          </div>
 
-          <TextInput
-            type="text"
-            text="Header level 2 Title"
-            id="h2Text"
-            {...register("h2Text")}
-            src={homeHeader?.h2Title}
-          />
+          <div className=" col-span-2">
+            <TextInput
+              type="text"
+              text="Header level 2 Title"
+              id="h2Text"
+              {...register("h2Text")}
+              src={homeHeader?.h2Title}
+            />
+          </div>
 
-          <div className=" col-start-1 col-end-3">
+          <div className="  col-span-4">
             <TextArea
               type="text"
               text="Short Paragraph/Qoute"
@@ -64,15 +68,17 @@ const RestaurantHeader = () => {
             />
           </div>
 
-          <FileInput
-            {...register("file")}
-            onUpload={handleSubmit(getImage)}
-            onRemove={() => setLogo(null)}
-            text="Upload Logo"
-            id="logo"
-            disabled={logo}
-            src={homeHeader?.homeHeader}
-          />
+          <div className=" col-start-2">
+            <FileInput
+              {...register("file")}
+              onUpload={handleSubmit(getImage)}
+              onRemove={() => setLogo(null)}
+              text="Upload Logo"
+              id="logo"
+              disabled={logo}
+              src={homeHeader?.homeHeader}
+            />
+          </div>
 
           <DisplayImage src={logo} />
         </div>

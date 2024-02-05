@@ -5,8 +5,8 @@ import Text from "../../ui/Text";
 import FileInput from "../form/FileInput";
 import { useForm } from "react-hook-form";
 import { Form, FormContainer } from "../form/FormContainer";
-import DisplayImage from "../form/DisplayImage";
-import { useCreate } from "../../api/edit/useCreate";
+// import DisplayImage from "../form/DisplayImage";
+import { useCreateWithCollage } from "../../api/edit/useCreateWithCollage";
 import { homeContent } from "../../data/edit/infoImg";
 import CheckBox from "../form/CheckBox";
 
@@ -14,19 +14,19 @@ const CreateRooms = () => {
   const [logo, setLogo] = useState(null);
 
   const { register, handleSubmit, reset } = useForm();
-  const { mutate: update } = useCreate();
+  const { mutate: update } = useCreateWithCollage();
 
   const onSubmit = async (data) => {
-    // const uploadedFields = {
-    //   uploadedData: {
-    //     ...data,
-    //     file: data.file[0],
-    //   },
-    //   endPoint: "about-us-content",
-    // };
-    // await update(uploadedFields);
-    // reset();
-    console.log(data);
+    const uploadedFields = {
+      uploadedData: {
+        ...data,
+        imageHeader: data.imageHeader[0],
+        photos: data.photos,
+      },
+      endPoint: "rooms",
+    };
+    await update(uploadedFields);
+    console.log("part 0", data);
   };
 
   const getImage = (data) => {
@@ -36,7 +36,7 @@ const CreateRooms = () => {
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       <FormContainer>
-        <Text text="Home Page Content" />
+        <Text text="Create Rooms" />
         <hr />
 
         <div className=" grid  grid-cols-4 gap-2  justify-between">
@@ -47,21 +47,18 @@ const CreateRooms = () => {
             {...register("roomType")}
             src={homeContent?.title}
           />
-
           <TextInput
             text="Beds type / number"
             id="bed"
             {...register("bed")}
             src={homeContent?.position}
           />
-
           <TextInput
             text="Room Size (m2)"
             id="size"
             {...register("size")}
             src={homeContent?.position}
           />
-
           <TextInput
             text="Room occupacity"
             id="occupacity"
@@ -95,23 +92,36 @@ const CreateRooms = () => {
           <CheckBox text="Towels" {...register("towels")} />
           <CheckBox text="Hair Dryer" {...register("hairDryer")} />
           <CheckBox text="Espresso Machine" {...register("espressoMachine")} />
+          <CheckBox text="Work desk" {...register("workDesk")} />
           <CheckBox text="Welcome Drinks" {...register("welcomeDrinks")} />
+          <CheckBox text="Iron and ironing board" {...register("iron")} />
+          <CheckBox text="Air Purifier" {...register("airPurifier")} />
+          <CheckBox text="Smoke detectors" {...register("smokeDetectors")} />
           <CheckBox
             text="In-room Refrigerator"
             {...register("roomRefrigerator")}
           />
+          <div className="  col-start-2">
+            <FileInput
+              onUpload={handleSubmit(getImage)}
+              // onRemove={() => setLogo(null)}
+              text="Room Header Image"
+              id="imageHeader"
+              // disabled={logo}
 
-          {/* <FileInput
-            {...register("file")}
+              {...register("imageHeader")}
+            />
+          </div>
+          <FileInput
             onUpload={handleSubmit(getImage)}
-            onRemove={() => setLogo(null)}
-            text="Upload Image of the Content"
-            id="logo"
-            disabled={logo}
-            src={homeContent?.contentImg}
+            // onRemove={() => setLogo(null)}
+            text="Collage of Image"
+            id="photos"
+            // disabled={logo}
+            multiple="multiple"
+            // src={homeContent?.contentImg}
+            {...register("photos")}
           />
-
-          <DisplayImage src={logo} /> */}
         </div>
         <Button text="Submit" type="submit" />
       </FormContainer>

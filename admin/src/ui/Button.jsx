@@ -21,13 +21,13 @@ export const ButtonV2 = ({ onClick, text, color, disabled }) => {
 
   return (
     <div>
-      <button
+      <div
         className={`font-medium text-xs px-3 py-1 flex items-center justify-center gap-2 m-2 w-fit rounded-md   ${disabledData} ${buttonColor}`}
         onClick={onClick}
         disabled={disabled}
       >
         {text}
-      </button>
+      </div>
     </div>
   );
 };

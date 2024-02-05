@@ -5,7 +5,10 @@ import toast from "react-hot-toast";
 export const useCreate = () => {
   return useMutation({
     mutationFn: async ({ uploadedData, endPoint }) => {
+      console.log("a ka data", uploadedData);
+
       try {
+        console.log("a ka data part 2", uploadedData);
         const formData = new FormData();
         Object.entries(uploadedData).forEach(([key, value]) => {
           formData.append(key, value);
@@ -16,6 +19,7 @@ export const useCreate = () => {
           },
         });
 
+        console.log(response.data);
         return response.data;
       } catch (error) {
         console.error(error);

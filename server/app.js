@@ -1,11 +1,13 @@
 const express = require("express");
+// edit
 const generalInfoUpload = require("./controllers/edit/genInfo");
 const restaurantHeader = require("./controllers/edit/restaurantHeader");
 const uploadRestaurantContent = require("./controllers/edit/restaurantContent");
 const aboutPage = require("./controllers/edit/aboutPage");
 const homePage = require("./controllers/edit/homePage");
 const updateSocial = require("./controllers/edit/socials");
-const updateRoom = require("./controllers/rooms");
+// rooms
+const updateRoom = require("./controllers/rooms/rooms");
 
 const config = require("./utils/config");
 const mongoose = require("mongoose");
