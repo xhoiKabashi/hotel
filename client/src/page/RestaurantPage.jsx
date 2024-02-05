@@ -8,7 +8,7 @@ import { useGetHeader } from "../hooks/useGetDataQuery";
 const Restaurant = () => {
   const queryHeader = {
     key: "RestaurantPageHeader",
-    endPoint: "editRestaurantPage",
+    endPoint: "restaurant-header",
   };
   const { data: header } = useGetHeader(queryHeader);
 
@@ -40,10 +40,10 @@ const Restaurant = () => {
   return (
     <>
       <Header
-        imageUrl={header?.restaurantPageHeaderImg}
-        textBeforeBr={header?.levelOneTitle}
-        textAfterBr={header?.levelTwoTitle}
-        secondTextBeforeBr={header?.levelThreeTitle}
+        imageUrl={header?.headerImage}
+        textBeforeBr={header?.h1Text}
+        textAfterBr={header?.h2Text}
+        secondTextBeforeBr={header?.h3Text}
       />
 
       <div key={uuidv4()} className="p-5">

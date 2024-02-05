@@ -11,13 +11,12 @@ import RestaurantNavigation from "../../navigation/RestaurantNavigation";
 import { homeContent } from "@/data/edit/infoImg";
 
 const Dinner = () => {
-  // const [header, setHeader] = useState(null);
   const [main, setMain] = useState(null);
   const [colOne, setColOne] = useState(null);
   const [colTwo, setColTwo] = useState(null);
   const [colThree, setColThree] = useState(null);
 
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
   const { mutate: update } = useCreateWithCollage();
 
   const onSubmit = async (data) => {
@@ -28,6 +27,7 @@ const Dinner = () => {
       endPoint: "dinner",
     };
     await update(uploadedFields);
+    reset();
   };
 
   const getImage = (data) => {

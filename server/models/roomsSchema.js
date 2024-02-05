@@ -11,7 +11,7 @@ const RoomsSchema = new mongoose.Schema({
     bathroom: String,
   },
   description: String,
-  
+  amenities: [],
 });
 
 const RoomData = mongoose.model("RoomData", RoomsSchema);

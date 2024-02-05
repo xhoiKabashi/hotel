@@ -1,11 +1,10 @@
 const express = require("express");
-const generalInfoUpload = require("./controllers/genInfo");
-const restaurantHeader = require("./controllers/restaurantHeader");
-const uploadRestaurantContent = require("./controllers/restaurantContent");
-const aboutPage = require("./controllers/aboutPage");
-const homePage = require("./controllers/homePage");
-// const uploloadContactUs = require("./controllers/contactUs");
-const updateSocial = require("./controllers/socials");
+const generalInfoUpload = require("./controllers/edit/genInfo");
+const restaurantHeader = require("./controllers/edit/restaurantHeader");
+const uploadRestaurantContent = require("./controllers/edit/restaurantContent");
+const aboutPage = require("./controllers/edit/aboutPage");
+const homePage = require("./controllers/edit/homePage");
+const updateSocial = require("./controllers/edit/socials");
 const updateRoom = require("./controllers/rooms");
 
 const config = require("./utils/config");

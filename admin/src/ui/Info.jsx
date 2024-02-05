@@ -24,7 +24,7 @@ const Info = ({ src }) => {
             size="sm"
           >
             <Typography className="  cursor-pointer">
-              <CiCircleInfo className=" h-6 w-6" />
+              <CiCircleInfo className=" h-5 w-5" />
             </Typography>
           </Tooltip>
         </div>

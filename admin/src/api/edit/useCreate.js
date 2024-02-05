@@ -5,9 +5,7 @@ import toast from "react-hot-toast";
 export const useCreate = () => {
   return useMutation({
     mutationFn: async ({ uploadedData, endPoint }) => {
-      // Accept an object parameter
       try {
-        console.log("Xhoi", uploadedData);
         const formData = new FormData();
         Object.entries(uploadedData).forEach(([key, value]) => {
           formData.append(key, value);
@@ -18,11 +16,9 @@ export const useCreate = () => {
           },
         });
 
-        console.log("Response Data:", response.data); // Log response data
-
         return response.data;
       } catch (error) {
-        console.error("Error in useCreateHomeHeader:", error);
+        console.error(error);
         throw error;
       }
     },

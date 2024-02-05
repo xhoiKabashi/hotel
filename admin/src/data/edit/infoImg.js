@@ -2,7 +2,7 @@ export const image = {
   name: "/public/edit-images/genInfoImg/gen-n.jpg",
   map: "/public/edit-images/genInfoImg/google-map-dir.jpg",
   address: "/public/edit-images/genInfoImg/address.jpg",
-  contact: "/public./edit-images/genInfoImg/contact-desc.jpg",
+  contact: "/public/edit-images/genInfoImg/contact-desc.jpg",
   logo: "/public/edit-images/genInfoImg/logo.jpg",
   contectImg: "/public/edit-images/genInfoImg/contact-img.jpg",
   socials: "/public/edit-images/genInfoImg/socials.jpg",

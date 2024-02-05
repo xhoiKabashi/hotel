@@ -5,9 +5,6 @@ import { v4 as uuidv4 } from "uuid";
 import { Outlet } from "react-router-dom";
 
 function EditWebsite() {
-  // const [filterText, setFilterText] = useState("");
-
-  // Define the components and their titles
   const components = [
     {
       title: "General Info",
@@ -46,9 +43,6 @@ function EditWebsite() {
       to: "contact-social",
     },
   ];
-  // const filteredComponents = components.filter((item) =>
-  //   item.title.toLowerCase().includes(filterText.toLowerCase())
-  // );
 
   return (
     <div className=" flex  gap-2">

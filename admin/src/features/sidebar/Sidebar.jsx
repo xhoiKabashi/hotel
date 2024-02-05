@@ -14,10 +14,10 @@ function Sidebar() {
           <Text text="Edit Website" />
         </NavigationList>
 
-        <NavigationList to="contact">
+        <NavigationList to="rooms">
           <HiSquaresPlus className="text-whites size-6  text-slate-600" />
 
-          <Text text="Edit Website" />
+          <Text text="Rooms" />
         </NavigationList>
         <NavigationList to="edit">
           <HiSquaresPlus className="text-whites size-6  text-slate-600" />

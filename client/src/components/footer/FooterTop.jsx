@@ -9,7 +9,7 @@ import { useGetHeader } from "../../hooks/useGetDataQuery";
 
 const FooterTop = () => {
   const queryHeader = {
-    key: "socialMedia",
+    key: "social-data",
     endPoint: "social-data",
   };
   const { data } = useGetHeader(queryHeader);

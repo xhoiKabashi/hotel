@@ -10,7 +10,6 @@ import { useCreate } from "../../api/edit/useCreate";
 import { homeContent } from "../../data/edit/infoImg";
 
 const AboutContent = () => {
-  // const [header, setHeader] = useState(null);
   const [logo, setLogo] = useState(null);
 
   const { register, handleSubmit, reset } = useForm();
@@ -26,12 +25,10 @@ const AboutContent = () => {
     };
     await update(uploadedFields);
     reset();
-    console.log(data);
   };
 
   const getImage = (data) => {
     setLogo(data?.file[0]);
-    // setHeader(data?.headerImage[0]);
   };
 
   return (
@@ -56,7 +53,7 @@ const AboutContent = () => {
             src={homeContent?.position}
           />
 
-          <div className=" col-start-1 col-end-5">
+          <div className=" col-start-1 col-end-3">
             <TextArea
               type="text"
               text=" Content Description"

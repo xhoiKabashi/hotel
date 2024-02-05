@@ -4,7 +4,7 @@ import Info from "../../ui/Info";
 
 export const Label = ({ text, src }) => {
   return (
-    <label className="flex pb-2 font-extralight justify-between">
+    <label className="flex pb-2 font-extralight justify-between items-center">
       {text} <Info src={src} />
     </label>
   );

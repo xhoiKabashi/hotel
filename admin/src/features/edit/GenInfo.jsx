@@ -13,8 +13,6 @@ const GenInfo = () => {
   const [header, setHeader] = useState(null);
   const [logo, setLogo] = useState(null);
 
-  console.log("Logo header", image.logo);
-
   const { register, handleSubmit, reset } = useForm();
   const { mutate: update } = useCreate();
 

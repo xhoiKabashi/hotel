@@ -1,5 +1,5 @@
 import Layout from "../ui/Layout";
-import LunchUploadForm from "../page/Contact";
+import Rooms from "../page/Rooms";
 import EditWebsite from "../page/EditWebsite";
 // import EditBreakfast from "../features/edit/editRestaurantPage/editBreakfast";
 
@@ -15,6 +15,10 @@ import RestaurantContent from "../features/edit/restaurant/RestaurantContent";
 import Dinner from "../features/edit/restaurant/Dinner";
 import Lunch from "../features/edit/restaurant/Lunch";
 import Breakfast from "../features/edit/restaurant/Breakfast";
+import CreateRooms from "../features/rooms/createRooms";
+import UpdateRooms from "../features/rooms/UpdateRooms";
+import DeleteRooms from "../features/rooms/DeleteRooms";
+import AllRooms from "../features/rooms/AllRooms";
 
 const Routes = () => {
   return [
@@ -22,10 +26,30 @@ const Routes = () => {
       path: "/",
       element: <Layout />,
       children: [
+        // Create Rooms
         {
-          path: "contact",
-          element: <LunchUploadForm />,
+          path: "rooms",
+          element: <Rooms />,
+          children: [
+            {
+              path: "create-rooms",
+              element: <CreateRooms />,
+            },
+            {
+              path: "all-rooms",
+              element: <AllRooms />,
+            },
+            {
+              path: "update-rooms",
+              element: <UpdateRooms />,
+            },
+            {
+              path: "delete-rooms",
+              element: <DeleteRooms />,
+            },
+          ],
         },
+        // Edit Website
         {
           path: "edit-website",
           element: <EditWebsite />,

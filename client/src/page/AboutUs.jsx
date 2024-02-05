@@ -7,7 +7,7 @@ import { useGetHeader, useGetContent } from "../hooks/useGetDataQuery";
 const AboutUsPage = () => {
   // get header
   const queryHeader = {
-    key: "aboutUsPageHeader",
+    key: "about-us-header",
     endPoint: "about-us-header",
   };
   const { data: header } = useGetHeader(queryHeader);
@@ -15,7 +15,7 @@ const AboutUsPage = () => {
   // get content
 
   const queryContent = {
-    key: "aboutUsPageContent",
+    key: "about-us-content",
     endPoint: "about-us-content",
   };
 
@@ -26,9 +26,9 @@ const AboutUsPage = () => {
     <div>
       <Header
         imageUrl={header?.headerImage}
-        textBeforeBr={header?.levelOneTitle}
-        textAfterBr={header?.levelTwoTitle}
-        secondTextBeforeBr={header?.levelThreeTitle}
+        textBeforeBr={header?.h1Text}
+        textAfterBr={header?.h2Text}
+        secondTextBeforeBr={header?.h3Text}
       />
       <div className="p-5">
         {content?.map((data) => (

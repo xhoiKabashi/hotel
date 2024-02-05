@@ -10,7 +10,6 @@ import { useCreate } from "../../api/edit/useCreate";
 import { homeHeader } from "../../data/edit/infoImg";
 
 const HomeHeader = () => {
-  // const [header, setHeader] = useState(null);
   const [logo, setLogo] = useState(null);
 
   const { register, handleSubmit, reset } = useForm();
@@ -26,12 +25,10 @@ const HomeHeader = () => {
     };
     await update(uploadedFields);
     reset();
-    console.log(data);
   };
 
   const getImage = (data) => {
     setLogo(data?.file[0]);
-    // setHeader(data?.headerImage[0]);
   };
 
   return (
@@ -57,7 +54,7 @@ const HomeHeader = () => {
             src={homeHeader?.h2Title}
           />
 
-          <div className=" col-start-1 col-end-5">
+          <div className=" col-start-1 col-end-3">
             <TextArea
               type="text"
               text="Short Paragraph/Qoute"

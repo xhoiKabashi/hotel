@@ -31,11 +31,9 @@ const GenInfo = () => {
     };
     await update(uploadedFields);
     reset();
-    console.log(data);
   };
 
   const getImage = (data) => {
-    console.log("DATA", data.youTubeImage[0]);
     setIg(data.instaImage[0]);
     setFacebook(data.fbImage[0]);
     setTk(data.tikTokImage[0]);

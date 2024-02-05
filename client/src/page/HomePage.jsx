@@ -11,7 +11,7 @@ const HomePage = () => {
   // get header
   const queryHeader = {
     key: "homeHeader",
-    endPoint: "editHomeHeader",
+    endPoint: "home-header",
   };
   const { data: header } = useGetHeader(queryHeader);
 
@@ -19,7 +19,7 @@ const HomePage = () => {
 
   const queryContent = {
     key: "homeContent",
-    endPoint: "homeContent",
+    endPoint: "home-content",
   };
 
   const { data: content } = useGetContent(queryContent);
@@ -29,16 +29,16 @@ const HomePage = () => {
     <>
       <Header
         imageUrl={header?.headerImage}
-        textBeforeBr={header?.levelOneTitle}
-        textAfterBr={header?.levelTwoTitle}
-        secondTextBeforeBr={header?.levelThreeTitle}
+        textBeforeBr={header?.h1Text}
+        textAfterBr={header?.h2Text}
+        secondTextBeforeBr={header?.h3Text}
       />
       <div className="p-5">
         {content?.map((data) => (
           <PageSection
             key={uuidv4()}
             title={data?.title}
-            content={data?.description}
+            content={data?.h3Text}
             imageUrl={data?.headerImage}
             position={data?.position}
           />
