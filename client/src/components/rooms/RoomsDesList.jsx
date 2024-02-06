@@ -1,28 +1,28 @@
+import { AiOutlineClockCircle } from "react-icons/ai";
+import { MdSmokeFree } from "react-icons/md";
+
 const RoomsDesList = () => {
   return (
-    <div className="pt-10 md:pt-0">
-      <h1 className="text-2xl md:text-3xl pb-10 font-semibold">
-        Whats included in this suite?
-      </h1>
-      <ul className="flex flex-col gap-4  list-disc  ">
-        <li className=" text-xl">Private balcony</li>
-        <li className=" text-xl">140x200 cm Elite bed</li>
-        <li className=" text-xl">
-          Upholstered seat beside the panoramic window
-        </li>
-        <li className=" text-xl">
-          TV-UHD screen for watching mountaineering films
-        </li>
-        <li className=" text-xl">
-          Writing desk with USB ports for documenting your adventures
-        </li>
-        <li className=" text-xl">Room safe for your top mountain photos</li>
-        <li className=" text-xl">
-          Service station with Lavazza coffee machine, kettle and tea
-        </li>
-        <li className=" text-xl">Bathroom with rain shower</li>
-        <li className=" text-xl">Comfortable terry towels and bathrobes</li>
-      </ul>
+    <div className=" py-10 flex flex-col md:flex-row md:justify-around">
+      <div>
+        <h1 className="text-xl md:text-2xl pb-10 font-semibold">
+          Hotel Information
+        </h1>
+        <div className=" grid  grid-cols-1 gap-4">
+          <div className=" text-xl flex gap-2 items-center">
+            <AiOutlineClockCircle />
+            Check In: 3:00 pm
+          </div>
+          <div className=" text-xl flex gap-2 items-center">
+            <AiOutlineClockCircle />
+            Check Out: 11:00 am
+          </div>
+          <div className=" text-xl flex gap-2 items-center">
+            <MdSmokeFree />
+            Smoke Free Property
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

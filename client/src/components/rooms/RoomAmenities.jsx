@@ -1,18 +1,16 @@
-import {
-  AirVent,
-  Wifi,
-  Footprints,
-  ShowerHead,
-  Vault,
-  PawPrint,
-  Wind,
-  Tv,
-  Coffee,
-  Martini,
-  Refrigerator,
-} from "lucide-react";
+/* eslint-disable react/prop-types */
+import { Wifi, PawPrint, Martini } from "lucide-react";
+import { MdOutlineCoffeeMaker, MdLiveTv } from "react-icons/md";
+import { BsSafe } from "react-icons/bs";
+import { TbAirConditioning } from "react-icons/tb";
+import { PiHandSoap, PiFootprints, PiFan } from "react-icons/pi";
+import { CgSmartHomeRefrigerator } from "react-icons/cg";
+import { GiTowel, GiSmokeBomb } from "react-icons/gi";
+import { FaWind } from "react-icons/fa";
 import RoomsDesList from "./RoomsDesList";
-const RoomAmenities = () => {
+import { MdDesk, MdOutlineIron } from "react-icons/md";
+
+const RoomAmenities = ({ amenities }) => {
   return (
     <div className=" px-10 flex flex-col md:flex-row md:justify-around">
       <div>
@@ -20,59 +18,104 @@ const RoomAmenities = () => {
           Room Amenities
         </h1>
 
-        <div className="flex flex-col gap-6 md:flex-row">
-          <div className=" flex flex-col gap-4 md:gap-6">
+        <div className=" grid  grid-cols-2 gap-4">
+          {amenities?.airConditioner && (
             <ul className="flex gap-5 items-center text-xl">
-              <AirVent />
+              <TbAirConditioning />
               <p>Air conditioner</p>
             </ul>
+          )}
+          {amenities?.wifi && (
             <ul className="flex gap-5 items-center text-xl">
               <Wifi />
               <p>Wifi & Internet</p>
             </ul>
+          )}
+          {amenities?.slippers && (
             <ul className="flex gap-5 items-center text-xl">
-              <Footprints />
+              <PiFootprints />
               <p>Slippers</p>
             </ul>
+          )}
+          {amenities?.shampoo && (
             <ul className="flex gap-5 items-center text-xl">
-              <ShowerHead />
+              <PiHandSoap />
               <p>Shampoo</p>
             </ul>
+          )}
+          {amenities?.safeBox && (
             <ul className="flex gap-5 items-center text-xl">
-              <Vault />
+              <BsSafe />
               <p>Safe Box</p>
             </ul>
+          )}
+          {amenities?.petFriendly && (
             <ul className="flex gap-5 items-center text-xl">
               <PawPrint />
               <p>Pet Friendly</p>
             </ul>
-          </div>
-          <div className=" flex flex-col gap-6">
+          )}
+
+          {amenities?.tv && (
             <ul className="flex gap-5 items-center text-xl">
-              <Tv />
+              <MdLiveTv />
               <p>Cable TV</p>
             </ul>
+          )}
+          {amenities?.towels && (
             <ul className="flex gap-5 items-center text-xl">
-              <ShowerHead />
+              <GiTowel />
               <p>Towels</p>
             </ul>
+          )}
+          {amenities?.hairDryer && (
             <ul className="flex gap-5 items-center text-xl">
-              <Wind />
+              <FaWind />
               <p>Hair Dryer</p>
             </ul>
+          )}
+          {amenities?.espressoMachine && (
             <ul className="flex gap-5 items-center text-xl">
-              <Coffee />
+              <MdOutlineCoffeeMaker />
               <p>Espresso Machine</p>
             </ul>
+          )}
+          {amenities?.welcomeDrinks && (
             <ul className="flex gap-5 items-center text-xl">
               <Martini />
               <p>Welcome Drinks</p>
             </ul>
+          )}
+          {amenities?.roomRefrigerator && (
             <ul className="flex gap-5 items-center text-xl">
-              <Refrigerator />
+              <CgSmartHomeRefrigerator />
               <p>In-room Refrigerator</p>
             </ul>
-          </div>
+          )}
+          {amenities?.workDesk && (
+            <ul className="flex gap-5 items-center text-xl">
+              <MdDesk />
+              <p>Work Desk</p>
+            </ul>
+          )}
+          {amenities?.iron && (
+            <ul className="flex gap-5 items-center text-xl">
+              <MdOutlineIron />
+              <p>Iron</p>
+            </ul>
+          )}
+          {amenities?.airPurifier && (
+            <ul className="flex gap-5 items-center text-xl">
+              <PiFan />
+              <p>Air Purifier</p>
+            </ul>
+          )}
+          {amenities?.smokeDetectors && (
+            <ul className="flex gap-5 items-center text-xl">
+              <GiSmokeBomb />
+              <p>Smoke Detector</p>
+            </ul>
+          )}
         </div>
       </div>
       <div>
