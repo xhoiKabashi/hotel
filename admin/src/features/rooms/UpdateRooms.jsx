@@ -1,5 +1,9 @@
+import { useParams } from "react-router-dom";
+
 const UpdateRooms = () => {
-  return <div>Update Rooms</div>;
+  let { id } = useParams();
+
+  return <div>Update {id}</div>;
 };
 
 export default UpdateRooms;

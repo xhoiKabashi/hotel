@@ -16,28 +16,18 @@ function Rooms() {
 
       to: "all-rooms",
     },
-    {
-      title: "Update Rooms",
-      to: "update-rooms",
-    },
-    {
-      title: "Delete Rooms",
-      to: "delete-rooms",
-    },
   ];
 
   return (
-    <div className=" flex  gap-2">
-      <div className=" basis-[15%] bg-white">
-        <ul className=" flex flex-col justify-center items-center py-5 gap-4 text-sm  font-semibold">
-          {components.map((data) => (
-            <NavigationList to={data.to} key={uuidv4()}>
-              {data.title}
-            </NavigationList>
-          ))}
-        </ul>
+    <div className=" flex flex-col gap-2">
+      <div className=" flex  bg-white  justify-center  py-2 gap-4 text-sm  rounded-md shadow-sm font-semibold ">
+        {components.map((data) => (
+          <NavigationList to={data.to} key={uuidv4()}>
+            {data.title}
+          </NavigationList>
+        ))}
       </div>
-      <div className=" basis-[80%] ">{<Outlet />}</div>
+      <div className="flex-grow">{<Outlet />}</div>
     </div>
   );
 }

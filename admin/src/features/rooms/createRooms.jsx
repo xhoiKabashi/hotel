@@ -26,7 +26,6 @@ const CreateRooms = () => {
       endPoint: "rooms",
     };
     await update(uploadedFields);
-    console.log("part 0", data);
   };
 
   const getImage = (data) => {

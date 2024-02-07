@@ -15,13 +15,11 @@ function EditWebsite() {
     { title: "Home Header", to: "home-page" },
     {
       title: "Home Content",
-
       to: "home-content",
     },
 
     {
       title: "Restaurant Header",
-
       to: "restaurant-header",
     },
     {
@@ -30,12 +28,10 @@ function EditWebsite() {
     },
     {
       title: "About Us Header",
-
       to: "about-us-header",
     },
     {
       title: "About Us Content",
-
       to: "about-content",
     },
     {
@@ -55,7 +51,7 @@ function EditWebsite() {
           ))}
         </ul>
       </div>
-      <div className=" basis-[80%] ">{<Outlet />}</div>
+      <div className=" flex-grow ">{<Outlet />}</div>
     </div>
   );
 }

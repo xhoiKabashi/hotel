@@ -92,4 +92,21 @@ updateRoom.get("/rooms/:id", async (request, response) => {
   }
 });
 
+updateRoom.delete("/rooms/:id", async (request, response) => {
+  try {
+    const roomId = request.params.id;
+
+    const deletedRoom = await RoomData.findByIdAndDelete(roomId);
+
+    if (!deletedRoom) {
+      return response.status(404).json({ error: "Room not found" });
+    }
+
+    response.json({ message: "Room deleted successfully", deletedRoom });
+  } catch (error) {
+    console.error(error);
+    response.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
 module.exports = updateRoom;

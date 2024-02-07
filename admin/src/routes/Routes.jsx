@@ -19,6 +19,7 @@ import CreateRooms from "../features/rooms/createRooms";
 import UpdateRooms from "../features/rooms/UpdateRooms";
 import DeleteRooms from "../features/rooms/DeleteRooms";
 import AllRooms from "../features/rooms/AllRooms";
+import RoomsContent from "../features/rooms/RoomsContent";
 
 const Routes = () => {
   return [
@@ -37,12 +38,19 @@ const Routes = () => {
             },
             {
               path: "all-rooms",
-              element: <AllRooms />,
+              element: <RoomsContent />,
+              children: [
+                {
+                  path: "",
+                  element: <AllRooms />,
+                },
+                {
+                  path: "update/:id",
+                  element: <UpdateRooms />,
+                },
+              ],
             },
-            {
-              path: "update-rooms",
-              element: <UpdateRooms />,
-            },
+
             {
               path: "delete-rooms",
               element: <DeleteRooms />,
