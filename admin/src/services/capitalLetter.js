@@ -17,7 +17,7 @@ const capitalLetter = (text) => {
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join(" ");
 
-  return capitalizeWords;
+  return capitalizeWords.slice(2);
 };
 
 export default capitalLetter;

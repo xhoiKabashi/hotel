@@ -83,6 +83,7 @@ const GenInfo = () => {
             disabled={yt}
             {...register("youTubeImage")}
             src={image?.socials}
+            ratio="2:2"
           />
           <FileInput
             onUpload={handleSubmit(getImage)}
@@ -92,6 +93,7 @@ const GenInfo = () => {
             disabled={ig}
             {...register("instaImage")}
             src={image?.socials}
+            ratio="2:2"
           />
           <FileInput
             onUpload={handleSubmit(getImage)}
@@ -101,6 +103,7 @@ const GenInfo = () => {
             disabled={facebook}
             {...register("fbImage")}
             src={image?.socials}
+            ratio="2:2"
           />
           <FileInput
             onUpload={handleSubmit(getImage)}
@@ -109,6 +112,7 @@ const GenInfo = () => {
             id="tikTokImage"
             disabled={tk}
             {...register("tikTokImage")}
+            ratio="2:2"
             src={image?.socials}
           />
           <DisplayImage src={yt} />

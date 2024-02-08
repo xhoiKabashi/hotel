@@ -90,6 +90,7 @@ const GenInfo = () => {
             id="logoImage"
             disabled={logo}
             src={image?.logo}
+            ratio="1:1"
           />
 
           <DisplayImage src={logo} />
@@ -102,6 +103,7 @@ const GenInfo = () => {
             id="header"
             disabled={header}
             src={image?.contectImg}
+            ratio="1:1"
           />
 
           <DisplayImage src={header} />

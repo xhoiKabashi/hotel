@@ -5,15 +5,14 @@ import Text from "../../ui/Text";
 import FileInput from "../form/FileInput";
 import { useForm } from "react-hook-form";
 import { Form, FormContainer } from "../form/FormContainer";
-// import DisplayImage from "../form/DisplayImage";
 import { useCreateWithCollage } from "../../api/edit/useCreateWithCollage";
-import { homeContent } from "../../data/edit/infoImg";
 import CheckBox from "../form/CheckBox";
+import { roomsContent } from "../../data/edit/infoImg";
 
 const CreateRooms = () => {
-  const [logo, setLogo] = useState(null);
+  const [setLogo] = useState(null);
 
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit } = useForm();
   const { mutate: update } = useCreateWithCollage();
 
   const onSubmit = async (data) => {
@@ -44,32 +43,32 @@ const CreateRooms = () => {
             text="Room Type"
             id="roomType"
             {...register("roomType")}
-            src={homeContent?.title}
+            src={roomsContent?.roomRype}
           />
           <TextInput
             text="Beds type / number"
             id="bed"
             {...register("bed")}
-            src={homeContent?.position}
+            src={roomsContent?.details}
           />
           <TextInput
             text="Room Size (m2)"
             id="size"
             {...register("size")}
-            src={homeContent?.position}
+            src={roomsContent?.details}
           />
           <TextInput
             text="Room occupacity"
             id="occupacity"
             {...register("occupacity")}
-            src={homeContent?.position}
+            src={roomsContent?.details}
           />
           <div className=" col-span-2">
             <TextArea
               text="Bathroom Details"
               id="bathroom"
               {...register("bathroom")}
-              src={homeContent?.position}
+              src={roomsContent?.details}
             />
           </div>
           <div className="  col-span-2">
@@ -78,7 +77,7 @@ const CreateRooms = () => {
               text=" Room Description"
               id="h3Text"
               {...register("description")}
-              src={homeContent?.content}
+              src={roomsContent?.description}
             />
           </div>
           <CheckBox text="Air Conditioner" {...register("airConditioner")} />
@@ -107,8 +106,9 @@ const CreateRooms = () => {
               text="Room Header Image"
               id="imageHeader"
               // disabled={logo}
-
-              {...register("imageHeader")}
+              src={roomsContent?.roomRype}
+              {...register("imageHeader", { required: true })}
+              ratio="3:2"
             />
           </div>
           <FileInput
@@ -118,8 +118,9 @@ const CreateRooms = () => {
             id="photos"
             // disabled={logo}
             multiple="multiple"
-            // src={homeContent?.contentImg}
+            src={roomsContent?.colage}
             {...register("photos")}
+            ratio=" 3:2, 2:2 or 2:3"
           />
         </div>
         <Button text="Submit" type="submit" />

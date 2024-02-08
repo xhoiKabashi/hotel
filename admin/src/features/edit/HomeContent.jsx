@@ -75,6 +75,7 @@ const HomeContent = () => {
               id="logo"
               disabled={logo}
               src={homeContent?.contentImg}
+              ratio="3:2 or 2:2"
             />
           </div>
 

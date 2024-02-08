@@ -6,7 +6,7 @@ import { Label } from "./TextInput";
 
 const FileInput = React.forwardRef(
   (
-    { onUpload, onRemove, text, id, disabled, multiple, src, ...props },
+    { onUpload, onRemove, text, id, disabled, multiple, src, ratio, ...props },
     ref
   ) => {
     const handleDragOver = (e) => {
@@ -38,7 +38,10 @@ const FileInput = React.forwardRef(
           />
           <div className="flex flex-col items-center rounded-lg border-3 border-dashed bg-slate-100 p-1">
             <BsFillCloudUploadFill className="h-5 w-5 text-sky-500 mb-2" />
-            <p className=" text-sm text-slate-600">Click to upload</p>
+            <p className=" text-sm text-slate-600">
+              {" "}
+              Image Aspect Ratio: {ratio}
+            </p>
           </div>
         </label>
         <div className="flex justify-around">

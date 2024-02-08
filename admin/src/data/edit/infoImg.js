@@ -22,3 +22,10 @@ export const homeContent = {
   position: "/public/edit-images/home-content/position.jpg",
   colage: "/public/edit-images/home-content/colage.jpg",
 };
+
+export const roomsContent = {
+  roomRype: "/public/rooms/room-header.jpg",
+  details: "/public/rooms/details.jpg",
+  description: "/public/rooms/room-desc.jpg",
+  colage: "/public/rooms/colage.jpg",
+};

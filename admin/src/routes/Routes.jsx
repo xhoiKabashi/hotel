@@ -15,9 +15,8 @@ import RestaurantContent from "../features/edit/restaurant/RestaurantContent";
 import Dinner from "../features/edit/restaurant/Dinner";
 import Lunch from "../features/edit/restaurant/Lunch";
 import Breakfast from "../features/edit/restaurant/Breakfast";
-import CreateRooms from "../features/rooms/createRooms";
+import CreateRooms from "../features/rooms/CreateRooms";
 import UpdateRooms from "../features/rooms/UpdateRooms";
-import DeleteRooms from "../features/rooms/DeleteRooms";
 import AllRooms from "../features/rooms/AllRooms";
 import RoomsContent from "../features/rooms/RoomsContent";
 
@@ -32,6 +31,10 @@ const Routes = () => {
           path: "rooms",
           element: <Rooms />,
           children: [
+            {
+              path: "",
+              element: <CreateRooms />,
+            },
             {
               path: "create-rooms",
               element: <CreateRooms />,
@@ -49,11 +52,6 @@ const Routes = () => {
                   element: <UpdateRooms />,
                 },
               ],
-            },
-
-            {
-              path: "delete-rooms",
-              element: <DeleteRooms />,
             },
           ],
         },
@@ -114,7 +112,7 @@ const Routes = () => {
               element: <AboutContent />,
             },
             {
-              path: "contact-social",
+              path: "contact-social", 
               element: <Socials />,
             },
           ],

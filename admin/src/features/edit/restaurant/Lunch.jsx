@@ -94,6 +94,7 @@ const Lunch = () => {
                 disabled={colThree}
                 {...register("photos")}
                 src={homeContent.colage}
+                ratio="2:3"
               />
             </div>
           </div>

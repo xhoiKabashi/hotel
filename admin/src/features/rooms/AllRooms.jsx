@@ -6,6 +6,7 @@ import { ButtonV2 } from "../../ui/Button";
 import { NavLink } from "react-router-dom";
 import { deleteRoom } from "../../api/delete/delete";
 import { useQueryClient } from "@tanstack/react-query";
+import Pagination from "../pagination/Pagination";
 
 const AllRooms = () => {
   const queryRoomsName = {
@@ -29,12 +30,14 @@ const AllRooms = () => {
   return (
     <FormContainer>
       <Text text="Rooms type" />
-      <hr />
-      {data &&
-        data.map((room) => (
-          <div key={uuidv4()} className="p-6 grid grid-cols-3  border-b-2">
-            <div>Type: {room?.roomType}</div>
-            <div>Capacity: {room?.bed}</div>
+
+      <Pagination
+        data={data}
+        itemsPerPage={4}
+        renderItem={(room) => (
+          <div key={uuidv4()} className="p-3 grid grid-cols-5  border-b-2">
+            <div className=" col-span-2">Type: {room?.roomType}</div>
+            <div className=" col-span-2">Capacity: {room?.bed}</div>
             <div className=" flex   justify-evenly">
               <NavLink to={`update/${room?.roomType}`}>
                 <ButtonV2 text="Update" color="green" />
@@ -42,7 +45,8 @@ const AllRooms = () => {
               <ButtonV2 text="Delete" onClick={() => handleDelete(room?._id)} />
             </div>
           </div>
-        ))}
+        )}
+      />
     </FormContainer>
   );
 };

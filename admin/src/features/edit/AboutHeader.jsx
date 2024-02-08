@@ -76,6 +76,7 @@ const AboutHeader = () => {
               id="logo"
               disabled={logo}
               src={homeHeader?.homeHeader}
+              ratio="3:2"
             />
           </div>
 
