@@ -9,7 +9,6 @@ aboutPage.post(
   async (request, response) => {
     try {
       const fieldsToUpdate = ["h1Text", "h2Text", "h3Text"];
-
       const updateFields = {};
 
       fieldsToUpdate.forEach((field) => {

@@ -17,8 +17,10 @@ import Lunch from "../features/edit/restaurant/Lunch";
 import Breakfast from "../features/edit/restaurant/Breakfast";
 import CreateRooms from "../features/rooms/CreateRooms";
 import UpdateRooms from "../features/rooms/UpdateRooms";
-import AllRooms from "../features/rooms/AllRooms";
+import AllRoomTypes from "../features/rooms/AllRoomTypes";
 import RoomsContent from "../features/rooms/RoomsContent";
+import CreateRoomInstances from "../features/rooms/CreateRoomInstances";
+import AllRoomInstances from "../features/rooms/AllRoomInstances";
 
 const Routes = () => {
   return [
@@ -36,16 +38,25 @@ const Routes = () => {
               element: <CreateRooms />,
             },
             {
-              path: "create-rooms",
+              path: "create-types",
               element: <CreateRooms />,
             },
             {
-              path: "all-rooms",
+              path: "create-instances",
+              element: <CreateRoomInstances />,
+            },
+            {
+              path: "all-room-instances",
+              element: <AllRoomInstances />,
+            },
+
+            {
+              path: "all-room-types",
               element: <RoomsContent />,
               children: [
                 {
                   path: "",
-                  element: <AllRooms />,
+                  element: <AllRoomTypes />,
                 },
                 {
                   path: "update/:id",
@@ -112,7 +123,7 @@ const Routes = () => {
               element: <AboutContent />,
             },
             {
-              path: "contact-social", 
+              path: "contact-social",
               element: <Socials />,
             },
           ],

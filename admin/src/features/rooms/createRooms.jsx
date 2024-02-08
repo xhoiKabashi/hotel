@@ -34,7 +34,7 @@ const CreateRooms = () => {
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       <FormContainer>
-        <Text text="Create Rooms" />
+        <Text text="Create Room Types" />
         <hr />
 
         <div className=" grid  grid-cols-4 gap-2  justify-between">

@@ -57,6 +57,10 @@ updateRoom.post(
         updateFields.photos = request.files.photos.map((file) => file.filename);
       }
 
+      const instances = request.body.instances; // Assuming instances are passed in the request body
+
+      updateFields.instances = instances; // Update
+
       const updatedRoom = await RoomData.insertMany(updateFields);
       response.json(updatedRoom);
     } catch (error) {

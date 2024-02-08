@@ -7,14 +7,24 @@ import { Outlet } from "react-router-dom";
 function Rooms() {
   const components = [
     {
-      title: "Create Rooms",
+      title: "Create Room Types",
 
-      to: "create-rooms",
+      to: "create-types",
     },
     {
-      title: "All Rooms",
+      title: "Create Room Instances",
 
-      to: "all-rooms",
+      to: "create-instances",
+    },
+    {
+      title: "All Room Types",
+
+      to: "all-room-types",
+    },
+    {
+      title: "All Room Instances",
+
+      to: "all-room-instances",
     },
   ];
 

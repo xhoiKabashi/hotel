@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+const { Schema } = mongoose; // Import Schema from mongoose
+
 mongoose.set("strict", false);
 
 const RoomsSchema = new mongoose.Schema({
@@ -27,6 +29,13 @@ const RoomsSchema = new mongoose.Schema({
   roomRefrigerator: Boolean,
 });
 
-const RoomData = mongoose.model("RoomData", RoomsSchema);
+const RoomInstanceSchema = new mongoose.Schema({
+  roomNumber: String,
+  available: Boolean,
+  roomType: String, // Reference to the RoomsSchema
+});
 
-module.exports = { RoomData };
+const RoomData = mongoose.model("RoomData", RoomsSchema);
+const RoomInstance = mongoose.model("RoomInstance", RoomInstanceSchema);
+
+module.exports = { RoomData, RoomInstance };

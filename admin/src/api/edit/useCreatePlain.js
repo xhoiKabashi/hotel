@@ -2,29 +2,16 @@ import axiosClient from "../../services/axiosClient";
 import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 
-export const useCreate = () => {
+export const useCreatePlain = () => {
   return useMutation({
     mutationFn: async ({ uploadedData, endPoint }) => {
-      console.log("a ka data", uploadedData);
-
+      console.log(uploadedData);
       try {
-        console.log("a ka data part 2", uploadedData);
-        const formData = new FormData();
-        Object.entries(uploadedData).forEach(([key, value]) => {
-          formData.append(key, value);
-        });
-
-        const response = await axiosClient.post(`/${endPoint}`, formData, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        });
-
+        const response = await axiosClient.post(`/${endPoint}`, uploadedData);
         console.log(response.data);
         return response.data;
       } catch (error) {
-        console.error(error);
-        throw error;
+        console.error("Error occurred:", error);
       }
     },
     onSuccess: () => {

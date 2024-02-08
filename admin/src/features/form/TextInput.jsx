@@ -9,7 +9,7 @@ export const Label = ({ text, src }) => {
     </label>
   );
 };
-
+//  dedicated for the edit of the website only
 export const MenuImageSwitch = React.forwardRef(
   ({ type, name, text, src, ...rest }, ref) => {
     return (
@@ -34,6 +34,35 @@ export const MenuImageSwitch = React.forwardRef(
   }
 );
 MenuImageSwitch.displayName = "MenuImageSwitch";
+
+export const SelectInput = React.forwardRef(
+  ({ type, name, text, src, options, ...rest }, ref) => {
+    return (
+      <div className="flex flex-col ">
+        <Label text={text} src={src} />
+        <select
+          type={type}
+          name={name}
+          ref={ref}
+          {...rest}
+          className="p-1 border rounded-md  w-full  border-gray-300 bg-gray-200 focus:outline-none focus:border-cyan-500 placeholder-gray-400::placeholder"
+        >
+          {options?.map(
+            (
+              data,
+              index // Ensure to add a return statement here
+            ) => (
+              <option key={index} className="gray-500" value={data?._id}>
+                {data?.roomType}
+              </option>
+            )
+          )}
+        </select>
+      </div>
+    );
+  }
+);
+SelectInput.displayName = "SelectInput";
 
 export const TextArea = React.forwardRef(
   ({ type, name, text, src, ...rest }, ref) => {
