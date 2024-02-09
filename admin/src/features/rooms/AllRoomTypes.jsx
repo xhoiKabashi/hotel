@@ -19,7 +19,7 @@ const AllRooms = () => {
 
   const handleDelete = async (roomId) => {
     try {
-      await deleteRoom(roomId);
+      await deleteRoom({ endPoint: `rooms/${roomId}` });
     } catch (error) {
       console.error(error);
     } finally {

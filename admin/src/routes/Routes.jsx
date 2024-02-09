@@ -21,6 +21,7 @@ import AllRoomTypes from "../features/rooms/AllRoomTypes";
 import RoomsContent from "../features/rooms/RoomsContent";
 import CreateRoomInstances from "../features/rooms/CreateRoomInstances";
 import AllRoomInstances from "../features/rooms/AllRoomInstances";
+import UpdateInstances from "../features/rooms/UpdateInstances";
 
 const Routes = () => {
   return [
@@ -47,7 +48,17 @@ const Routes = () => {
             },
             {
               path: "all-room-instances",
-              element: <AllRoomInstances />,
+              element: <RoomsContent />,
+              children: [
+                {
+                  path: "",
+                  element: <AllRoomInstances />,
+                },
+                {
+                  path: "update-istances/:id",
+                  element: <UpdateInstances />,
+                },
+              ],
             },
 
             {

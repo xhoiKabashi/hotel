@@ -28,3 +28,13 @@ export const useGetOneRoom = (id) => {
     },
   });
 };
+export const useGetOneInstance = (id) => {
+  return useQuery({
+    queryKey: ["roomIstances", id],
+    queryFn: async () => {
+      const response = await axiosClient.get(`/room-instances/${id}`);
+
+      return response.data;
+    },
+  });
+};

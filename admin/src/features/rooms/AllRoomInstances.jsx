@@ -10,20 +10,22 @@ import Pagination from "../pagination/Pagination";
 
 const AllRoomInstances = () => {
   const queryRoomsName = {
-    key: "roomsName",
-    endPoint: "rooms",
+    key: "roomIstances",
+    endPoint: "room-instances",
   };
   const { data } = useGetRooms(queryRoomsName);
   const queryClient = useQueryClient();
-  queryClient.invalidateQueries({ queryKey: ["roomsName"] });
+  queryClient.invalidateQueries({ queryKey: ["roomIstances"] });
+
+  console.log(data);
 
   const handleDelete = async (roomId) => {
     try {
-      await deleteRoom(roomId);
+      await deleteRoom({ endPoint: `room-instances/${roomId}` });
     } catch (error) {
       console.error(error);
     } finally {
-      queryClient.invalidateQueries({ queryKey: ["roomsName"] });
+      queryClient.invalidateQueries({ queryKey: ["roomIstances"] });
     }
   };
 
@@ -35,11 +37,13 @@ const AllRoomInstances = () => {
         data={data}
         itemsPerPage={4}
         renderItem={(room) => (
-          <div key={uuidv4()} className="p-3 grid grid-cols-5  border-b-2">
-            <div className=" col-span-2">Type: {room?.roomType}</div>
-            <div className=" col-span-2">Capacity: {room?.bed}</div>
+          <div key={uuidv4()} className="p-3 grid grid-cols-4  border-b-2">
+            <div>Room Number: {room?.roomNumber}</div>
+            <div>Available : {room?.available ? "Yes" : "No"}</div>
+            <div>Room Type: {room?.roomType}</div>
+
             <div className=" flex   justify-evenly">
-              <NavLink to={`update/${room?.roomType}`}>
+              <NavLink to={`update-istances/${room?.roomNumber}`}>
                 <ButtonV2 text="Update" color="green" />
               </NavLink>
               <ButtonV2 text="Delete" onClick={() => handleDelete(room?._id)} />

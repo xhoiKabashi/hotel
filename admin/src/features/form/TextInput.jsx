@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from "react";
 import Info from "../../ui/Info";
+import { v4 as uuidv4 } from "uuid";
 
 export const Label = ({ text, src }) => {
   return (
@@ -36,27 +37,21 @@ export const MenuImageSwitch = React.forwardRef(
 MenuImageSwitch.displayName = "MenuImageSwitch";
 
 export const SelectInput = React.forwardRef(
-  ({ type, name, text, src, options, ...rest }, ref) => {
+  ({ name, text, options, renderOption, src, ...rest }, ref) => {
     return (
-      <div className="flex flex-col ">
+      <div className="flex flex-col">
         <Label text={text} src={src} />
         <select
-          type={type}
           name={name}
           ref={ref}
           {...rest}
-          className="p-1 border rounded-md  w-full  border-gray-300 bg-gray-200 focus:outline-none focus:border-cyan-500 placeholder-gray-400::placeholder"
+          className="p-1 border rounded-md  w-full  border-gray-300 bg-gray-200 focus:outline-none focus:border-cyan-500"
         >
-          {options?.map(
-            (
-              data,
-              index // Ensure to add a return statement here
-            ) => (
-              <option key={index} className="gray-500" value={data?._id}>
-                {data?.roomType}
-              </option>
-            )
-          )}
+          {options?.map((option) => (
+            <option key={uuidv4()} value={option.value}>
+              {renderOption ? renderOption(option) : option.label}
+            </option>
+          ))}
         </select>
       </div>
     );
