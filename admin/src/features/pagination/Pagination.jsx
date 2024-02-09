@@ -1,8 +1,9 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import SkeletonIU from "../../ui/Skeleton";
 
-const Pagination = ({ data, renderItem, itemsPerPage }) => {
+const Pagination = ({ data, renderItem, itemsPerPage, onLoading }) => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const totalPost = data?.length;
@@ -23,7 +24,9 @@ const Pagination = ({ data, renderItem, itemsPerPage }) => {
     <div className=" flex flex-col gap-2  justify-between min-h-[400px]">
       <div>
         {currentPost?.map((room) => (
-          <div key={uuidv4()}>{renderItem(room)}</div>
+          <SkeletonIU onLoading={onLoading} key={uuidv4()}>
+            {renderItem(room)}
+          </SkeletonIU>
         ))}
       </div>
 

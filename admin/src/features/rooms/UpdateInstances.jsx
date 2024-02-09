@@ -17,27 +17,20 @@ const UpdateInstances = () => {
   const { register, handleSubmit, setValue } = useForm();
   const { mutate: create } = useCreatePlain();
 
-  console.log("id", id);
-  console.log("Current data", currentData);
-
-  //   Dont Touch
   const queryRoomsName = {
     key: "roomsName",
     endPoint: "rooms",
   };
   const { data: roomTypes } = useGetRooms(queryRoomsName);
 
-  console.log("roomTypes", roomTypes);
-  //   Dont Touch
   useEffect(() => {
-    // Update form values when currentData changes
     if (currentData) {
       Object.keys(currentData).forEach((key) => {
         console.log(key, currentData[key]);
         setValue(key, currentData[key]);
       });
     }
-  }, [currentData, setValue]); // Watch for changes in currentData
+  }, [currentData, setValue]);
 
   const onSubmit = async (data) => {
     const uploadedFields = {

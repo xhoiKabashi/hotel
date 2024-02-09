@@ -32,7 +32,7 @@ const AllRoomInstances = () => {
   return (
     <FormContainer>
       <Text text="Rooms type" />
-
+      <hr />
       <Pagination
         data={data}
         itemsPerPage={4}

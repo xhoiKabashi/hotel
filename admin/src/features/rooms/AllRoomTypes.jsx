@@ -13,7 +13,7 @@ const AllRooms = () => {
     key: "roomsName",
     endPoint: "rooms",
   };
-  const { data } = useGetRooms(queryRoomsName);
+  const { data, onLoading } = useGetRooms(queryRoomsName);
   const queryClient = useQueryClient();
   queryClient.invalidateQueries({ queryKey: ["roomsName"] });
 
@@ -30,9 +30,10 @@ const AllRooms = () => {
   return (
     <FormContainer>
       <Text text="Rooms type" />
-
+      <hr />
       <Pagination
         data={data}
+        onLoading={onLoading}
         itemsPerPage={4}
         renderItem={(room) => (
           <div key={uuidv4()} className="p-3 grid grid-cols-5  border-b-2">
