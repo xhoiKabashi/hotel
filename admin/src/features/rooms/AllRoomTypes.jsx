@@ -13,7 +13,7 @@ const AllRooms = () => {
     key: "roomsName",
     endPoint: "rooms",
   };
-  const { data, onLoading } = useGetRooms(queryRoomsName);
+  const { data, isLoading } = useGetRooms(queryRoomsName);
   const queryClient = useQueryClient();
   queryClient.invalidateQueries({ queryKey: ["roomsName"] });
 
@@ -30,14 +30,17 @@ const AllRooms = () => {
   return (
     <FormContainer>
       <Text text="Rooms type" />
-      <hr />
+
       <Pagination
         data={data}
-        onLoading={onLoading}
+        onLoading={isLoading}
         itemsPerPage={4}
         renderItem={(room) => (
-          <div key={uuidv4()} className="p-3 grid grid-cols-5  border-b-2">
-            <div className=" col-span-2">Type: {room?.roomType}</div>
+          <div
+            key={uuidv4()}
+            className="p-3 grid items-center  rounded-lg grid-cols-5  border-1   bg-slate-100"
+          >
+            <div className=" col-span-2 ">Type: {room?.roomType}</div>
             <div className=" col-span-2">Capacity: {room?.bed}</div>
             <div className=" flex   justify-evenly">
               <NavLink to={`update/${room?.roomType}`}>

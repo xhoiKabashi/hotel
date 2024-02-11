@@ -13,7 +13,7 @@ const AllRoomInstances = () => {
     key: "roomIstances",
     endPoint: "room-instances",
   };
-  const { data } = useGetRooms(queryRoomsName);
+  const { data, isLoading } = useGetRooms(queryRoomsName);
   const queryClient = useQueryClient();
   queryClient.invalidateQueries({ queryKey: ["roomIstances"] });
 
@@ -32,12 +32,15 @@ const AllRoomInstances = () => {
   return (
     <FormContainer>
       <Text text="Rooms type" />
-      <hr />
       <Pagination
         data={data}
+        onLoading={isLoading}
         itemsPerPage={4}
         renderItem={(room) => (
-          <div key={uuidv4()} className="p-3 grid grid-cols-4  border-b-2">
+          <div
+            key={uuidv4()}
+            className="p-3 grid items-center rounded-lg grid-cols-4  border-1   bg-slate-100"
+          >
             <div>Room Number: {room?.roomNumber}</div>
             <div>Available : {room?.available ? "Yes" : "No"}</div>
             <div>Room Type: {room?.roomType}</div>
