@@ -16,18 +16,22 @@ const Breakfast = () => {
   const [colTwo, setColTwo] = useState(null);
   const [colThree, setColThree] = useState(null);
 
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit } = useForm();
   const { mutate: update } = useCreateWithCollage();
 
   const onSubmit = async (data) => {
-    const uploadedFields = {
-      uploadedData: {
-        ...data,
-      },
-      endPoint: "breakfast",
-    };
-    await update(uploadedFields);
-    reset();
+    try {
+      const uploadedFields = {
+        uploadedData: {
+          ...data,
+          photos: data.photos,
+        },
+        endPoint: "breakfast",
+      };
+      await update(uploadedFields);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const getImage = (data) => {

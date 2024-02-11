@@ -3,7 +3,6 @@ import NavigateHelper from "../services/navigateHelper";
 import PageSection from "../components/pageSections/PageSection";
 import RoomsCards from "../components/roomCards/roomCards";
 import Line from "../ui/Line";
-import Slider from "../components/pageSections/Slider";
 import { v4 as uuidv4 } from "uuid";
 import { useGetHeader, useGetContent } from "../hooks/useGetDataQuery";
 
@@ -72,7 +71,6 @@ const HomePage = () => {
             imageUrl="./rooms/superior-room.jpg"
             more="See More"
           />
-          <Slider />
         </div>
       </div>
     </>

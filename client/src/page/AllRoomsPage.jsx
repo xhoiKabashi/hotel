@@ -1,7 +1,13 @@
 import RoomsCards from "../components/roomCards/roomCards";
 import NavigateHelper from "../services/navigateHelper";
+import { useGetContent } from "@/hooks/useGetDataQuery";
+
 const AllRoomsPage = () => {
+  const { data: name } = useGetContent({ key: "roomsName", endPoint: "rooms" });
+
   NavigateHelper();
+
+  console.log("cl", name);
   return (
     <div className="pt-20  -z-10 px-5 xl:px-48 xl:pt-40">
       <div className=" xl:text-left">
@@ -13,61 +19,15 @@ const AllRoomsPage = () => {
           to give your eyes a rest.
         </p>
         <div className="py-10 grid  justify-center xl:grid-cols-3 grid-rows-2 gap-14">
-          <RoomsCards
-            title="Standard Room"
-            description="Average size: 27 sqm / 290 sqft
-            Occupancy: 2 adults, 1 child
-            Bed: king or twin
-            Bathroom: bath tub and walk-in shower"
-            imageUrl="./rooms/standard-room.jpg"
-            more="See More"
-          />
-          <RoomsCards
-            title="Deluxe Room"
-            description="Average size: 32 sqm / 344 sqft
-            Occupancy: 2 adults, 1 child
-            Bed: king or twin
-            Bathroom: bath tub and walk-in shower"
-            imageUrl="./rooms/deluxe-room.jpg"
-            more="See More"
-          />
-          <RoomsCards
-            title="Superior Room"
-            description="Average size: 42 sqm / 452 sqft
-            Occupancy: 3 adults, 1 child
-            Bed: king or twin
-            Bathroom: bath tub and walk-in shower"
-            imageUrl="./rooms/superior-room.jpg"
-            more="See More"
-          />
-          <RoomsCards
-            title="Signature Room"
-            description="Average size: 55 sqm / 592 sqft
-            Occupancy: 3 adults,2 children
-            Bed: king or queen
-            Bathroom: bath tub and walk-in shower"
-            imageUrl="./rooms/signature-room.jpg"
-            more="See More"
-          />
-          <RoomsCards
-            title="
-            Executive Suite"
-            description="Average size: 77 sqm / 828 sqft
-            Occupancy: 3 adults, 2 children
-            Bed: king or queen
-            Bathroom: bath tub and walk-in shower"
-            imageUrl="./rooms/executive-suite.jpg"
-            more="See More"
-          />
-          <RoomsCards
-            title="Pool Deluxe Villa"
-            description="Average size: 27 sqm / 290 sqft
-            Occupancy: 2 adults, 1 child
-            Bed: king or twin
-            Bathroom: bath tub and walk-in shower"
-            imageUrl="./rooms/vila-pool.jpg"
-            more="See More"
-          />
+          {name?.map((room, index) => (
+            <RoomsCards
+              key={index}
+              title={room.roomType}
+              description={room.size}
+              imageUrl={room.photos[0]} // Assuming room object has 'photos' array
+              more="See More"
+            />
+          ))}
         </div>
       </div>
     </div>

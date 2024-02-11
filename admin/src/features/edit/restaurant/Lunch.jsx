@@ -16,7 +16,7 @@ const Lunch = () => {
   const [colTwo, setColTwo] = useState(null);
   const [colThree, setColThree] = useState(null);
 
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit } = useForm();
   const { mutate: update } = useCreateWithCollage();
 
   const onSubmit = async (data) => {
@@ -27,7 +27,6 @@ const Lunch = () => {
       endPoint: "lunch",
     };
     await update(uploadedFields);
-    reset();
   };
 
   const getImage = (data) => {

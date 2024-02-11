@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { aboutHotel, aboutRooms } from "../../services/data/NavBarData.js";
+import { aboutHotel, aboutRooms } from "../../services/data/navBarData";
 import { Link } from "react-router-dom";
 import { useGetHeader, useGetContent } from "../../hooks/useGetDataQuery.js";
 import { v4 as uuidv4 } from "uuid";

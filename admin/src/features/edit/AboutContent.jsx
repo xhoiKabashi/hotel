@@ -61,8 +61,8 @@ const AboutContent = () => {
             <TextArea
               type="text"
               text=" Content Description"
-              id="h3Text"
-              {...register("h3Text")}
+              id="description"
+              {...register("description")}
               src={homeContent?.content}
             />
           </div>

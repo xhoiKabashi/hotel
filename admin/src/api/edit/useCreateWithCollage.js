@@ -8,6 +8,7 @@ export const useCreateWithCollage = () => {
     mutationFn: async ({ uploadedData, endPoint }) => {
       try {
         const formDataToSend = new FormData();
+        console.log("on Hook", uploadedData);
 
         for (const [key, value] of Object.entries(uploadedData)) {
           if (key === "photos") {

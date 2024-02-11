@@ -8,13 +8,9 @@ import RoomAmenities from "@/components/rooms/RoomAmenities";
 
 const Rooms = () => {
   NavigateHelper();
-  const { id, isLoading } = useParams();
+  const { id } = useParams();
 
   const { data: room } = useGetRooms(id);
-
-  if (isLoading) {
-    return <p>Loading...</p>;
-  }
 
   return (
     <div>
