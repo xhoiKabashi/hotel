@@ -18,17 +18,17 @@ function Sidebar() {
           <HiSquaresPlus className="text-whites size-6  text-slate-600" />
           <Text text="Rooms" />
         </NavigationList>
-        <NavigationList to="edit">
+        <NavigationList to="/">
           <HiSquaresPlus className="text-whites size-6  text-slate-600" />
-          <Text text="Edit Website" />
+          <Text text="Other" />
         </NavigationList>
-        <NavigationList to="edit-">
+        <NavigationList to="/">
           <HiSquaresPlus className="text-whites size-6  text-slate-600" />
-          <Text text="Edit Website" />
+          <Text text="Other" />
         </NavigationList>
-        <NavigationList to="edit-">
+        <NavigationList to="/">
           <HiSquaresPlus className="text-whites size-6  text-slate-600" />
-          <Text text="Edit Website" />
+          <Text text="Other" />
         </NavigationList>
       </div>
     </aside>

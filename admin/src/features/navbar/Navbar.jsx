@@ -7,13 +7,10 @@ const Navbar = () => {
         </div>
         <div className="flex items-center gap-3 2xsm:gap-7">
           <ul className="flex items-center gap-2 2xsm:gap-4">
-            <li>Hey</li>
-            <li>Hey</li>
-            <li>Hey</li>
+            <li>Hello Xhoi</li>
           </ul>
           <ul className=" flex items-center gap-3 2xsm:gap-7x ">
-            <li>Name</li>
-            <li>Poto</li>
+            <li className=" cursor-pointer">Log out</li>
           </ul>
         </div>
       </div>
